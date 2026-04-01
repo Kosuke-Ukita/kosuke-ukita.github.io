@@ -1,6 +1,6 @@
 export const awards = [
   {
-    title: "2026 PAKDD Student Travel Award",
+    title: "Student Travel Award",
     url: "https://www.pakdd2026.org/awardees",
     organization: "The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)",
     year: "June 2026"
