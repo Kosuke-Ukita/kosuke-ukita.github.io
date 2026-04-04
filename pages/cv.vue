@@ -99,14 +99,8 @@ const highlightAuthor = (authors: string) => {
           <!-- <article v-for="(paper, index) in publications" :key="index" class="flex flex-col group px-6 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"> -->
           <article v-for="(paper, index) in publications" :key="index" class="relative group border-l-2 border-primary/50 px-3 py-2 rounded-md hover:shadow-md transition-all duration-300">
             <p class="absolute -left-[32px] text-sm text-primary/90 font-bold">[{{ index+1 }}]</p>
+            <h4 class="text-md font-bold text-slate-900 leading-snug group-hover:text-primary transition-colors">{{ paper.title }}</h4>
             
-            <div class="flex justify-between">
-              <h4 class="text-md font-bold text-slate-900 leading-snug group-hover:text-primary transition-colors">{{ paper.title }}</h4>
-              <div class="flex gap-1 shrink-0 self-start">
-                <span v-if="paper.type" class="inline-flex items-center px-1 py-0.5 rounded text-xs font-medium bg-primary/5 text-primary border border-primary/10 whitespace-nowrap">{{ paper.type }}</span>
-                <span v-if="paper.note" class="inline-flex items-center px-1 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700 border border-green-100 whitespace-nowrap">{{ paper.note }}</span>
-              </div>
-            </div>
             <div class="text-slate-500 text-sm"><span v-html="highlightAuthor(paper.authors)"></span></div>
             <div class="text-xs font-semibold text-slate-900 italic">{{ paper.venue }}</div>
 
@@ -114,10 +108,17 @@ const highlightAuthor = (authors: string) => {
               <span class="text-xs flex items-center gap-1"><Icon name="heroicons:calendar" class="w-4 h-4 text-slate-400" />{{ paper.date }}</span>
               <span class="text-xs flex items-center gap-1" v-if="paper.location"><Icon name="heroicons:map-pin" class="w-4 h-4 text-slate-400" />{{ paper.location }}</span>
             </div>
-            <div class="flex flex-wrap items-center gap-1 mt-1text-slate-500">
-              <a v-for="link in paper.links" :key="link.name" :href="link.url" class="flex items-center gap-1 text-xs font-bold text-slate-700 border border-slate-300 px-2 py-1 rounded-lg hover:border-primary hover:text-primary hover:bg-primary/5 transition bg-slate-50">
-                <Icon :name="link.icon" class="w-4 h-4" />{{ link.name }}
-              </a>
+
+            <div class="flex justify-between">
+              <div class="flex flex-wrap items-center gap-1 mt-1text-slate-500">
+                <a v-for="link in paper.links" :key="link.name" :href="link.url" class="flex items-center gap-1 text-xs font-bold text-slate-700 border border-slate-300 px-2 py-1 rounded-lg hover:border-primary hover:text-primary hover:bg-primary/5 transition bg-slate-50">
+                  <Icon :name="link.icon" class="w-4 h-4" />{{ link.name }}
+                </a>
+              </div>
+              <div class="flex gap-1 shrink-0 self-start">
+                <span v-if="paper.type" class="inline-flex items-center px-1 py-0.5 rounded text-xs font-medium bg-primary/5 text-primary border border-primary/10 whitespace-nowrap">{{ paper.type }}</span>
+                <span v-if="paper.note" class="inline-flex items-center px-1 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700 border border-green-100 whitespace-nowrap">{{ paper.note }}</span>
+              </div>
             </div>
 
           </article>
