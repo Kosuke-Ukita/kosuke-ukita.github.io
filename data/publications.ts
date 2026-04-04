@@ -9,8 +9,9 @@ export const publications = [
     note: "Refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "#", icon: "heroicons:document-duplicate" },
-      { name: "Code", url: "#", icon: "heroicons:code-bracket" },
+      { name: "PDF", url: "/papers/ukita2026efficient.pdf", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://www.pakdd2026.org/accepted-papers#:~:text=Efficient%20Inference%20for%20Flow%20Matching%20via%20Unified%20Path%20CFG", icon: "heroicons:link" },
+      { name: "Code", url: "https://github.com/Okita-Laboratory/cfgUP", icon: "heroicons:code-bracket" },
     ]
   },
   {
@@ -23,8 +24,9 @@ export const publications = [
     note: "Refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "https://openreview.net/forum?id=yW5dvLytON", icon: "heroicons:document-text" },
-      { name: "Code", url: "#", icon: "heroicons:code-bracket" },
+      { name: "PDF", url: "/papers/ukita2026high.pdf", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://openreview.net/forum?id=yW5dvLytON", icon: "heroicons:link" },
+      { name: "Code", url: "https://github.com/Okita-Laboratory/SenFlow", icon: "heroicons:code-bracket" },
       { name: "Arxiv", url: "https://arxiv.org/abs/2512.19729", icon: "heroicons:document-text" },
     ]
   },
@@ -38,7 +40,7 @@ export const publications = [
     note: "Refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "https://dl.acm.org/doi/10.1145/3714394.3756203", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://dl.acm.org/doi/10.1145/3714394.3756203", icon: "heroicons:link" },
     ]
   },
   {
@@ -51,7 +53,8 @@ export const publications = [
     note: "Refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "https://www.jstage.jst.go.jp/article/ijabc/2025/3/2025_124/_article/-char/en", icon: "heroicons:document-text" },
+      { name: "PDF", url: "/papers/matsuishi2025multimodal.pdf", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://www.jstage.jst.go.jp/article/ijabc/2025/3/2025_124/_article/-char/en", icon: "heroicons:link" },
       { name: "Arxiv", url: "https://arxiv.org/abs/2506.03174", icon: "heroicons:document-text" },
     ]
   },
@@ -65,6 +68,7 @@ export const publications = [
     note: "Non-refeered",
     tags: [""],
     links: [
+      { name: "PDF", url: "/papers/ukita2025energy.pdf", icon: "heroicons:document-text" },
       { name: "Page", url: "https://www.dropbox.com/scl/fi/i3yjkrd9lqaybflfzmlss/Poster-Session.xlsx?rlkey=0bntd96bmxtje3f0r04w6yeat&e=1&st=rdyvop6k&dl=0", icon: "heroicons:link" },
     ]
   },
@@ -78,6 +82,7 @@ export const publications = [
     note: "Non-refeered",
     tags: [""],
     links: [
+      { name: "PDF", url: "/papers/ukita2025image.pdf", icon: "heroicons:document-text" },
       { name: "Arxiv", url: "https://arxiv.org/abs/2505.06890", icon: "heroicons:document-text" },
     ]
   },
@@ -91,8 +96,8 @@ export const publications = [
     note: "Non-refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "https://kyutech.repo.nii.ac.jp/record/2001921/files/10463229.pdf", icon: "heroicons:document-text" },
-      { name: "Page", url: "https://mbl.ipsj.or.jp/program/2025/114/", icon: "heroicons:link" },
+      { name: "PDF", url: "/papers/matsuishi2025AURA.pdf", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://www.ipsj.or.jp/kenkyukai/event/mbl114ubi85.html#:~:text=8.%20%5BUBI%5D%20AURA,%E4%B9%9D%E5%B7%9E%E5%B7%A5%E6%A5%AD%E5%A4%A7%E5%AD%A6)", icon: "heroicons:link" },
     ]
   },
   {
@@ -105,6 +110,7 @@ export const publications = [
     note: "Non-refeered",
     tags: [""],
     links: [
+      { name: "PDF", url: "/papers/ukita2024improving.pdf", icon: "heroicons:document-text" },
       { name: "Page", url: "https://conferenceservice.jp/www/saes2024/", icon: "heroicons:link" },
     ]
   },
@@ -118,6 +124,7 @@ export const publications = [
     note: "Non-refeered",
     tags: [""],
     links: [
+      { name: "PDF", url: "/papers/miyazaki2024ensemble.pdf", icon: "heroicons:document-text" },
       { name: "Page", url: "https://conferenceservice.jp/www/saes2024/", icon: "heroicons:link" },
     ]
   },
@@ -131,7 +138,7 @@ export const publications = [
     note: "Refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "https://dl.acm.org/doi/10.1145/3675094.3678439", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://dl.acm.org/doi/10.1145/3675094.3678439", icon: "heroicons:link" },
     ]
   },
   {
@@ -144,7 +151,8 @@ export const publications = [
     note: "Non-refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "https://www.ipsj-kyushu.jp/page/ronbun/hinokuni/1013/Papers/A4-4.pdf", icon: "heroicons:document-text" },
+      { name: "PDF", url: "/papers/ukita2024rep.pdf", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://www.ipsj-kyushu.jp/page/ronbun/hinokuni/1013/Papers/A4-4.pdf", icon: "heroicons:link" },
     ]
   },
   {
@@ -157,7 +165,7 @@ export const publications = [
     note: "Refeered",
     tags: [""],
     links: [
-      { name: "Paper", url: "https://dl.acm.org/doi/10.1145/3594739.3610745", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://dl.acm.org/doi/10.1145/3594739.3610745", icon: "heroicons:link" },
       { name: "Code", url: "https://github.com/Okita-Laboratory/SENvT", icon: "heroicons:code-bracket" },
     ]
   },
