@@ -7,7 +7,7 @@ export const awards = [
   },
   {
     title: "Spotlight Presentation (Top 3%)",
-    url: "https://openreview.net/forum?id=yW5dvLytON#:~:text=AISTATS%202026%20Spotlight",
+    url: "https://virtual.aistats.org/virtual/2026/spotlight/13338#:~:text=Organization-,SPOTLIGHT,-High%2DPerformance%20Self",
     organization: "The 29th Annual Conference on Artificial Intelligence and Statistics (AISTATS 2026)",
     year: "May 2026"
   },
