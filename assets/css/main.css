@@ -5,11 +5,11 @@
    Uncomment one to change the site's accent color.
    ───────────────────────────────────────────────────────────────────────── */
 :root {
-  --color-primary: 50  65  155;      /* deep indigo        (default) */
-  /* --color-primary: 229 108 64; */  /* warm amber                  */
-  /* --color-primary: 37  99  235; */ /* blue-600                    */
-  /* --color-primary: 13  148 136; */ /* teal-600                    */
-  /* --color-primary: 124 58  237; */ /* violet-600                  */
+  --color-primary: 50  65  155;
+  /* --color-primary: 229 108 64;  */
+  /* --color-primary: 37  99  235; */
+  /* --color-primary: 13  148 136; */
+  /* --color-primary: 124 58  237; */
 }
 
 /* ─── Base ────────────────────────────────────────────────────────────────── */

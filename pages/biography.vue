@@ -4,10 +4,10 @@ useHead({ title: 'Biography' })
 
 <template>
   <div>
-    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-8 tracking-tight">Biography</h1>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-12 tracking-tight">Biography</h1>
     
     <h2 class="section-title">Japanese</h2>
-    <div class="space-y-1 text-sm text-gray-700 dark:text-zinc-300 leading-relaxed max-w-prose mb-8">
+    <div class="space-y-1 text-sm text-gray-700 dark:text-zinc-300 leading-relaxed max-w-prose mb-16">
       <p>
         <a href="https://kosuke-ukita.github.io/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">浮田 嵩祐</a>
         は現在，
@@ -25,7 +25,7 @@ useHead({ title: 'Biography' })
     </div>
 
     <h2 class="section-title">English</h2>
-    <div class="space-y-1 text-sm text-gray-700 dark:text-zinc-300 leading-relaxed max-w-prose mb-8">
+    <div class="space-y-1 text-sm text-gray-700 dark:text-zinc-300 leading-relaxed max-w-prose mb-16">
       <p>
         <a href="https://kosuke-ukita.github.io/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Kosuke Ukita</a>
         is a first-year Ph.D. student at the

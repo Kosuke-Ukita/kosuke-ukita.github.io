@@ -85,12 +85,14 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section>
       <h2 class="section-title">Publications</h2>
       <ol class="space-y-6">
-        <li v-for="(paper, i) in publications" :key="i" class="flex gap-1">
+        <li v-for="(paper, i) in publications" :key="i" class="flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow">
           <span class="pub-number">[{{ i + 1 }}]</span>
           <div class="min-w-0 flex-1">
             <p class="pub-title text-sm">{{ paper.title }}</p>
             <p class="pub-authors" v-html="highlightAuthor(paper.authors)" />
-            <p class="pub-venue">{{ paper.venue }}<span v-if="paper.date">, {{ paper.date }}</span></p>
+            <p class="pub-venue">{{ paper.venue }}</p>
+            <span v-if="paper.date" class="text-xs text-gray-400 dark:text-zinc-500">{{ paper.date }}</span>
+            <span v-if="paper.location" class="text-xs text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
             <div class="flex flex-wrap items-center gap-2 mt-1.5">
               <span
                 v-if="paper.type"
@@ -126,11 +128,12 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section id="grants">
       <h2 class="section-title">Grants</h2>
       <ul class="space-y-4">
-        <li v-for="(grant, i) in grants" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-6 text-sm">
+        <li v-for="(grant, i) in grants" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-2 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
-            <a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary transition-colors">{{ grant.name }}</a>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ grant.organization }} · {{ grant.year }}</p>
+            <p><a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ grant.name }}</a></p>
+            <p><a :href="grant.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ grant.organization }}</a></p>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ grant.year }}</p>
           </div>
         </li>
       </ul>
@@ -140,13 +143,12 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section id="awards">
       <h2 class="section-title">Awards</h2>
       <ul class="space-y-4">
-        <li v-for="(award, i) in awards" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-6 text-sm">
+        <li v-for="(award, i) in awards" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-2 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
-            <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary transition-colors">
-              {{ award.title }}
-            </a>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ award.organization }} · {{ award.year }}</p>
+            <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ award.title }}</a>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ award.organization }}</p>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ award.year }}</p>
           </div>
         </li>
       </ul>

@@ -51,7 +51,10 @@ const recentAwards = awards.slice(0, 5)
           class="flex gap-4 sm:gap-6 text-sm leading-relaxed"
         >
           <span class="font-mono text-gray-400 dark:text-zinc-500 shrink-0 w-[4.5rem] text-[0.72rem] pt-0.5">{{ item.date }}</span>
-          <span class="text-gray-700 dark:text-zinc-300">{{ item.content }}</span>
+          <span class="text-gray-700 dark:text-zinc-300">
+            {{ item.content }}
+            <a v-if="item.url" :href="item.url" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2"> → </a>
+          </span>
         </div>
       </div>
       <div class="mt-5">
@@ -65,7 +68,7 @@ const recentAwards = awards.slice(0, 5)
     <section>
       <h2 class="section-title">Selected Publications</h2>
       <ol class="space-y-7">
-        <li v-for="(paper, i) in selectedPubs" :key="i" class="flex gap-1">
+        <li v-for="(paper, i) in selectedPubs" :key="i" class="flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow">
           <span class="pub-number">[{{ i + 1 }}]</span>
 
           <div class="min-w-0 flex-1">
@@ -76,10 +79,9 @@ const recentAwards = awards.slice(0, 5)
             <p class="pub-authors" v-html="highlightAuthor(paper.authors)" />
 
             <!-- Venue -->
-            <p class="pub-venue">
-              {{ paper.venue }}<span v-if="paper.date">, {{ paper.date }}</span>
-              <span v-if="paper.location" class="not-italic text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
-            </p>
+            <p class="pub-venue">{{ paper.venue }}</p>
+            <span v-if="paper.date" class="text-xs text-gray-400 dark:text-zinc-500">{{ paper.date }}</span>
+            <span v-if="paper.location" class="text-xs text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
 
             <!-- Tags, refereed status, and link icons -->
             <div class="flex flex-wrap items-center gap-2 mt-2">
@@ -130,10 +132,9 @@ const recentAwards = awards.slice(0, 5)
         <li v-for="(grant, i) in recentGrants" :key="i" class="flex gap-2 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
-            <a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary transition-colors">
-              {{ grant.name }}
-            </a>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ grant.organization }} · {{ grant.year }}</p>
+            <p><a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ grant.name }}</a></p>
+            <p><a :href="grant.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono hover:underline">{{ grant.organization }}</a></p>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ grant.year }}</p>
           </div>
         </li>
       </ul>
@@ -151,10 +152,9 @@ const recentAwards = awards.slice(0, 5)
         <li v-for="(award, i) in recentAwards" :key="i" class="flex gap-2 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
-            <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary transition-colors">
-              {{ award.title }}
-            </a>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ award.organization }} · {{ award.year }}</p>
+            <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ award.title }}</a>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ award.organization }}</p>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ award.year }}</p>
           </div>
         </li>
       </ul>

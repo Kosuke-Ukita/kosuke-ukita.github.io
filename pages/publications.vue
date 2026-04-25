@@ -53,7 +53,7 @@ const groupedPublications = computed(() => {
       </h2>
 
       <ol class="space-y-8">
-        <li v-for="paper in group.pubs" :key="paper.globalIndex" class="flex gap-1">
+        <li v-for="paper in group.pubs" :key="paper.globalIndex" class="flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow">
           <span class="pub-number">[{{ paper.globalIndex }}]</span>
 
           <div class="min-w-0 flex-1">
@@ -64,10 +64,9 @@ const groupedPublications = computed(() => {
             <p class="pub-authors" v-html="highlightAuthor(paper.authors)" />
 
             <!-- Venue -->
-            <p class="pub-venue">
-              {{ paper.venue }}<span v-if="paper.date">, {{ paper.date }}</span>
-              <span v-if="paper.location" class="not-italic text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
-            </p>
+            <p class="pub-venue">{{ paper.venue }}</p>
+            <span v-if="paper.date" class="text-xs text-gray-400 dark:text-zinc-500">{{ paper.date }}</span>
+            <span v-if="paper.location" class="text-xs text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
 
             <!-- Tags, refereed status, and link icons -->
             <div class="flex flex-wrap items-center gap-2 mt-2">
