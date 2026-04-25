@@ -57,7 +57,7 @@ body {
   font-size: 0.7rem;
   flex-shrink: 0;
   width: 2rem;
-  text-align: right;
+  text-align: left;
   padding-top: 0.15rem;
   user-select: none;
 }

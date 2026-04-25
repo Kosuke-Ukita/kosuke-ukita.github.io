@@ -5,45 +5,47 @@ useHead({ title: 'Biography' })
 <template>
   <div>
     <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-8 tracking-tight">Biography</h1>
-
-    <div class="space-y-4 text-sm text-gray-700 dark:text-zinc-300 leading-relaxed max-w-prose">
-
+    
+    <h2 class="section-title">Japanese</h2>
+    <div class="space-y-1 text-sm text-gray-700 dark:text-zinc-300 leading-relaxed max-w-prose mb-8">
       <p>
-        Kosuke Ukita is a first-year PhD student in Computer Science and Systems Engineering
-        at the
-        <a href="https://www.kyutech.ac.jp/english/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Kyushu Institute of Technology</a>,
-        advised by Associate Professor
-        <a href="https://sites.google.com/view/okita-lab" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Tsuyoshi Okita</a>.
-        He is supported by the JST SPRING fellowship (JPMJSP2154).
+        <a href="https://kosuke-ukita.github.io/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">浮田 嵩祐</a>
+        は現在，
+        <a href="https://www.iizuka.kyutech.ac.jp/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">九州工業大学大学院情報工学府</a>
+        の博士後期課程（D1）に在籍し，
+        <a href="http://www.alp.ai.kyutech.ac.jp/tsuyoshi/index.html" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">大北研究室</a>
+        にて深層学習および生成モデルの研究に従事している．
+      </p>
+      <p>
+        <a href="https://www.ccr.kyutech.ac.jp/dc_support/spring/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">次世代研究者挑戦的研究プログラム（SPRING）</a>
+        の支援を受け，主にFlow MatchingやDiffusion Modelsの計算効率化，推論の高速化，および表現学習の理論的基盤に関心を持つ．
+        最近の成果として，認識性能と生成品質の両立を目的としたセンサ基盤モデルを提案し，AISTATS 2026でのSpotlight発表（採択率上位3%）や，
+        Flow Matchingの推論速度半減を達成し，PAKDD 2026でのOral発表（2026 PAKDD Student Travel Award受賞）を行う．
+      </p>
+    </div>
+
+    <h2 class="section-title">English</h2>
+    <div class="space-y-1 text-sm text-gray-700 dark:text-zinc-300 leading-relaxed max-w-prose mb-8">
+      <p>
+        <a href="https://kosuke-ukita.github.io/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Kosuke Ukita</a>
+        is a first-year Ph.D. student at the
+        <a href="https://www.iizuka.kyutech.ac.jp/en/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Graduate School of Computer Science and Systems Engineering, Kyushu Institute of Technology</a>, 
+        where they conduct research in the
+        <a href="http://www.alp.ai.kyutech.ac.jp/tsuyoshi/index.html" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Okita Laboratory</a>.
+      </p>
+      <p>
+        Supported by the 
+        <a href="https://www.ccr.kyutech.ac.jp/dc_support/spring/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Support for Pioneering Research in Innovative Doctoral Courses (SPRING)</a>
+        program, they conduct research on deep learning and generative modeling, with a focus on enhancing the efficiency of Flow Matching and Diffusion Models, as well as exploring the theoretical foundations of representation learning.
+        Their recent achievements include a Spotlight presentation (top 3% of submissions) at AISTATS 2026 and an Oral presentation at PAKDD 2026, where they received the 2026 PAKDD Student Travel Award.
       </p>
 
-      <p>
-        His research lies at the intersection of generative modelling and representation learning,
-        with a particular focus on flow matching and its applications to sensor data.
-        He is interested in developing efficient inference algorithms for continuous normalizing flows,
-        leveraging generative pre-training for self-supervised learning,
-        and building multimodal foundation models for human activity recognition.
-      </p>
-
-      <p>
-        Kosuke received his MSc (2026) and BSc (2024) from Kyushu Institute of Technology.
-        His master's thesis investigated sensor foundation models trained jointly with flow matching,
-        leading to publications at
-        AISTATS 2026 (Spotlight, top 3%) and PAKDD 2026 (Oral Presentation).
-        He received the PAKDD 2026 Student Travel Award in recognition of this work.
-      </p>
-
-      <p>
-        Beyond his primary research, he maintains a broad interest in the mathematical foundations
-        of machine learning — particularly probabilistic modelling, optimal transport, and score-based methods —
-        and enjoys following developments across the wider machine learning community.
-      </p>
-
+      
     </div>
 
     <!-- Placeholder note -->
     <p class="mt-10 text-[0.7rem] text-gray-300 dark:text-zinc-600 font-mono italic">
-      * note placeholder.
+      * hogehoge.
     </p>
   </div>
 </template>

@@ -53,7 +53,7 @@ const groupedPublications = computed(() => {
       </h2>
 
       <ol class="space-y-8">
-        <li v-for="paper in group.pubs" :key="paper.globalIndex" class="flex gap-4">
+        <li v-for="paper in group.pubs" :key="paper.globalIndex" class="flex gap-1">
           <span class="pub-number">[{{ paper.globalIndex }}]</span>
 
           <div class="min-w-0 flex-1">

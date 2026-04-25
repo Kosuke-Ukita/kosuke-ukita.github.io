@@ -59,8 +59,8 @@ const linkIcon = (name: string, dataIcon?: string): string => {
           <div>
             <p class="font-semibold text-gray-900 dark:text-zinc-100">{{ edu.degree }}</p>
             <p class="text-gray-700 dark:text-zinc-300 text-xs mt-0.5">{{ edu.school }}</p>
-            <p v-if="edu.depart" class="text-[0.7rem] text-gray-500 dark:text-zinc-400 mt-0.5 leading-snug whitespace-pre-line">{{ edu.depart }}</p>
-            <p v-if="edu.thesis" class="text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-0.5 italic leading-snug">{{ edu.thesis }}</p>
+            <p v-if="edu.depart" class="text-[0.7rem] text-gray-500 dark:text-zinc-400 mt-0.5 pl-0.5 leading-snug whitespace-pre-line">{{ edu.depart }}</p>
+            <p v-if="edu.thesis" class="font-mono text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-1 leading-snug">{{ edu.thesis }}</p>
             <p v-if="edu.description" class="text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-0.5 font-mono">{{ edu.description }}</p>
           </div>
         </div>
@@ -85,7 +85,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section>
       <h2 class="section-title">Publications</h2>
       <ol class="space-y-6">
-        <li v-for="(paper, i) in publications" :key="i" class="flex gap-4">
+        <li v-for="(paper, i) in publications" :key="i" class="flex gap-1">
           <span class="pub-number">[{{ i + 1 }}]</span>
           <div class="min-w-0 flex-1">
             <p class="pub-title text-sm">{{ paper.title }}</p>
@@ -125,29 +125,31 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <!-- ── Grants ─────────────────────────────────────────────────────────── -->
     <section id="grants">
       <h2 class="section-title">Grants</h2>
-      <div class="space-y-4">
-        <div v-for="(grant, i) in grants" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-6 text-sm">
-          <span class="font-mono text-gray-500 dark:text-zinc-400 text-[0.72rem] sm:shrink-0 sm:w-44">{{ grant.year }}</span>
+      <ul class="space-y-4">
+        <li v-for="(grant, i) in grants" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-6 text-sm">
+          <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
             <a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary transition-colors">{{ grant.name }}</a>
-            <p class="text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-0.5">{{ grant.organization }}</p>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ grant.organization }} · {{ grant.year }}</p>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
     <!-- ── Awards ─────────────────────────────────────────────────────────── -->
     <section id="awards">
       <h2 class="section-title">Awards</h2>
-      <div class="space-y-4">
-        <div v-for="(award, i) in awards" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-6 text-sm">
-          <span class="font-mono text-gray-500 dark:text-zinc-400 text-[0.72rem] sm:shrink-0 sm:w-44">{{ award.year }}</span>
+      <ul class="space-y-4">
+        <li v-for="(award, i) in awards" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-6 text-sm">
+          <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
-            <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary transition-colors">{{ award.title }}</a>
-            <p class="text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-0.5">{{ award.organization }}</p>
+            <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary transition-colors">
+              {{ award.title }}
+            </a>
+            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ award.organization }} · {{ award.year }}</p>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
     <!-- ── Skills ─────────────────────────────────────────────────────────── -->

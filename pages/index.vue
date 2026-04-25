@@ -65,7 +65,7 @@ const recentAwards = awards.slice(0, 5)
     <section>
       <h2 class="section-title">Selected Publications</h2>
       <ol class="space-y-7">
-        <li v-for="(paper, i) in selectedPubs" :key="i" class="flex gap-4">
+        <li v-for="(paper, i) in selectedPubs" :key="i" class="flex gap-1">
           <span class="pub-number">[{{ i + 1 }}]</span>
 
           <div class="min-w-0 flex-1">

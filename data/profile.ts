@@ -4,7 +4,7 @@ export const profile = {
   grade: "PhD student (D1), full-time",
   affiliation: "Kyushu Institute of Technology",
   place: "Fukuoka, Japan",
-  email: "ukita.kosuke299[at]mail.kyutech.jp", 
+  email: "ukita.kosuke299@mail.kyutech.jp", 
   socials: [
     {name: "GitHub", url: "https://github.com/Kosuke-Ukita", icon: "uil:github", color: "hover:text-gray-300 transition"},
     {name: "Google Scholar", url: "https://scholar.google.com/citations?user=rmfjRpEAAAAJ", icon: "simple-icons:googlescholar", color: "hover:text-blue-600 transition"},
