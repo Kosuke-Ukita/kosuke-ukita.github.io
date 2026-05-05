@@ -24,8 +24,8 @@ export const publications = [
     note: "Refeered",
     tags: [""],
     links: [
-      { name: "PDF", url: "/papers/ukita2026high.pdf", icon: "heroicons:document-text" },
-      { name: "Page", url: "https://openreview.net/forum?id=yW5dvLytON", icon: "heroicons:link" },
+      { name: "PDF", url: "https://openreview.net/pdf?id=yW5dvLytON", icon: "heroicons:document-text" },
+      { name: "Page", url: "https://virtual.aistats.org/virtual/2026/spotlight/13338", icon: "heroicons:link" },
       { name: "Code", url: "https://github.com/Okita-Laboratory/SenFlow", icon: "heroicons:code-bracket" },
       { name: "Arxiv", url: "https://arxiv.org/abs/2512.19729", icon: "heroicons:document-text" },
     ]
