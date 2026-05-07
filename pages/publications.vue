@@ -14,14 +14,16 @@ const extractYear = (date?: string) => date?.trim().split(/\s+/).pop() ?? '—'
 // Map link name → icon (falls back to data icon, then generic)
 const linkIcon = (name: string, dataIcon?: string): string => {
   const map: Record<string, string> = {
-    PDF:    'heroicons:document-text',
-    Code:   'heroicons:code-bracket-square',
-    Page:   'heroicons:arrow-top-right-on-square',
-    Arxiv:  'heroicons:document-magnifying-glass',
-    Slides: 'heroicons:presentation-chart-bar',
-    Video:  'heroicons:video-camera',
-    Demo:   'heroicons:play-circle',
-    Poster: 'heroicons:photo',
+    // PDF:    'heroicons:document-text',
+    PDF: 'fa6-solid:file-pdf',
+    // Code:   'heroicons:code-bracket-square',
+    Code: 'fa6-solid:code',
+    // Page:   'heroicons:arrow-top-right-on-square',
+    Page:   'fa6-solid:arrow-up-right-from-square',
+    Arxiv:  'simple-icons:arxiv',
+    Cite: 'fa6-colid:quote-right',
+    Slides: 'fa6-solid:chalkboard',
+    Poster: 'fa6-solid:file-image',
   }
   return map[name] || dataIcon || 'heroicons:link'
 }
@@ -98,6 +100,7 @@ const groupedPublications = computed(() => {
                 class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded"
               >
                 <Icon :name="linkIcon(link.name, link.icon)" class="w-[1.05rem] h-[1.05rem]" />
+                <FontAwesomeIcon :icon="byPrefixAndName.far['file-pdf']" />
               </a>
             </div>
           </div>
