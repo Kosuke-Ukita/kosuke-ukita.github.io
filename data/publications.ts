@@ -12,7 +12,14 @@ export const publications = [
       { name: "PDF", url: "/papers/ukita2026efficient.pdf"},
       { name: "Page", url: "https://www.pakdd2026.org/accepted-papers#:~:text=Efficient%20Inference%20for%20Flow%20Matching%20via%20Unified%20Path%20CFG"},
       // { name: "Code", url: "https://github.com/Okita-Laboratory/cfgUP"},
-    ]
+    ],
+    cite: `@inproceedings{ukita2026efficient,
+  title     = {Efficient Inference for Flow Matching via Unified Path CFG},
+  author    = {Ukita, Kosuke and Okita, Tsuyoshi},
+  booktitle = {Proceedings of the 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)},
+  year      = {2026},
+  address   = {Hong Kong, China}
+}`,
   },
   {
     title: "High-Performance Self-Supervised Learning by Joint Training of Flow Matching",
@@ -27,8 +34,17 @@ export const publications = [
       { name: "PDF", url: "https://openreview.net/pdf?id=yW5dvLytON"},
       { name: "Page", url: "https://virtual.aistats.org/virtual/2026/spotlight/13338"},
       // { name: "Code", url: "https://github.com/Okita-Laboratory/SenFlow"},
+      { name: "Slides", url: "https://virtual.aistats.org/media/aistats-2026/Slides/13338_MqFdXTC.pdf"},
+      { name: "Poster", url: "https://virtual.aistats.org/media/PosterPDFs/AISTATS%202026/14086.png?t=1777970499.4564126"},
       { name: "Arxiv", url: "https://arxiv.org/abs/2512.19729"},
-    ]
+    ],
+    cite: `@inproceedings{ukita2026high,
+  title     = {High-Performance Self-Supervised Learning by Joint Training of Flow Matching},
+  author    = {Ukita, Kosuke and Okita, Tsuyoshi},
+  booktitle = {Proceedings of the 29th International Conference on Artificial Intelligence and Statistics (AISTATS)},
+  year      = {2026},
+  address   = {Tangier, Morocco}
+}`,
   },
   {
     title: "Foundation Models to Tackle Activity Recognition in Unknown Domain: Sussex-Huawei Locomotion Challenge 2025 Task 2",
@@ -41,7 +57,16 @@ export const publications = [
     tags: [""],
     links: [
       { name: "Page", url: "https://dl.acm.org/doi/10.1145/3714394.3756203"},
-    ]
+    ],
+    cite: `@inproceedings{okita2025foundation,
+  title     = {Foundation Models to Tackle Activity Recognition in Unknown Domain: Sussex-Huawei Locomotion Challenge 2025 Task 2},
+  author    = {Okita, Tsuyoshi and Ukita, Kosuke and Miyazaki, Asahi and Kubota, Daichi and Ota, Jukichi and Kagiyama, Naoki and Nishikawa, Asahi and Daichi, Nagayasu and Tomitaka, Syunya and Nozaki, Daisuke and Odo, Yuki and Yamashita, Raku and Ye, Xiaolong and Gao, Huayu and Okahashi, Kazuki and Matsuishi, Koki and Kagiyama, Masaharu and Hirata, Kodai and Kai, Haruki and Wang, Lin and Gjoreski, Hristijan and Ciliberto, Mathias and Lago, Paula and Murao, Kazuya and Roggen, Daniel},
+  booktitle = {Companion of the 2025 ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp Companion '25)},
+  pages     = {983--991},
+  year      = {2025},
+  address   = {Espoo, Finland},
+  doi       = {10.1145/3714394.3756203}
+}`,
   },
   {
     title: "Multimodal Foundation Model for Cross-Modal Retrieval and Activity Recognition Tasks",
@@ -56,7 +81,16 @@ export const publications = [
       { name: "PDF", url: "/papers/matsuishi2025multimodal.pdf"},
       { name: "Page", url: "https://www.jstage.jst.go.jp/article/ijabc/2025/3/2025_124/_article/-char/en"},
       { name: "Arxiv", url: "https://arxiv.org/abs/2506.03174"},
-    ]
+    ],
+    cite: `@article{matsuishi2025multimodal,
+  title   = {Multimodal Foundation Model for Cross-Modal Retrieval and Activity Recognition Tasks},
+  author  = {Matsuishi, Koki and Ukita, Kosuke and Okita, Tsuyoshi},
+  journal = {International Journal of Activity and Behavior Computing},
+  volume  = {2025},
+  number  = {3},
+  pages   = {1--25},
+  year    = {2025}
+}`,
   },
   {
     title: "Energy-Efficient High-Performance Represen-tation Learning for Sensor Data via Flow Matching",
@@ -70,7 +104,14 @@ export const publications = [
     links: [
       { name: "PDF", url: "/papers/ukita2025energy.pdf"},
       { name: "Page", url: "https://www.dropbox.com/scl/fi/i3yjkrd9lqaybflfzmlss/Poster-Session.xlsx?rlkey=0bntd96bmxtje3f0r04w6yeat&e=1&st=rdyvop6k&dl=0"},
-    ]
+    ],
+    cite: `@inproceedings{ukita2025energy,
+  title     = {Energy-Efficient High-Performance Representation Learning for Sensor Data via Flow Matching},
+  author    = {Ukita, Kosuke and Okita, Tsuyoshi},
+  booktitle = {The 7th International Symposium on Neuromorphic AI Hardware},
+  year      = {2025},
+  address   = {Kitakyushu, Japan}
+}`,
   },
   {
     title: "Image Classification Using a Diffusion Model as a PreTraining Model",
@@ -84,7 +125,15 @@ export const publications = [
     links: [
       { name: "PDF", url: "/papers/ukita2025image.pdf"},
       { name: "Arxiv", url: "https://arxiv.org/abs/2505.06890"},
-    ]
+    ],
+    cite: `@misc{ukita2025image,
+  title         = {Image Classification Using a Diffusion Model as a PreTraining Model},
+  author        = {Ukita, Kosuke and Ye, Xiaolong and Okita, Tsuyoshi},
+  year          = {2025},
+  eprint        = {2505.06890},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
+}`,
   },
   {
     title: "AURA-MFM: 詳細な行動理解のためのCLIPを用いたマルチモーダル基盤モデルの構築",
@@ -98,7 +147,15 @@ export const publications = [
     links: [
       { name: "PDF", url: "/papers/matsuishi2025AURA.pdf"},
       { name: "Page", url: "https://www.ipsj.or.jp/kenkyukai/event/mbl114ubi85.html#:~:text=8.%20%5BUBI%5D%20AURA,%E4%B9%9D%E5%B7%9E%E5%B7%A5%E6%A5%AD%E5%A4%A7%E5%AD%A6)"},
-    ]
+    ],
+    cite: `@techreport{matsuishi2025AURA,
+  title       = {AURA-MFM: 詳細な行動理解のためのCLIPを用いたマルチモーダル基盤モデルの構築},
+  author      = {松石康希 and 浮田嵩祐 and 大北剛},
+  institution = {情報処理学会研究報告 (IPSJ SIG Technical Report)},
+  volume      = {2025-UBI-85},
+  number      = {8},
+  year        = {2025}
+}`,
   },
   {
     title: "Improving Human Activity Recognition through Diffusion Models",
@@ -112,7 +169,14 @@ export const publications = [
     links: [
       { name: "PDF", url: "/papers/ukita2024improving.pdf"},
       { name: "Page", url: "https://conferenceservice.jp/www/saes2024/"},
-    ]
+    ],
+    cite: `@inproceedings{ukita2024improving,
+  title     = {Improving Human Activity Recognition through Diffusion Models},
+  author    = {Ukita, Kosuke and Okita, Tsuyoshi},
+  booktitle = {The International Symposium on Applied Engineering and Sciences (SAES2024)},
+  year      = {2024},
+  address   = {Kitakyushu, Japan}
+}`,
   },
   {
     title: "Ensemble Learning of Models for Human Activity Recognition",
@@ -126,7 +190,14 @@ export const publications = [
     links: [
       { name: "PDF", url: "/papers/miyazaki2024ensemble.pdf"},
       { name: "Page", url: "https://conferenceservice.jp/www/saes2024/"},
-    ]
+    ],
+    cite: `@inproceedings{miyazaki2024ensemble,
+  title     = {Ensemble Learning of Models for Human Activity Recognition},
+  author    = {Miyazaki, Asahi and Ukita, Kosuke and Okita, Tsuyoshi},
+  booktitle = {The International Symposium on Applied Engineering and Sciences (SAES2024)},
+  year      = {2024},
+  address   = {Kitakyushu, Japan}
+}`,
   },
   {
     title: "Analysis of Human Activity Recognition by Diffusion Models",
@@ -139,12 +210,24 @@ export const publications = [
     tags: [""],
     links: [
       { name: "Page", url: "https://dl.acm.org/doi/10.1145/3675094.3678439"},
-    ]
+    ],
+    cite: `@inproceedings{ukita2024analysis,
+    author = {Ukita, Kosuke and Okita, Tsuyoshi},
+    title = {Analysis of Human Activity Recognition by Diffusion Models},
+    year = {2024},
+    isbn = {9798400710582},
+    url = {https://doi.org/10.1145/3675094.3678439},
+    doi = {10.1145/3675094.3678439},
+    booktitle = {Companion of the 2024 on ACM International Joint Conference on Pervasive and Ubiquitous Computing},
+    pages = {458–463},
+    keywords = {diffusion models, generative model, human activity recognition},
+    series = {UbiComp '24}
+}`,
   },
   {
     title: "表現条件付き潜在拡散モデルと表現学習",
     authors: "浮田嵩祐, Ye Xiaolong, 大北剛",
-    venue: "火の国情報シンポジウム 2024, No. A4-4",
+    venue: "情報処理学会研究報告, 火の国情報シンポジウム 2024, No. A4-4",
     date: "March 2024",
     location: "Kagoshima, Japan",
     type: "Oral",
@@ -153,7 +236,15 @@ export const publications = [
     links: [
       { name: "PDF", url: "/papers/ukita2024rep.pdf"},
       { name: "Page", url: "https://www.ipsj-kyushu.jp/page/ronbun/hinokuni/1013/Papers/A4-4.pdf"},
-    ]
+    ],
+    cite: `@inproceedings{ukita2024rep,
+  title     = {表現条件付き潜在拡散モデルと表現学習},
+  author    = {浮田嵩祐 and Ye, Xiaolong and 大北剛},
+  booktitle = {IPSJ SIG Technical Report, 火の国情報シンポジウム 2024, No. A4-4},
+  year      = {2024},
+  pages     = {1--8}
+  address   = {Kagoshima, Japan}
+}`,
   },
   {
     title: "Towards LLMs for Sensor Data: Multi-Task Self-Supervised Learning",
@@ -167,6 +258,19 @@ export const publications = [
     links: [
       { name: "Page", url: "https://dl.acm.org/doi/10.1145/3594739.3610745"},
       { name: "Code", url: "https://github.com/Okita-Laboratory/SENvT"},
-    ]
+    ],
+    cite: `@inproceedings{okita2023towards,
+    author = {Okita, Tsuyoshi and Ukita, Kosuke and Matsuishi, Koki and Kagiyama, Masaharu and Hirata, Kodai and Miyazaki, Asahi},
+    title = {Towards LLMs for Sensor Data: Multi-Task Self-Supervised Learning},
+    year = {2023},
+    isbn = {9798400702006},
+    url = {https://doi.org/10.1145/3594739.3610745},
+    doi = {10.1145/3594739.3610745},
+    booktitle = {Adjunct Proceedings of the 2023 ACM International Joint Conference on Pervasive and Ubiquitous Computing \& the 2023 ACM International Symposium on Wearable Computing},
+    pages = {499--504},
+    numpages = {6},
+    keywords = {LLMs, activity recognition, multi-task self-supervised learning},
+    series = {UbiComp/ISWC '23 Adjunct}
+}`,
   },
 ]

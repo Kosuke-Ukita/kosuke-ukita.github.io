@@ -18,11 +18,13 @@ const skillGroups = others.filter(o => o.category !== 'Research Interests')
 
 const linkIcon = (name: string, dataIcon?: string): string => {
   const map: Record<string, string> = {
-    PDF:    'heroicons:document-text',
-    Code:   'heroicons:code-bracket-square',
-    Page:   'heroicons:arrow-top-right-on-square',
-    Arxiv:  'heroicons:document-magnifying-glass',
-    Slides: 'heroicons:presentation-chart-bar',
+    PDF:    'fa6-regular:file-pdf',
+    Code:   'fa6-solid:code',
+    Page:   'fa7-solid:arrow-up-right-from-square',
+    Arxiv:  'academicons:arxiv',
+    Cite:   'fa7-solid:quote-right',
+    Slides: 'fa7-solid:chalkboard',
+    Poster: 'fa6-regular:file-image',
   }
   return map[name] || dataIcon || 'heroicons:link'
 }

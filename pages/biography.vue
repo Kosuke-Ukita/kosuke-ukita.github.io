@@ -21,8 +21,15 @@ useHead({ title: 'Biography' })
         の支援を受け，主にFlow MatchingやDiffusion Modelsの計算効率化，推論の高速化，および表現学習の基盤理論に関心を持つ．
       </p>
       <p>
-        最近の成果として，認識性能と生成品質の両立を目的としたセンサ基盤モデルを提案し，AISTATS 2026でのSpotlight発表（採択率上位3%）や，
-        Flow Matchingの推論速度半減を達成し，PAKDD 2026でのOral発表（2026 PAKDD Student Travel Award受賞）を行う．
+        最近の成果として，認識性能と生成品質の両立を目的としたセンサ基盤モデルを提案し，
+        <a href="https://virtual.aistats.org/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">AISTATS 2026</a>
+        での
+        <a href="https://virtual.aistats.org/virtual/2026/spotlight/13338" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Spotlight発表（採択率上位3%）</a>
+        や，Flow Matchingの推論速度半減を達成し，
+        <a href="https://www.pakdd2026.org/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">PAKDD 2026</a>
+        でのOral発表（
+        <a href="https://www.pakdd2026.org/awardees#:~:text=Kosuke%20Ukita%20(Kyushu%20Institue%20of%20Technology)" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Student Travel Award受賞</a>
+        ）を行う．
       </p>
     </div>
 
@@ -41,7 +48,14 @@ useHead({ title: 'Biography' })
         program, they conduct research on deep learning and generative modeling, with a focus on enhancing the efficiency of Flow Matching and Diffusion Models, as well as exploring the theoretical foundations of representation learning.
       </p>
       <p>
-        Their recent achievements include a Spotlight presentation (top 3% of submissions) at AISTATS 2026 and an Oral presentation at PAKDD 2026, where they received the 2026 PAKDD Student Travel Award.
+        Their recent achievements include a
+        <a href="https://virtual.aistats.org/virtual/2026/spotlight/13338" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Spotlight presentation (top 3% of submissions)</a>
+        at
+        <a href="https://virtual.aistats.org/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">AISTATS 2026</a>
+        and an Oral presentation at
+        <a href="https://www.pakdd2026.org/" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">PAKDD 2026</a>,
+        where they received the
+        <a href="https://www.pakdd2026.org/awardees#:~:text=Kosuke%20Ukita%20(Kyushu%20Institue%20of%20Technology)" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">2026 PAKDD Student Travel Award</a>.
       </p>
       
     </div>

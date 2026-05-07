@@ -14,19 +14,25 @@ const extractYear = (date?: string) => date?.trim().split(/\s+/).pop() ?? '—'
 // Map link name → icon (falls back to data icon, then generic)
 const linkIcon = (name: string, dataIcon?: string): string => {
   const map: Record<string, string> = {
-    PDF:    'heroicons:document-text',
-    Code:   'heroicons:code-bracket-square',
-    Page:   'heroicons:arrow-top-right-on-square',
-    Arxiv:  'heroicons:document-minus',
-    // Arxiv:  'simple-icons:arxiv',
-    // Cite: 'fa6-colid:quote-right',
-    // Slides: 'fa6-solid:chalkboard',
-    // Poster: 'fa6-solid:file-image',
+    PDF:    'fa6-regular:file-pdf',
+    Code:   'fa6-solid:code',
+    Page:   'fa7-solid:arrow-up-right-from-square',
+    Arxiv:  'academicons:arxiv',
+    Slides: 'fa7-solid:chalkboard',
+    Poster: 'fa6-regular:file-image',
+    Cite:   'fa7-solid:quote-right',
   }
   return map[name] || dataIcon || 'heroicons:link'
 }
 
 type PubWithIndex = typeof publications[0] & { globalIndex: number }
+
+const copiedIndex = ref<number | null>(null)
+const copyCite = async (index: number, cite: string) => {
+  await navigator.clipboard.writeText(cite)
+  copiedIndex.value = index
+  setTimeout(() => { copiedIndex.value = null }, 2000)
+}
 
 const groupedPublications = computed(() => {
   const map: Record<string, PubWithIndex[]> = {}
@@ -98,8 +104,23 @@ const groupedPublications = computed(() => {
                 class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded"
               >
                 <Icon :name="linkIcon(link.name, link.icon)" class="w-[1.05rem] h-[1.05rem]" />
-                <FontAwesomeIcon :icon="byPrefixAndName.far['file-pdf']" />
               </a>
+
+              <!-- BibTeX copy button -->
+              <button
+                v-if="paper.cite"
+                @click="copyCite(paper.globalIndex, paper.cite)"
+                :title="copiedIndex === paper.globalIndex ? 'Copied!' : 'BibTeX'"
+                class="transition-colors p-0.5 rounded cursor-pointer"
+                :class="copiedIndex === paper.globalIndex
+                  ? 'text-primary'
+                  : 'text-gray-500 dark:text-zinc-400 hover:text-primary'"
+              >
+                <Icon
+                  :name="copiedIndex === paper.globalIndex ? 'fa7-solid:check' : linkIcon('Cite')"
+                  class="w-[1.05rem] h-[1.05rem]"
+                />
+              </button>
             </div>
           </div>
         </li>
