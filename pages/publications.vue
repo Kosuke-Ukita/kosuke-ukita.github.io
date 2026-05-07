@@ -14,16 +14,13 @@ const extractYear = (date?: string) => date?.trim().split(/\s+/).pop() ?? '—'
 // Map link name → icon (falls back to data icon, then generic)
 const linkIcon = (name: string, dataIcon?: string): string => {
   const map: Record<string, string> = {
-    // PDF:    'heroicons:document-text',
-    PDF: 'fa6-solid:file-pdf',
-    // Code:   'heroicons:code-bracket-square',
-    Code: 'fa6-solid:code',
-    // Page:   'heroicons:arrow-top-right-on-square',
-    Page:   'fa6-solid:arrow-up-right-from-square',
+    PDF:    'heroicons:document-text',
+    Code:   'heroicons:code-bracket-square',
+    Page:   'heroicons:arrow-top-right-on-square',
     Arxiv:  'simple-icons:arxiv',
-    Cite: 'fa6-colid:quote-right',
-    Slides: 'fa6-solid:chalkboard',
-    Poster: 'fa6-solid:file-image',
+    // Cite: 'fa6-colid:quote-right',
+    // Slides: 'fa6-solid:chalkboard',
+    // Poster: 'fa6-solid:file-image',
   }
   return map[name] || dataIcon || 'heroicons:link'
 }

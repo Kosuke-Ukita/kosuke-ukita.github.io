@@ -68,7 +68,7 @@ export const publications = [
     note: "Non-refeered",
     tags: [""],
     links: [
-      { name: "Poster", url: "/papers/ukita2025energy.pdf"},
+      { name: "PDF", url: "/papers/ukita2025energy.pdf"},
       { name: "Page", url: "https://www.dropbox.com/scl/fi/i3yjkrd9lqaybflfzmlss/Poster-Session.xlsx?rlkey=0bntd96bmxtje3f0r04w6yeat&e=1&st=rdyvop6k&dl=0"},
     ]
   },
