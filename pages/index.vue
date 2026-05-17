@@ -143,9 +143,9 @@ useHead({ title: 'Home' })
         </li>
       </ul>
       <div class="mt-5">
-        <a href="/grants" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+        <NuxtLink to="/grants" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
           All grants →
-        </a>
+        </NuxtLink>
       </div>
     </section>
 
@@ -163,9 +163,9 @@ useHead({ title: 'Home' })
         </li>
       </ul>
       <div class="mt-5">
-        <a href="/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+        <NuxtLink to="/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
           All awards →
-        </a>
+        </NuxtLink>
       </div>
     </section>
 
