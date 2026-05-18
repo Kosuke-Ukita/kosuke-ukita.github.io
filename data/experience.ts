@@ -11,8 +11,10 @@ export const experience = [
     name: "Teaching Assistant", 
     year: "Apr. 2024 - Jun. 2026",
     descriptions: [
-      "Teacher: Tsuyoshi Okita",
-      "Deep Learning, Deep Learning Project, etc.",
+      "Lecturer: Tsuyoshi Okita",
+      "- Deep Learning(深層学習)",
+      "- Deep Learning Exercise(知能情報工学プロジェクト-深層学習演習)",
+      "- Deep Learning Advanced(深層学習特論I-大学院科目)",
     ]
   },
   { 

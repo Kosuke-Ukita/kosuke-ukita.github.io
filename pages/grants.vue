@@ -32,7 +32,7 @@ const groupedGrants = computed(() => {
           <div>
             <p><a :href="item.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ item.name }}</a></p>
             <p><a :href="item.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ item.organization }}</a></p>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ item.year }}</p>
+            <p class="text-[0.7rem] text-gray-400 dark:text-zinc-500 font-mono">{{ item.year }} · {{ item.price }}</p>
           </div>
         </li>
       </ul>
