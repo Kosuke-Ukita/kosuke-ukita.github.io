@@ -28,9 +28,9 @@ useHead({
 
 const navLinks = [
   { to: '/',             label: 'Home' },
-  { to: '/biography',   label: 'Biography' },
+  { to: '/biography',    label: 'Biography' },
   { to: '/publications', label: 'Publications' },
-  { to: '/cv',          label: 'CV' },
+  { to: '/cv',           label: 'CV' },
 ]
 
 const isDark = ref(false)

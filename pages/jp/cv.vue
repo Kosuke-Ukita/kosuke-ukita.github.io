@@ -121,7 +121,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
                 :title="link.name"
                 class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded"
               >
-                <Icon :name="linkIcon(link.name, link.icon)" class="w-[1.05rem] h-[1.05rem]" />
+                <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.8rem] h-[0.8rem]" />
               </a>
             </div>
           </div>
