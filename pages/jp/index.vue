@@ -36,13 +36,14 @@ useHead({ title: 'Home' })
 
 <template>
   <div class="space-y-11">
-  <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10">Home</h1>
+  <NuxtLink to="/" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+      English →
+    </NuxtLink>
+  <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10 mt-8">Home</h1>
 
     <!-- Brief bio -->
     <section>
       <p class="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed whitespace-pre-line">{{ profile.bio }}</p>
-      <div class="my-10"></div>
-      <p class="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed whitespace-pre-line">{{ profile.bioen }}</p>
     </section>
 
     <!-- News -->
@@ -116,7 +117,7 @@ useHead({ title: 'Home' })
                 :title="link.name"
                 class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded"
               >
-                <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.8rem] h-[0.8rem]" />
+                <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.72rem] h-[0.72rem]" />
               </a>
             </div>
           </div>

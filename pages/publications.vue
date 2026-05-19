@@ -103,7 +103,7 @@ const groupedPublications = computed(() => {
                 :title="link.name"
                 class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded"
               >
-                <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.8rem] h-[0.8rem]" />
+                <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.72rem] h-[0.72rem]" />
               </a>
 
               <!-- BibTeX copy button -->
@@ -118,7 +118,7 @@ const groupedPublications = computed(() => {
               >
                 <Icon
                   :name="copiedIndex === paper.globalIndex ? 'fa7-solid:check' : linkIcon('Cite')"
-                  class="w-[1.05rem] h-[1.05rem]"
+                  class="w-[0.72rem] h-[0.72rem]"
                 />
               </button>
             </div>
