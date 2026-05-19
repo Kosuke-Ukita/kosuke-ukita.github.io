@@ -152,7 +152,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
             <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ award.title }}</a>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ award.organization }}</p>
+            <p><a :href="award.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ award.organization }}</a></p>
             <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ award.year }}</p>
           </div>
         </li>

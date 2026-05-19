@@ -20,7 +20,10 @@ const groupedGrants = computed(() => {
 
 <template>
   <div>
-    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-8 tracking-tight">Grants</h1>
+    <NuxtLink to="/jp/grants" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+      Japanese →
+    </NuxtLink>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Grants</h1>
 
     <div v-for="group in groupedGrants" :key="group.year" class="mb-10">
       <h2 class="font-mono text-sm font-semibold text-primary mb-4 pb-1.5 border-b border-gray-100 dark:border-zinc-800">

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { awards } from '~/data/awards'
+import { grants_jp } from '~/data/grants'
 
-useHead({ title: 'Awards' })
+useHead({ title: 'Grants' })
 
-type AwardsItem = typeof awards[0]
+type GrantsItem = typeof grants_jp[0]
 
-const groupedAwards = computed(() => {
-  const map: Record<string, AwardsItem[]> = {}
-  for (const item of awards) {
+const groupedGrants = computed(() => {
+  const map: Record<string, GrantsItem[]> = {}
+  for (const item of grants_jp) {
     const year = item.year.slice(5, 9)
     if (!map[year]) map[year] = []
     map[year].push(item)
@@ -20,12 +20,12 @@ const groupedAwards = computed(() => {
 
 <template>
   <div>
-    <NuxtLink to="/jp/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-      Japanese →
+    <NuxtLink to="/grants" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+      English →
     </NuxtLink>
-    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Awards</h1>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Grants</h1>
 
-    <div v-for="group in groupedAwards" :key="group.year" class="mb-10">
+    <div v-for="group in groupedGrants" :key="group.year" class="mb-10">
       <h2 class="font-mono text-sm font-semibold text-primary mb-4 pb-1.5 border-b border-gray-100 dark:border-zinc-800">
         {{ group.year }}
       </h2>
@@ -33,12 +33,15 @@ const groupedAwards = computed(() => {
         <li v-for="(item, i) in group.items" :key="i" class="flex gap-1 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
-            <p><a :href="item.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ item.title }}</a></p>
+            <p><a :href="item.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ item.name }}</a></p>
             <p><a :href="item.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ item.organization }}</a></p>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ item.year }}</p>
+            <p class="text-[0.7rem] text-gray-400 dark:text-zinc-500 font-mono">{{ item.year }} · {{ item.price }}</p>
           </div>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
+
+      

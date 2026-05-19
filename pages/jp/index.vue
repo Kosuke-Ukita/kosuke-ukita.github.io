@@ -2,8 +2,8 @@
 import { profile } from '~/data/profile'
 import { news } from '~/data/news'
 import { publications } from '~/data/publications'
-import { awards } from '~/data/awards'
-import { grants } from '~/data/grants'
+import { awards_jp } from '~/data/awards'
+import { grants_jp } from '~/data/grants'
 import { others } from '~/data/others'
 
 const highlightAuthor = (authors: string) =>
@@ -28,8 +28,8 @@ const linkIcon = (name: string, dataIcon?: string): string => {
 const researchInterests = others.find(o => o.category === 'Research Interests')?.items ?? []
 const recentNews = news.slice(0, 5)
 const selectedPubs = publications.slice(0, 3)
-const recentGrants = grants.slice(0, 5)
-const recentAwards = awards.slice(0, 5)
+const recentGrants = grants_jp.slice(0, 5)
+const recentAwards = awards_jp.slice(0, 5)
 
 useHead({ title: 'Home' })
 </script>
@@ -143,7 +143,7 @@ useHead({ title: 'Home' })
         </li>
       </ul>
       <div class="mt-5">
-        <NuxtLink to="/grants" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+        <NuxtLink to="/jp/grants" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
           All grants →
         </NuxtLink>
       </div>
@@ -163,7 +163,7 @@ useHead({ title: 'Home' })
         </li>
       </ul>
       <div class="mt-5">
-        <NuxtLink to="/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+        <NuxtLink to="/jp/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
           All awards →
         </NuxtLink>
       </div>

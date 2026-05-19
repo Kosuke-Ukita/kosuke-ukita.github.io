@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { awards } from '~/data/awards'
+import { awards_jp } from '~/data/awards'
 
 useHead({ title: 'Awards' })
 
-type AwardsItem = typeof awards[0]
+type AwardsItem = typeof awards_jp[0]
 
 const groupedAwards = computed(() => {
   const map: Record<string, AwardsItem[]> = {}
-  for (const item of awards) {
+  for (const item of awards_jp) {
     const year = item.year.slice(5, 9)
     if (!map[year]) map[year] = []
     map[year].push(item)
@@ -20,8 +20,8 @@ const groupedAwards = computed(() => {
 
 <template>
   <div>
-    <NuxtLink to="/jp/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-      Japanese →
+    <NuxtLink to="/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+      English →
     </NuxtLink>
     <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Awards</h1>
 

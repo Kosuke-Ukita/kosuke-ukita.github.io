@@ -11,7 +11,7 @@ export const grants = [
     name: "International Travel Grant (海外渡航旅費援助)", 
     url: "https://www.taf.or.jp/grant-b/02/",
     year: "Apr. 2026", 
-    organization: "The Telecommunications Advancement Foundation (電気通信普及財団)",
+    organization: "The Telecommunications Advancement Foundation",
     orgurl: "https://www.taf.or.jp/",
     price: "JPY ¥290,000",
   },
@@ -22,8 +22,8 @@ export const grants = [
     organization: "Japan Science and Technology Agency (JST)",
     orgurl: "https://www.jst.go.jp/jisedai/spring/",
     price: "JPY ¥1,800,000 (+¥900,000) / year",
-    grantsid: "JPMJSP2154",
-    internalid: "0073",
+    grantid: "JPMJSP2154",
+    internal: "0073",
   },
 ]
 
@@ -52,7 +52,7 @@ export const grants_jp = [
     organization: "国立研究開発法人 科学技術振興機構 (JST)",
     orgurl: "https://www.jst.go.jp/jisedai/spring/",
     price: "JPY ¥1,800,000 (+¥900,000) / 年",
-    grantsid: "JPMJSP2154",
-    internalid: "0073",
+    grantid: "JPMJSP2154",
+    internal: "0073",
   },
 ]
