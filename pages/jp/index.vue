@@ -63,7 +63,7 @@ useHead({ title: 'Home' })
         </div>
       </div>
       <div class="mt-5">
-        <NuxtLink to="/news" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+        <NuxtLink to="/jp/news" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
           All news →
         </NuxtLink>
       </div>
