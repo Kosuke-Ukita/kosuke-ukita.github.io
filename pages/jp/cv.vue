@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { profile } from '~/data/profile'
 import { publications } from '~/data/publications'
-import { awards } from '~/data/awards'
-import { grants } from '~/data/grants'
-import { education } from '~/data/education'
-import { experience } from '~/data/experience'
+import { awards_jp } from '~/data/awards'
+import { grants_jp } from '~/data/grants'
+import { education_jp } from '~/data/education'
+import { experience_jp } from '~/data/experience'
 import { others } from '~/data/others'
 
 useHead({ title: 'CV' })
@@ -32,16 +32,16 @@ const linkIcon = (name: string, dataIcon?: string): string => {
 
 <template>
   <div class="space-y-10">
-    <NuxtLink to="/jp/cv" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-      Japanese →
+    <NuxtLink to="/cv" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
+      English →
     </NuxtLink>
 
     <!-- ── Header ─────────────────────────────────────────────────────────── -->
     <div class="flex items-start justify-between gap-4 pb-6 border-b border-gray-100 dark:border-zinc-800">
       <div class="space-y-0.5 min-w-0">
-        <h1 class="font-mono font-bold text-gray-900 dark:text-zinc-100 text-xl tracking-tight">{{ profile.name }}</h1>
-        <p class="text-sm text-primary font-medium">{{ profile.grade }}</p>
-        <p class="text-sm text-gray-600 dark:text-zinc-400">{{ profile.affiliation }}</p>
+        <h1 class="font-mono font-bold text-gray-900 dark:text-zinc-100 text-xl tracking-tight">{{ profile.namejp }}</h1>
+        <p class="text-sm text-primary font-medium">{{ profile.gradejp }}</p>
+        <p class="text-sm text-gray-600 dark:text-zinc-400">{{ profile.affiliationjp }}</p>
         <div class="flex flex-wrap gap-x-4 gap-y-1 text-[0.72rem] text-gray-500 dark:text-zinc-400 pt-1.5 font-mono">
           <span class="break-all">{{ profile.email }}</span>
           <a :href="profile.socials.find(s => s.name === 'GitHub')?.url"        target="_blank" rel="noopener" class="hover:text-primary shrink-0">GitHub</a>
@@ -50,7 +50,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
         </div>
       </div>
       <a
-        href="/assets/cv.pdf" target="_blank"
+        href="/assets/cv-jp.pdf" target="_blank"
         class="shrink-0 font-mono text-[0.72rem] text-gray-500 dark:text-zinc-400 hover:text-primary border border-gray-200 dark:border-zinc-700 hover:border-primary/30 px-3 py-1.5 rounded-sm transition-colors whitespace-nowrap inline-flex items-center gap-1"
       > PDF </a>
     </div>
@@ -59,7 +59,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section>
       <h2 class="section-title">Education</h2>
       <div class="space-y-5">
-        <div v-for="(edu, i) in education" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
+        <div v-for="(edu, i) in education_jp" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
           <span class="font-mono text-gray-500 dark:text-zinc-400 text-[0.72rem] sm:shrink-0 sm:w-40 sm:pt-0.5">{{ edu.year }}</span>
           <div>
             <p class="font-semibold text-gray-900 dark:text-zinc-100">{{ edu.degree }}</p>
@@ -76,7 +76,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section>
       <h2 class="section-title">Work Experience</h2>
       <div class="space-y-5">
-        <div v-for="(exp, i) in experience" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
+        <div v-for="(exp, i) in experience_jp" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
           <span class="font-mono text-gray-500 dark:text-zinc-400 text-[0.72rem] sm:shrink-0 sm:w-40 sm:pt-0.5">{{ exp.year }}</span>
           <div>
             <p class="font-semibold text-gray-900 dark:text-zinc-100">{{ exp.name }}</p>
@@ -133,7 +133,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section id="grants">
       <h2 class="section-title">Grants</h2>
       <ul class="space-y-4">
-        <li v-for="(grant, i) in grants" :key="i" class="flex gap-1 text-sm">
+        <li v-for="(grant, i) in grants_jp" :key="i" class="flex gap-1 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
             <p><a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ grant.name }}</a></p>
@@ -148,7 +148,7 @@ const linkIcon = (name: string, dataIcon?: string): string => {
     <section id="awards">
       <h2 class="section-title">Awards</h2>
       <ul class="space-y-4">
-        <li v-for="(award, i) in awards" :key="i" class="flex gap-1 text-sm">
+        <li v-for="(award, i) in awards_jp" :key="i" class="flex gap-1 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
           <div>
             <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ award.title }}</a>

@@ -3,7 +3,9 @@ export const profile = {
   namejp: "浮田 嵩祐",
   role: "PhD student / Researcher",
   grade: "PhD student (D1), full-time",
+  gradejp: "博士後期課程学生 1年",
   affiliation: "Kyushu Institute of Technology",
+  affiliationjp: "九州工業大学大学院 情報工学府",
   place: "Fukuoka, Japan",
   email: "ukita.kosuke299@mail.kyutech.jp", 
   socials: [

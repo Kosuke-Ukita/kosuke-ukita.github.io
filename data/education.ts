@@ -34,3 +34,38 @@ export const education = [
     description: "GPA: 4.9 / 5.0" 
   },
 ]
+
+
+export const education_jp = [
+  { 
+    degree: "博士（情報工学）", 
+    school: "九州工業大学大学院", 
+    depart: `情報工学府 情報創生工学専攻`,
+    thesis: "",
+    year: "Apr. 2026 - Present", 
+    // description: "Advisor: Assoc. Prof. Tsuyoshi Okita" 
+  },
+  { 
+    degree: "修士（情報工学）", 
+    school: "九州工業大学大学院", 
+    depart: `情報工学府 情報創成工学専攻`,
+    thesis: `修士論文: "フローマッチングを用いた共同学習によるセンサ基盤モデルに関する研究"`,
+    year: "Apr. 2024 - Mar. 2026", 
+    description: "GPA: 3.6 / 4.0" 
+  },
+  { 
+    degree: "学位（情報工学）", 
+    school: "九州工業大学", 
+    depart: `情報工学部 知能情報工学科`,
+    thesis: `卒業論文: "表現条件付き潜在拡散モデルの提案：脳CT画像の⾎腫分類"`,
+    year: "Apr. 2020 - Mar. 2024", 
+    description: "GPA: 3.7 / 4.0" 
+  },
+  { 
+    degree: "高等学校卒業", 
+    school: "香川県立観音寺第一高等学校", 
+    depart: "理数科",
+    year: "Apr. 2017 - Mar. 2020", 
+    description: "GPA: 4.9 / 5.0" 
+  },
+]
