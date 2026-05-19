@@ -37,8 +37,8 @@ useHead({ title: 'Home' })
 <template>
   <div class="space-y-11">
   <NuxtLink to="/" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-      English →
-    </NuxtLink>
+    English →
+  </NuxtLink>
   <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10 mt-8">Home</h1>
 
     <!-- Brief bio -->
