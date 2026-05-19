@@ -16,7 +16,7 @@ export const grants = [
     price: "JPY ¥290,000",
   },
   { 
-    name: "Kyushu Institute of Technology SPRING Scholarship Awarde", 
+    name: "Kyushu Institute of Technology SPRING Scholarship Awardee", 
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring",
     year: "Apr. 2026 - Present", 
     organization: "Japan Science and Technology Agency (JST)",

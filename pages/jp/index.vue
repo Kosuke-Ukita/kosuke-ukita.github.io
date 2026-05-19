@@ -57,7 +57,7 @@ useHead({ title: 'Home' })
         >
           <span class="font-mono text-gray-400 dark:text-zinc-500 shrink-0 w-[4.5rem] text-[0.72rem] pt-0.5">{{ item.date }}</span>
           <span class="text-gray-700 dark:text-zinc-300">
-            {{ item.content }}
+            {{ item.contentjp }}
             <a v-if="item.url" :href="item.url" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2"> → </a>
           </span>
         </div>
