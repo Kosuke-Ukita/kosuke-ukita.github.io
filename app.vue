@@ -6,9 +6,34 @@ const toggleMenu = () => { isMenuOpen.value = !isMenuOpen.value }
 const closeMenu = () => { isMenuOpen.value = false }
 
 const route = useRoute()
-// Exact match for '/', prefix match for others
-const isActive = (to: string) =>
-  to === '/' ? route.path === '/' : route.path.startsWith(to)
+const router = useRouter()
+
+const isJa = computed(() => route.path === '/jp' || route.path.startsWith('/jp/'))
+
+const isActive = (to: string) => {
+  if (to === '/' || to === '/jp') return route.path === to
+  return route.path.startsWith(to)
+}
+
+const navLinks = computed(() => {
+  const p = isJa.value ? '/jp' : ''
+  return [
+    { to: isJa.value ? '/jp' : '/', label: 'Home' },
+    { to: `${p}/biography`,         label: 'Biography' },
+    { to: `${p}/publications`,      label: 'Publications' },
+    { to: `${p}/cv`,                label: 'CV' },
+    { to: `${p}/contact`,                label: 'Contact' },
+  ]
+})
+
+const toggleLocale = () => {
+  const path = route.path
+  if (isJa.value) {
+    router.push(path === '/jp' ? '/' : path.slice(3) || '/')
+  } else {
+    router.push(path === '/' ? '/jp' : '/jp' + path)
+  }
+}
 
 useSeoMeta({
   ogTitle: 'Kosuke Ukita',
@@ -25,13 +50,6 @@ useHead({
     tagPriority: 'critical',
   }],
 })
-
-const navLinks = [
-  { to: '/',             label: 'Home' },
-  { to: '/biography',    label: 'Biography' },
-  { to: '/publications', label: 'Publications' },
-  { to: '/cv',           label: 'CV' },
-]
 
 const isDark = ref(false)
 onMounted(() => {
@@ -117,6 +135,11 @@ const toggleDark = () => {
       </button>
       <div class="flex items-center gap-1">
         <button
+          @click="toggleLocale"
+          class="font-mono text-xs text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors px-1.5 py-1"
+          :aria-label="isJa ? 'Switch to English' : 'Switch to Japanese'"
+        >{{ isJa ? 'EN' : 'JP' }}</button>
+        <button
           @click="toggleDark"
           class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-1"
           :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
@@ -178,14 +201,21 @@ const toggleDark = () => {
               ? 'text-primary font-semibold'
               : 'text-gray-500 dark:text-zinc-400 hover:text-primary'"
           >{{ link.label }}</NuxtLink>
-          <button
-            @click="toggleDark"
-            class="ml-auto text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-1"
-            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          >
-            <Icon v-if="isDark" name="heroicons:sun" class="w-4 h-4" />
-            <Icon v-else name="heroicons:moon" class="w-4 h-4" />
-          </button>
+          <div class="ml-auto flex items-center gap-2">
+            <button
+              @click="toggleLocale"
+              class="font-mono text-xs text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors"
+              :aria-label="isJa ? 'Switch to English' : 'Switch to Japanese'"
+            >{{ isJa ? 'EN' : 'JP' }}</button>
+            <button
+              @click="toggleDark"
+              class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-1"
+              :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+            >
+              <Icon v-if="isDark" name="heroicons:sun" class="w-4 h-4" />
+              <Icon v-else name="heroicons:moon" class="w-4 h-4" />
+            </button>
+          </div>
         </nav>
       </div>
     </header>

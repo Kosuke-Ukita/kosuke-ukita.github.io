@@ -16,14 +16,14 @@ export const awards = [
   { 
     title: "Incentive Award (奨励賞)", 
     url: "https://www.ipsj-kyushu.jp/prizes/hinokuni-init/",
-    organization: "IPSJ Kyushu Branch", 
+    organization: "Information Processing Society of Japan (IPSJ) Kyushu Branch", 
     orgurl: "https://www.ipsj-kyushu.jp/main-page/",
     year: "Mar. 2024"
   },
   { 
     title: "Highest Award (最優秀賞)", 
     url: "https://statedu.jp/cse/sports08.htm#:~:text=%E5%A4%A7%E5%A1%9A%E5%8A%9F%E5%A4%AA%E9%83%8E%E3%83%BB-,%E6%B5%AE%E7%94%B0%E5%B5%A9%E7%A5%90,-%E3%83%BB%E9%96%A2%E3%81%8F%E3%82%8B%E3%81%BF%E3%83%BB%E7%9F%B3%E4%BA%95",
-    organization: "The Japan Statistical Society Special Committee of Statistical Education, The 8th Sports Data Analysis Competition",
+    organization: "The Japan Statistical Society (JSS), Special Committee of Statistical Education (CSE), The 8th Sports Data Analysis Competition",
     orgurl: "https://statedu.jp/cse/",
     year: "May. 2019"
   },

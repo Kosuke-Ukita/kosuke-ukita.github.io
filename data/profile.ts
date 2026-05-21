@@ -20,6 +20,6 @@ export const profile = {
   ],
   bio: `こんにちは．浮田 嵩祐です．AIに関する研究をしているPhD学生です．
   生成AIの効率化や基盤モデル構築などの深層学習領域や，機械学習の基礎理論に関心を持っています．最近はFlow Matchingあたりに関心があります．`,
-  bioen: `Hello．I am Kosuke Ukita, PhD student researching AI.
+  bioen: `I am Kosuke Ukita, PhD student researching AI.
   Passionate about deep learning—specifically generative AI efficiency and foundation models—as well as fundamental ML theories. Currently focusing heavily on Flow Matching.`
 }

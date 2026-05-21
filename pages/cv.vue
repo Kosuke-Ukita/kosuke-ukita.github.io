@@ -32,10 +32,6 @@ const linkIcon = (name: string, dataIcon?: string): string => {
 
 <template>
   <div class="space-y-10">
-    <NuxtLink to="/jp/cv" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-      Japanese →
-    </NuxtLink>
-
     <!-- ── Header ─────────────────────────────────────────────────────────── -->
     <div class="flex items-start justify-between gap-4 pb-6 border-b border-gray-100 dark:border-zinc-800">
       <div class="space-y-0.5 min-w-0">

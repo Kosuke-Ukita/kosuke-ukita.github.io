@@ -20,9 +20,6 @@ const groupedAwards = computed(() => {
 
 <template>
   <div>
-    <NuxtLink to="/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-      English →
-    </NuxtLink>
     <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Awards</h1>
 
     <div v-for="group in groupedAwards" :key="group.year" class="mb-10">
