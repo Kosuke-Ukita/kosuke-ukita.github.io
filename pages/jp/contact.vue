@@ -12,19 +12,10 @@ useHead({ title: 'Contact' })
       <!-- Email -->
       <div>
         <h2 class="section-title">Email</h2>
-        <p>- <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email }}</a></p>
-        <p>- <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email_ }}</a></p>
-      </div>
-
-      <!-- Online -->
-      <div>
-        <h2 class="section-title">Online</h2>
-        <ul class="space-y-1.5">
-          <li>
-            <p>- <a href="https://www.linkedin.com/in/ukita000" target="_blank" rel="noopener"class="font-mono hover:underline underline-offset-2">LinkedIn</a>
-            <span class="text-gray-400 dark:text-zinc-500 font-mono text-xs ml-2">linkedin.com/in/ukita000</span></p>
-          </li>
-        </ul>
+        <div class="space-y-0.5 leading-relaxed">
+          <p>- <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email }}</a></p>
+          <p>- <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email_ }}</a></p>
+        </div>
       </div>
 
       <!-- Office -->
