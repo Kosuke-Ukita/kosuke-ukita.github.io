@@ -22,16 +22,12 @@ useHead({ title: 'Contact' })
       <div>
         <h2 class="section-title">Office</h2>
         <div class="space-y-0.5 leading-relaxed">
-          <p>研究棟 S302号室</p>
-          <p>
-            <a href="http://www.alp.ai.kyutech.ac.jp/tsuyoshi/index.html" target="_blank" rel="noopener" class="hover:underline underline-offset-2">大北研究室</a>
-          </p>
-          <p>
-            <a href="https://www.iizuka.kyutech.ac.jp/en/" target="_blank" rel="noopener" class="hover:underline underline-offset-2">九州工業大学大学院 情報工学府</a>
-          </p>
           <p class="font-mono text-xs text-gray-500 dark:text-zinc-400 pt-1">
             〒820-8502 福岡県飯塚市川津680-4
           </p>
+          <p><a href="https://www.iizuka.kyutech.ac.jp/en/" target="_blank" rel="noopener" class="hover:underline underline-offset-2">九州工業大学大学院 情報工学府</a></p>
+          <p><a href="http://www.alp.ai.kyutech.ac.jp/tsuyoshi/index.html" target="_blank" rel="noopener" class="hover:underline underline-offset-2">大北研究室</a></p>
+          <p>研究棟 S302号室</p>
         </div>
       </div>
 
