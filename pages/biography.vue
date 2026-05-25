@@ -17,7 +17,7 @@ useHead({ title: 'Biography' })
       </p>
       <p>
         Supported by the 
-        <a href="https://www.ccr.kyutech.ac.jp/dc_support/spring" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Support for Pioneering Research in Innovative Doctoral Courses (SPRING)</a>
+        <a href="https://www.ccr.kyutech.ac.jp/dc_support/spring" target="_blank" rel="noopener" class="text-primary hover:underline underline-offset-2">Support for Pioneering Research Initiated by the Next Generation (SPRING)</a>
         program, they conduct research on deep learning and generative modeling, with a focus on enhancing the efficiency of Flow Matching and Diffusion Models, as well as exploring the theoretical foundations of representation learning.
       </p>
       <p>
