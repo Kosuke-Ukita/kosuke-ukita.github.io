@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
-import { news } from '~/data/news'
-import { publications } from '~/data/publications'
-import { awards_jp } from '~/data/awards'
-import { grants_jp } from '~/data/grants'
-import { others } from '~/data/others'
+import { profile, news, publications, awards_jp, grants_jp, others } from '~/data'
 
 const highlightAuthor = (authors: string) =>
   authors

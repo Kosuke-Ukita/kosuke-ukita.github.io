@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '~/data'
 useHead({ title: 'Contact' })
 </script>
 
@@ -14,7 +14,7 @@ useHead({ title: 'Contact' })
         <h2 class="section-title">Email</h2>
         <div class="space-y-0.5 leading-relaxed">
           <p>- <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email }}</a></p>
-          <p>- <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email_ }}</a></p>
+          <p>- <a :href="`mailto:${profile.email_}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email_ }}</a></p>
         </div>
       </div>
 
@@ -25,7 +25,7 @@ useHead({ title: 'Contact' })
           <p class="font-mono text-xs text-gray-500 dark:text-zinc-400 pt-1">
             〒820-8502 福岡県飯塚市川津680-4
           </p>
-          <p><a href="https://www.iizuka.kyutech.ac.jp/en/" target="_blank" rel="noopener" class="hover:underline underline-offset-2">九州工業大学大学院 情報工学府</a></p>
+          <p><a href="https://www.iizuka.kyutech.ac.jp/" target="_blank" rel="noopener" class="hover:underline underline-offset-2">九州工業大学大学院 情報工学府</a></p>
           <p><a href="http://www.alp.ai.kyutech.ac.jp/tsuyoshi/index.html" target="_blank" rel="noopener" class="hover:underline underline-offset-2">大北研究室</a></p>
           <p>研究棟 S302号室</p>
         </div>

@@ -1,6 +1,0 @@
-export const others = [
-  { category: "Research Interests", items: ["Generative AI", "Flow Matching", "Foundation Models", "Multimodal Learning", "Diffusion Models", "Machine Learning"] },
-  { category: "Languages", items: ["Python", "C++", "C", "Java", "JavaScript", "TypeScript", "Go", "SQL", "R"] },
-  { category: "Frameworks & Tools", items: ["PyTorch", "TensorFlow", "Hugging Face", "Jupyter", "ABCI", "Docker", "Git"] },
-  { category: "Other Skills", items: ["Deep Learning", "Neural Networks", "Model Training", "Data Processing", "API Development", "Linux"] },
-]

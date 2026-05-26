@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
-import { publications } from '~/data/publications'
-import { awards } from '~/data/awards'
-import { grants } from '~/data/grants'
-import { education } from '~/data/education'
-import { experience } from '~/data/experience'
-import { others } from '~/data/others'
+import { profile, publications, awards, grants, education, experience, others } from '~/data'
 
 useHead({ title: 'CV' })
 

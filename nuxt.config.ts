@@ -1,5 +1,11 @@
 // nuxt.config.ts
+import yaml from '@modyfi/vite-plugin-yaml'
+
 export default defineNuxtConfig({
+  vite: {
+    plugins: [yaml()],
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/icon',
