@@ -8,6 +8,18 @@ const closeMenu = () => { isMenuOpen.value = false }
 const route = useRoute()
 const router = useRouter()
 
+const showStickyNav = ref(false)
+const desktopHeader = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => { showStickyNav.value = !entry.isIntersecting },
+    { threshold: 0 }
+  )
+  if (desktopHeader.value) observer.observe(desktopHeader.value)
+  onUnmounted(() => observer.disconnect())
+})
+
 const isJa = computed(() => route.path === '/jp' || route.path.startsWith('/jp/'))
 
 const isActive = (to: string) => {
@@ -154,8 +166,43 @@ const toggleDark = () => {
       </div>
     </header>
 
+    <!-- ── Desktop sticky slim nav (appears after main header scrolls away) ── -->
+    <Transition name="slide-down">
+      <header
+        v-if="showStickyNav"
+        class="hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/95 dark:bg-zinc-900/95 backdrop-blur border-b border-gray-100 dark:border-zinc-800 h-10 items-center"
+      >
+        <div class="max-w-2xl mx-auto px-6 lg:px-8 w-full flex items-center gap-6">
+          <NuxtLink
+            v-for="link in navLinks"
+            :key="link.to"
+            :to="link.to"
+            class="font-mono text-[0.75rem] transition-colors whitespace-nowrap"
+            :class="isActive(link.to)
+              ? 'text-primary font-semibold'
+              : 'text-gray-500 dark:text-zinc-400 hover:text-primary'"
+          >{{ link.label }}</NuxtLink>
+          <div class="ml-auto flex items-center gap-2">
+            <button
+              @click="toggleLocale"
+              class="font-mono text-xs text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors"
+              :aria-label="isJa ? 'Switch to English' : 'Switch to Japanese'"
+            >{{ isJa ? 'EN' : 'JP' }}</button>
+            <button
+              @click="toggleDark"
+              class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-1"
+              :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+            >
+              <Icon v-if="isDark" name="heroicons:sun" class="w-3.5 h-3.5" />
+              <Icon v-else name="heroicons:moon" class="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </header>
+    </Transition>
+
     <!-- ── Desktop profile header (hidden on mobile) ──────────────────────── -->
-    <header class="hidden md:block border-b border-gray-100 dark:border-zinc-800">
+    <header ref="desktopHeader" class="hidden md:block border-b border-gray-100 dark:border-zinc-800">
       <div class="max-w-2xl mx-auto px-6 lg:px-8 pt-9 pb-0">
 
         <!-- Profile block -->
@@ -244,4 +291,9 @@ const toggleDark = () => {
 .fade-leave-active { transition: opacity 0.15s ease; }
 .fade-enter-from,
 .fade-leave-to    { opacity: 0; }
+
+.slide-down-enter-active,
+.slide-down-leave-active { transition: transform 0.2s ease, opacity 0.2s ease; }
+.slide-down-enter-from,
+.slide-down-leave-to    { transform: translateY(-100%); opacity: 0; }
 </style>
