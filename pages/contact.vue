@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data'
+import { profile } from '~/assets/data'
 useHead({ title: 'Contact' })
 </script>
 

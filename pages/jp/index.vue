@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile, news, publications, awards_jp, grants_jp, others } from '~/data'
+import { profile, news, publications, awards_jp, grants_jp, others } from '~/assets/data'
 
 const highlightAuthor = (authors: string) =>
   authors

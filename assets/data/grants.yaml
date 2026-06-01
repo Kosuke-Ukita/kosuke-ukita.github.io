@@ -1,4 +1,13 @@
 en:
+  - name: "Kyushu Institute of Technology SPRING Scholarship Awardee"
+    url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
+    year: "Apr. 2026 - Present"
+    organization: "Japan Science and Technology Agency (JST)"
+    orgurl: "https://www.jst.go.jp/jisedai/spring/"
+    price: "JPY ¥1,800,000 (+¥900,000) / year"
+    grantid: "JPMJSP2154"
+    internal: "0073"
+
   - name: "Student Travel Award"
     url: "https://www.pakdd2026.org/awardees#:~:text=Kosuke%20Ukita%20(Kyushu%20Institue%20of%20Technology)"
     year: "Jun. 2026"
@@ -13,16 +22,16 @@ en:
     orgurl: "https://www.taf.or.jp/"
     price: "JPY ¥290,000"
 
-  - name: "Kyushu Institute of Technology SPRING Scholarship Awardee"
+jp:
+  - name: "九州工業大学SPRINGスカラシップ研究学生"
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
     year: "Apr. 2026 - Present"
-    organization: "Japan Science and Technology Agency (JST)"
+    organization: "国立研究開発法人 科学技術振興機構 (JST)"
     orgurl: "https://www.jst.go.jp/jisedai/spring/"
-    price: "JPY ¥1,800,000 (+¥900,000) / year"
+    price: "JPY ¥1,800,000 (+¥900,000) / 年"
     grantid: "JPMJSP2154"
     internal: "0073"
-
-jp:
+    
   - name: "Student Travel Award"
     url: "https://www.pakdd2026.org/awardees#:~:text=Kosuke%20Ukita%20(Kyushu%20Institue%20of%20Technology)"
     year: "Jun. 2026"
@@ -37,11 +46,4 @@ jp:
     orgurl: "https://www.taf.or.jp/"
     price: "JPY ¥290,000"
 
-  - name: "九州工業大学SPRINGスカラシップ研究学生"
-    url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
-    year: "Apr. 2026 - Present"
-    organization: "国立研究開発法人 科学技術振興機構 (JST)"
-    orgurl: "https://www.jst.go.jp/jisedai/spring/"
-    price: "JPY ¥1,800,000 (+¥900,000) / 年"
-    grantid: "JPMJSP2154"
-    internal: "0073"
+  

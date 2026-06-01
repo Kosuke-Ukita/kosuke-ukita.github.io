@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile, publications, awards_jp, grants_jp, education_jp, experience_jp, others } from '~/data'
+import { profile, publications, awards_jp, grants_jp, education_jp, experience_jp, others } from '~/assets/data'
 
 useHead({ title: 'CV' })
 

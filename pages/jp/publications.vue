@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { publications } from '~/data'
+import { publications } from '~/assets/data'
 
 useHead({ title: 'Publications' })
 
