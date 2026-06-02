@@ -32,9 +32,11 @@ const navLinks = computed(() => {
   return [
     { to: isJa.value ? '/jp' : '/', label: 'Home' },
     { to: `${p}/biography`,         label: 'Biography' },
-    { to: `${p}/publications`,      label: 'Publications' },
     { to: `${p}/cv`,                label: 'CV' },
-    { to: `${p}/contact`,                label: 'Contact' },
+    { to: `${p}/publications`,      label: 'Publications' },
+    { to: `${p}/grants`,            label: 'Grants' },
+    { to: `${p}/awards`,            label: 'Awards' },
+    { to: `${p}/contact`,           label: 'Contact' },
   ]
 })
 
@@ -72,6 +74,14 @@ const toggleDark = () => {
   document.documentElement.classList.toggle('dark', isDark.value)
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
 }
+
+const showBackToTop = ref(false)
+onMounted(() => {
+  const onScroll = () => { showBackToTop.value = window.scrollY > 300 }
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onUnmounted(() => window.removeEventListener('scroll', onScroll))
+})
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 </script>
 
 <template>
@@ -280,6 +290,18 @@ const toggleDark = () => {
         &copy; {{ new Date().getFullYear() }} Kosuke Ukita
       </div>
     </footer>
+
+    <!-- ── Back to top ──────────────────────────────────────────────────────── -->
+    <Transition name="fade">
+      <button
+        v-if="showBackToTop"
+        @click="scrollToTop"
+        class="fixed bottom-6 right-6 z-50 w-9 h-9 flex items-center justify-center bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-500 dark:text-zinc-400 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-colors rounded-full shadow-md"
+        aria-label="Back to top"
+      >
+        <Icon name="heroicons:arrow-up" class="w-4 h-4" />
+      </button>
+    </Transition>
 
   </div>
 </template>

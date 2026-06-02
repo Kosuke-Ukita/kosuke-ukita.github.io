@@ -119,3 +119,29 @@ html.dark .pub-authors strong {
 html.dark .pub-venue {
   color: #a1a1aa;
 }
+
+/* ─── BibTeX modal scrollbar (hidden) ────────────────────────────────────── */
+.bibtex-pre::-webkit-scrollbar { display: none; }
+
+/* ─── Single-line horizontal-scroll fields with right-fade indicator ──────── */
+.scroll-field-wrap {
+  position: relative;
+}
+.scroll-field-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 2.5rem;
+  background: linear-gradient(to right, transparent, white);
+  pointer-events: none;
+}
+html.dark .scroll-field-wrap::after {
+  background: linear-gradient(to right, transparent, #18181b);
+}
+.scroll-field {
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-right: 3rem;
+}
+.scroll-field::-webkit-scrollbar { display: none; }

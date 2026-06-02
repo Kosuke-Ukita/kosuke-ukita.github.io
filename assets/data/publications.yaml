@@ -66,7 +66,7 @@
     @inproceedings{okita2025foundation,
       title     = {Foundation Models to Tackle Activity Recognition in Unknown Domain: Sussex-Huawei Locomotion Challenge 2025 Task 2},
       author    = {Okita, Tsuyoshi and Ukita, Kosuke and Miyazaki, Asahi and Kubota, Daichi and Ota, Jukichi and Kagiyama, Naoki and Nishikawa, Asahi and Daichi, Nagayasu and Tomitaka, Syunya and Nozaki, Daisuke and Odo, Yuki and Yamashita, Raku and Ye, Xiaolong and Gao, Huayu and Okahashi, Kazuki and Matsuishi, Koki and Kagiyama, Masaharu and Hirata, Kodai and Kai, Haruki and Wang, Lin and Gjoreski, Hristijan and Ciliberto, Mathias and Lago, Paula and Murao, Kazuya and Roggen, Daniel},
-      booktitle = {Companion of the 2025 ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp Companion '25)},
+      booktitle = {Companion of the 2025 ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp '25)},
       pages     = {983--991},
       year      = {2025},
       address   = {Espoo, Finland},
@@ -100,7 +100,7 @@
       year    = {2025}
     }
 
-- title: "Energy-Efficient High-Performance Represen-tation Learning for Sensor Data via Flow Matching"
+- title: "Energy-Efficient High-Performance Representation Learning for Sensor Data via Flow Matching"
   authors: "Kosuke Ukita, Tsuyoshi Okita"
   venue: "The 7th International Symposium on Neuromorphic AI Hardware, Paper No. P-19"
   date: "October 2025"
@@ -125,7 +125,7 @@
 
 - title: "Image Classification Using a Diffusion Model as a PreTraining Model"
   authors: "Kosuke Ukita, Xiaolong Ye, Tsuyoshi Okita"
-  venue: "arXiv preprint arXiv:2505.06890"
+  venue: "arXiv preprint arXiv:2505.06890, pp. 1-10"
   date: "May 2025"
   location: ""
   type: "Preprint"
@@ -135,6 +135,8 @@
   links:
     - name: PDF
       url: "/papers/ukita2025image.pdf"
+    - name: Page
+      url: "https://arxiv.org/abs/2505.06890"
     - name: Arxiv
       url: "https://arxiv.org/abs/2505.06890"
   cite: |
@@ -270,7 +272,7 @@
 - title: "Towards LLMs for Sensor Data: Multi-Task Self-Supervised Learning"
   authors: "Tsuyoshi Okita, Kosuke Ukita, Koki Matsuishi, Masaharu Kagiyama, Kodai Hirata, Asahi Miyazaki"
   venue: "Adjunct Proceedings of the 2023 ACM International Joint Conference on Pervasive and Ubiquitous Computing & the 2023 ACM International Symposium on Wearable Computing (UbiComp/ISWC '23 Adjunct), pp. 499–504"
-  date: "Octover 2023"
+  date: "October 2023"
   location: "Cancun, Mexico"
   type: "Oral"
   note: "Refereed"

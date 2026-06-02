@@ -6,7 +6,6 @@ const highlightAuthor = (authors: string) =>
     .replace(/Kosuke Ukita/g, `<strong>Kosuke Ukita</strong>`)
     .replace(/浮田嵩祐/g, `<strong>浮田嵩祐</strong>`)
 
-// Map link name → icon (falls back to data icon, then generic)
 const linkIcon = (name: string, dataIcon?: string): string => {
   const map: Record<string, string> = {
     PDF:    'fa6-regular:file-pdf',
@@ -33,6 +32,23 @@ const recentGrants = grants_jp.slice(0, 5)
 const recentAwards = awards_jp.slice(0, 5)
 
 const newsSlug = (path: string) => path.split('/').pop() ?? ''
+
+const hoveredPubIndex = ref<number | null>(null)
+const hoverTimer = ref<ReturnType<typeof setTimeout> | null>(null)
+const startHover = (index: number) => {
+  if (hoverTimer.value) clearTimeout(hoverTimer.value)
+  hoverTimer.value = setTimeout(() => { hoveredPubIndex.value = index }, 1000)
+}
+const endHover = () => {
+  if (hoverTimer.value) { clearTimeout(hoverTimer.value); hoverTimer.value = null }
+  hoveredPubIndex.value = null
+}
+
+const handleCardWheel = (e: WheelEvent) => {
+  e.preventDefault()
+  const el = e.currentTarget as HTMLElement
+  el.scrollLeft += e.deltaY + e.deltaX
+}
 
 useHead({ title: 'Home' })
 </script>
@@ -75,63 +91,83 @@ useHead({ title: 'Home' })
     <section>
       <h2 class="section-title">Selected Publications</h2>
       <ol class="space-y-7">
-        <li v-for="(paper, i) in selectedPubs" :key="i" class="flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow">
-          <span class="pub-number">[{{ i + 1 }}]</span>
+        <li
+          v-for="(paper, i) in selectedPubs"
+          :key="i"
+          class="relative flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow"
+          @mouseenter="startHover(i)"
+          @mouseleave="endHover"
+        >
+          <span class="pub-number shrink-0">[{{ i + 1 }}]</span>
 
-          <div class="min-w-0 flex-1">
-            <!-- Title -->
-            <p class="pub-title text-sm leading-snug">
-              <a
-                v-if="paper.links?.find(l => l.name === 'Page')"
-                :href="paper.links.find(l => l.name === 'Page')!.url"
-                target="_blank"
-                rel="noopener"
-                class="hover:text-primary transition-colors"
-              >{{ paper.title }}</a>
-              <span v-else>{{ paper.title }}</span>
-            </p>
+          <div
+            class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            @wheel="handleCardWheel"
+          >
+            <div class="min-w-max pr-12">
+              <p class="pub-title text-sm leading-snug whitespace-nowrap">
+                <a
+                  v-if="paper.links?.find(l => l.name === 'Page')"
+                  :href="paper.links.find(l => l.name === 'Page')!.url"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:text-primary transition-colors"
+                >{{ paper.title }}</a>
+                <span v-else>{{ paper.title }}</span>
+              </p>
 
-            <!-- Authors -->
-            <p class="pub-authors" v-html="highlightAuthor(paper.authors)" />
+              <p class="pub-authors whitespace-nowrap" v-html="highlightAuthor(paper.authors)" />
 
-            <!-- Venue -->
-            <p class="pub-venue">{{ paper.venue }}</p>
-            <span v-if="paper.date" class="text-xs text-gray-400 dark:text-zinc-500">{{ paper.date }}</span>
-            <span v-if="paper.location" class="text-xs text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
+              <p class="pub-venue whitespace-nowrap">{{ paper.venue }}</p>
 
-            <!-- Tags, refereed status, and link icons -->
-            <div class="flex flex-wrap items-center gap-2 mt-2">
-              <!-- Presentation type badge -->
-              <span
-                v-if="paper.type"
-                class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm"
-                :class="['Spotlight', 'Oral'].includes(paper.type)
-                  ? 'text-primary border-primary/40'
-                  : 'text-gray-500 dark:text-zinc-400 border-gray-300 dark:border-zinc-600'"
-              >{{ paper.type }}</span>
+              <div class="whitespace-nowrap">
+                <span v-if="paper.date" class="text-xs text-gray-400 dark:text-zinc-500">{{ paper.date }}</span>
+                <span v-if="paper.location" class="text-xs text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
+              </div>
 
-              <!-- Refereed status (always shown) -->
-              <span
-                class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm"
-                :class="paper.note === 'Refereed'
-                  ? 'text-primary border-primary/40'
-                  : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
-              >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
+              <div class="flex flex-nowrap items-center gap-2 mt-2">
+                <span
+                  v-if="paper.type"
+                  class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
+                  :class="['Spotlight', 'Oral'].includes(paper.type)
+                    ? 'text-primary border-primary/40'
+                    : 'text-gray-500 dark:text-zinc-400 border-gray-300 dark:border-zinc-600'"
+                >{{ paper.type }}</span>
 
-              <!-- Link icons -->
-              <a
-                v-for="link in paper.links"
-                :key="link.name"
-                :href="link.url"
-                target="_blank"
-                rel="noopener"
-                :title="link.name"
-                class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded"
-              >
-                <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.72rem] h-[0.72rem]" />
-              </a>
+                <span
+                  class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
+                  :class="paper.note === 'Refereed'
+                    ? 'text-primary border-primary/40'
+                    : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
+                >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
+
+                <a
+                  v-for="link in paper.links"
+                  :key="link.name"
+                  :href="link.url"
+                  target="_blank"
+                  rel="noopener"
+                  :title="link.name"
+                  class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded shrink-0"
+                >
+                  <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.72rem] h-[0.72rem]" />
+                </a>
+              </div>
             </div>
           </div>
+
+          <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent" />
+
+          <Transition name="fade">
+            <div
+              v-if="hoveredPubIndex === i"
+              class="absolute left-0 top-full z-20 mt-1 w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded shadow-xl p-3 space-y-1.5"
+            >
+              <p class="text-[0.78rem] font-semibold text-gray-900 dark:text-zinc-100 leading-snug">{{ paper.title }}</p>
+              <p class="text-[0.72rem] text-gray-500 dark:text-zinc-400 leading-relaxed [&_strong]:underline [&_strong]:underline-offset-2" v-html="highlightAuthor(paper.authors)" />
+              <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 italic leading-snug">{{ paper.venue }}</p>
+            </div>
+          </Transition>
         </li>
       </ol>
       <div class="mt-6">
@@ -145,13 +181,19 @@ useHead({ title: 'Home' })
     <section v-if="recentGrants.length">
       <h2 class="section-title">Grants</h2>
       <ul class="space-y-4">
-        <li v-for="(grant, i) in recentGrants" :key="i" class="flex gap-1 text-sm">
+        <li v-for="(grant, i) in recentGrants" :key="i" class="relative flex gap-1 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
-          <div>
-            <p><a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ grant.name }}</a></p>
-            <p><a :href="grant.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono hover:underline">{{ grant.organization }}</a></p>
-            <p class="text-[0.7rem] text-gray-400 dark:text-zinc-500 mt-0.5 font-mono">{{ grant.year }} · {{ grant.price }}</p>
+          <div
+            class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            @wheel="handleCardWheel"
+          >
+            <div class="min-w-max pr-12">
+              <p class="whitespace-nowrap"><a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ grant.name }}</a></p>
+              <p class="whitespace-nowrap"><a :href="grant.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ grant.organization }}</a></p>
+              <p class="text-[0.7rem] text-gray-400 dark:text-zinc-500 font-mono whitespace-nowrap">{{ grant.year }} · {{ grant.price }}</p>
+            </div>
           </div>
+          <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent" />
         </li>
       </ul>
       <div class="mt-5">
@@ -165,13 +207,19 @@ useHead({ title: 'Home' })
     <section v-if="recentAwards.length">
       <h2 class="section-title">Awards</h2>
       <ul class="space-y-4">
-        <li v-for="(award, i) in recentAwards" :key="i" class="flex gap-1 text-sm">
+        <li v-for="(award, i) in recentAwards" :key="i" class="relative flex gap-1 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
-          <div>
-            <p><a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ award.title }}</a></p>
-            <p><a :href="award.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ award.organization }}</a></p>
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ award.year }}</p>
+          <div
+            class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            @wheel="handleCardWheel"
+          >
+            <div class="min-w-max pr-12">
+              <p class="whitespace-nowrap"><a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ award.title }}</a></p>
+              <p class="whitespace-nowrap"><a :href="award.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ award.organization }}</a></p>
+              <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono whitespace-nowrap">{{ award.year }}</p>
+            </div>
           </div>
+          <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent" />
         </li>
       </ul>
       <div class="mt-5">

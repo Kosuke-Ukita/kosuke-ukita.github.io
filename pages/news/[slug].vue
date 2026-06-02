@@ -26,7 +26,7 @@ useHead({ title: article.value.title })
     </NuxtLink>
 
     <article class="prose prose-sm dark:prose-invert max-w-none
-      prose-headings:font-mono prose-headings:tracking-tight prose-headings:text-primary
+      prose-headings:font-mono prose-headings:tracking-tight
       prose-a:no-underline hover:prose-a:underline
       prose-strong:text-gray-900 dark:prose-strong:text-zinc-100
       prose-code:font-mono prose-code:text-sm
