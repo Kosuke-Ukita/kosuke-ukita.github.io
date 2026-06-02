@@ -98,10 +98,10 @@ const linkIcon = (name: string, dataIcon?: string): string => {
               >{{ paper.type }}</span>
               <span
                 class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm"
-                :class="paper.note === 'Refeered'
+                :class="paper.note === 'Refereed'
                   ? 'text-gray-700 dark:text-zinc-300 border-gray-400 dark:border-zinc-500'
                   : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
-              >{{ paper.note === 'Refeered' ? 'refereed' : 'non-refereed' }}</span>
+              >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
               <a
                 v-for="link in paper.links"
                 :key="link.name"
