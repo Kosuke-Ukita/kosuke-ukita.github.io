@@ -1,13 +1,12 @@
 import profile from './profile.yaml'
 import publications from './publications.yaml'
-import news from './news.yaml'
 import others from './others.yaml'
 import awardsData from './awards.yaml'
 import grantsData from './grants.yaml'
 import educationData from './education.yaml'
 import experienceData from './experience.yaml'
 
-export { profile, publications, news, others }
+export { profile, publications, others }
 
 export const awards = awardsData.en
 export const awards_jp = awardsData.jp

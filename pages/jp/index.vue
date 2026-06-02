@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile, news, publications, awards_jp, grants_jp, others } from '~/assets/data'
+import { profile, publications, awards_jp, grants_jp, others } from '~/assets/data'
 
 const highlightAuthor = (authors: string) =>
   authors
@@ -21,10 +21,18 @@ const linkIcon = (name: string, dataIcon?: string): string => {
 }
 
 const researchInterests = others.find(o => o.category === 'Research Interests')?.items ?? []
-const recentNews = news.slice(0, 5)
+const { data: recentNews } = await useAsyncData('recent-news-jp', () =>
+  queryContent('news')
+    .only(['date', 'content', 'contentjp', '_path'])
+    .sort({ date: -1 })
+    .limit(5)
+    .find()
+)
 const selectedPubs = publications.slice(0, 3)
 const recentGrants = grants_jp.slice(0, 5)
 const recentAwards = awards_jp.slice(0, 5)
+
+const newsSlug = (path: string) => path.split('/').pop() ?? ''
 
 useHead({ title: 'Home' })
 </script>
@@ -49,8 +57,10 @@ useHead({ title: 'Home' })
         >
           <span class="font-mono text-gray-400 dark:text-zinc-500 shrink-0 w-[4.5rem] text-[0.72rem] pt-0.5">{{ item.date }}</span>
           <span class="text-gray-700 dark:text-zinc-300">
-            {{ item.contentjp }}
-            <a v-if="item.url" :href="item.url" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2"> → </a>
+            <NuxtLink
+              :to="`/jp/news/${newsSlug(item._path)}`"
+              class="hover:underline underline-offset-2"
+            >{{ item.contentjp }}</NuxtLink>
           </span>
         </div>
       </div>
@@ -70,7 +80,16 @@ useHead({ title: 'Home' })
 
           <div class="min-w-0 flex-1">
             <!-- Title -->
-            <p class="pub-title text-sm leading-snug">{{ paper.title }}</p>
+            <p class="pub-title text-sm leading-snug">
+              <a
+                v-if="paper.links?.find(l => l.name === 'Page')"
+                :href="paper.links.find(l => l.name === 'Page')!.url"
+                target="_blank"
+                rel="noopener"
+                class="hover:text-primary transition-colors"
+              >{{ paper.title }}</a>
+              <span v-else>{{ paper.title }}</span>
+            </p>
 
             <!-- Authors -->
             <p class="pub-authors" v-html="highlightAuthor(paper.authors)" />
@@ -94,10 +113,10 @@ useHead({ title: 'Home' })
               <!-- Refereed status (always shown) -->
               <span
                 class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm"
-                :class="paper.note === 'Refeered'
-                  ? 'text-gray-700 dark:text-zinc-300 border-gray-400 dark:border-zinc-500'
+                :class="paper.note === 'Refereed'
+                  ? 'text-primary border-primary/40'
                   : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
-              >{{ paper.note === 'Refeered' ? 'refereed' : 'non-refereed' }}</span>
+              >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
 
               <!-- Link icons -->
               <a

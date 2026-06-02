@@ -64,7 +64,16 @@ const groupedPublications = computed(() => {
 
           <div class="min-w-0 flex-1">
             <!-- Title -->
-            <p class="pub-title text-sm leading-snug">{{ paper.title }}</p>
+            <p class="pub-title text-sm leading-snug">
+              <a
+                v-if="paper.links?.find(l => l.name === 'Page')"
+                :href="paper.links.find(l => l.name === 'Page')!.url"
+                target="_blank"
+                rel="noopener"
+                class="hover:text-primary transition-colors"
+              >{{ paper.title }}</a>
+              <span v-else>{{ paper.title }}</span>
+            </p>
 
             <!-- Authors -->
             <p class="pub-authors" v-html="highlightAuthor(paper.authors)" />
@@ -88,10 +97,10 @@ const groupedPublications = computed(() => {
               <!-- Refereed status (always shown) -->
               <span
                 class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm"
-                :class="paper.note === 'Refeered'
-                  ? 'text-gray-700 dark:text-zinc-300 border-gray-400 dark:border-zinc-500'
+                :class="paper.note === 'Refereed'
+                  ? 'text-primary border-primary/40'
                   : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
-              >{{ paper.note === 'Refeered' ? 'refereed' : 'non-refereed' }}</span>
+              >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
 
               <!-- Link icons -->
               <a
