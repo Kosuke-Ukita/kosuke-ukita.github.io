@@ -66,18 +66,13 @@ useHead({ title: 'Home' })
     <section>
       <h2 class="section-title">News</h2>
       <div class="space-y-3.5">
-        <div
-          v-for="(item, i) in recentNews"
-          :key="i"
-          class="flex gap-4 sm:gap-6 text-sm leading-relaxed"
-        >
-          <span class="font-mono text-gray-400 dark:text-zinc-500 shrink-0 w-[4.5rem] text-[0.72rem] pt-0.5">{{ item.date }}</span>
-          <span class="text-gray-700 dark:text-zinc-300">
-            <NuxtLink
-              :to="`/news/${newsSlug(item._path)}`"
-              class="hover:underline underline-offset-2"
-            >{{ item.content }}</NuxtLink>
-          </span>
+        <div v-for="(item, i) in recentNews" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
+          <span class="font-mono text-gray-400 dark:text-zinc-500 text-[0.72rem] sm:shrink-0 sm:w-[4.5rem] sm:pt-0.5">{{ item.date }}</span>
+          <div>
+            <p class="text-gray-700 dark:text-zinc-300">
+              <NuxtLink :to="`/jp/news/${newsSlug(item._path)}`" class="hover:underline underline-offset-2">{{ item.content }}</NuxtLink>
+            </p>
+          </div>
         </div>
       </div>
       <div class="mt-5">
