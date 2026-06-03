@@ -297,3 +297,69 @@
         keywords = {LLMs, activity recognition, multi-task self-supervised learning},
         series = {UbiComp/ISWC '23 Adjunct}
     }
+
+
+
+# - title: "---"
+#   authors: "大塚功太郎，長谷川弘貴，関くるみ，丹野康世，浮田嵩祐，矢田和善"
+#   venue: "2022年度スポーツデータサイエンスコンペティション, P1-02"
+#   date: "January 2023"
+#   location: "Tokyo, Japan"
+#   type: "Poster"
+#   note: "Non-refereed"
+#   tags:
+#     - ""
+#   links:
+#     - name: Page
+#       url: "https://2023.sports.ywebsys.net/news/archives/0020/"
+#   cite: |
+#     @misc{
+#     }
+
+# - title: "カットインからアシスト -香川を強くするために-"
+#   authors: "浮田嵩祐，大塚功太郎，関くるみ"
+#   venue: "第11回 Math Festa <全国数学生徒研究発表会>, pp. 35"
+#   date: "August 2019"
+#   location: "Osaka, Japan"
+#   type: "Poster"
+#   note: "Non-refereed"
+#   tags:
+#     - ""
+#   links:
+#     - name: Page
+#       url: "https://otemae-hs.ed.jp/ssh/dat/2019mathfesta_abstract.pdf"
+#   cite: |
+#     @misc{
+#     }
+
+# - title: "---"
+#   authors: "浮田嵩祐，石井裕基"
+#   venue: "第1回 FESTAT（全国統計探究発表会）"
+#   date: "July 2019"
+#   location: "Kagawa, Japan"
+#   type: "Poster"
+#   note: "Non-refereed"
+#   tags:
+#     - ""
+#   links:
+#     - name: Page
+#       url: "https://www.kagawa-edu.jp/kanich02/plugin/blogs/show/42/91/380"
+#   cite: |
+#     @misc{
+#     }
+
+# - title: "アシストから見た選手分析によりファイブアローズを強化する"
+#   authors: "浮田嵩祐，大塚功太郎，関くるみ，石井裕基"
+#   venue: "日本統計学会 統計教育委員会 第8回スポーツデータ解析コンペティション"
+#   date: "May 2019"
+#   location: "Tokyo, Japan"
+#   type: "Poster"
+#   note: "Non-refereed"
+#   tags:
+#     - ""
+#   links:
+#     - name: Page
+#       url: "https://statedu.jp/cse/sports08.htm"
+#   cite: |
+#     @misc{
+#     }
