@@ -120,6 +120,20 @@ html.dark .pub-venue {
   color: #a1a1aa;
 }
 
+/* ─── Article language visibility ────────────────────────────────────────── */
+.show-en .lang-jp { display: none; }
+.show-jp .lang-en { display: none; }
+
+/* ─── Article date ────────────────────────────────────────────────────────── */
+.article-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #9ca3af;
+  text-align: right;
+  margin: 0 0 1.5rem;
+}
+html.dark .article-date { color: #71717a; }
+
 /* ─── BibTeX modal scrollbar (hidden) ────────────────────────────────────── */
 .bibtex-pre::-webkit-scrollbar { display: none; }
 

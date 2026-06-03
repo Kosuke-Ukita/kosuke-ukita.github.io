@@ -14,9 +14,10 @@ export default defineNuxtConfig({
   ],
   content: {
     markdown: {
+      anchorLinks: false,
       remarkPlugins: ['remark-math'],
-      rehypePlugins: ['rehype-katex']
-    }
+      rehypePlugins: ['rehype-katex'],
+    },
   },
 
   site: {
@@ -41,6 +42,15 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['~/assets/css/main.css'],
-  compatibilityDate: '2025-01-01'
+  css: ['~/assets/css/main.css', '~/assets/css/markdown.css'],
+  compatibilityDate: '2025-01-01',
+
+  nitro: {
+    prerender: {
+      routes: [
+        '/jp', '/jp/biography', '/jp/cv', '/jp/publications',
+        '/jp/awards', '/jp/grants', '/jp/contact', '/jp/news',
+      ],
+    },
+  },
 })

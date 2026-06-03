@@ -1,25 +1,19 @@
 <script setup lang="ts">
 useHead({ title: 'News' })
 
-const { data: allNews } = await useAsyncData('all-news', () =>
-  queryContent('news')
+const { isJp } = useLocale()
+const contentField = computed(() => isJp.value ? 'contentjp' : 'content')
+const newsBase = computed(() => isJp.value ? '/jp/news' : '/news')
+
+const { data: allNews } = await useAsyncData(
+  () => `all-news-${isJp.value ? 'jp' : 'en'}`,
+  () => queryContent('news')
     .only(['date', 'content', 'contentjp', '_path'])
     .sort({ date: -1 })
     .find()
 )
 
-const groupedNews = computed(() => {
-  if (!allNews.value) return []
-  const map: Record<string, typeof allNews.value> = {}
-  for (const item of allNews.value) {
-    const year = (item.date as string)?.slice(0, 4) ?? '—'
-    if (!map[year]) map[year] = []
-    map[year].push(item)
-  }
-  return Object.entries(map)
-    .sort(([a], [b]) => Number(b) - Number(a))
-    .map(([year, items]) => ({ year, items }))
-})
+const groupedNews = useGroupedNews(allNews)
 
 const slug = (path: string) => path.split('/').pop() ?? ''
 </script>
@@ -35,11 +29,11 @@ const slug = (path: string) => path.split('/').pop() ?? ''
       <div class="space-y-4">
         <div v-for="(item, i) in group.items" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
           <span class="font-mono text-gray-400 dark:text-zinc-500 text-[0.72rem] sm:shrink-0 sm:w-[4.5rem] sm:pt-0.5">{{ item.date }}</span>
-          <div>
-            <p class="text-gray-700 dark:text-zinc-300">
-              <NuxtLink :to="`/news/${slug(item._path)}`" class="hover:underline underline-offset-2">{{ item.content }}</NuxtLink>
-            </p>
-          </div>
+          <p class="text-gray-700 dark:text-zinc-300">
+            <NuxtLink :to="`${newsBase}/${slug(item._path)}`" class="hover:underline underline-offset-2">
+              {{ contentField === 'contentjp' ? item.contentjp : item.content }}
+            </NuxtLink>
+          </p>
         </div>
       </div>
     </div>

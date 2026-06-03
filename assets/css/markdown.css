@@ -1,0 +1,186 @@
+/* ── VS Code–style Markdown renderer ───────────────────────────────────────── */
+
+.markdown {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: #24292f;
+  max-width: 65ch;
+  word-break: break-word;
+}
+
+/* ── Headings ─────────────────────────────────────────────────────────────── */
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.markdown h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.markdown h3 { font-size: 1.25em; }
+.markdown h4 { font-size: 1em; }
+.markdown h5 { font-size: 0.875em; }
+.markdown h6 { font-size: 0.85em; color: #656d76; }
+
+/* ── Body text ────────────────────────────────────────────────────────────── */
+
+.markdown p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* ── Links ────────────────────────────────────────────────────────────────── */
+
+.markdown a {
+  color: rgb(var(--color-primary));
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Lists ────────────────────────────────────────────────────────────────── */
+
+.markdown ul {
+  list-style: disc;
+  padding-left: 2em;
+  margin-bottom: 1rem;
+}
+
+.markdown ol {
+  list-style: decimal;
+  padding-left: 2em;
+  margin-bottom: 1rem;
+}
+
+.markdown li { margin-bottom: 0.25rem; }
+.markdown li > p { margin-bottom: 0.5rem; }
+
+/* ── Code ─────────────────────────────────────────────────────────────────── */
+
+.markdown code {
+  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+  font-size: 85%;
+  padding: 0.2em 0.4em;
+}
+
+.markdown pre {
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown pre code {
+  background: none;
+  border-radius: 0;
+  font-size: inherit;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+/* ── Blockquote ────────────────────────────────────────────────────────────── */
+
+.markdown blockquote {
+  border-left: 0.25em solid #d0d7de;
+  color: #656d76;
+  margin: 0 0 1rem;
+  padding: 0 1em;
+}
+
+.markdown blockquote > :first-child { margin-top: 0; }
+.markdown blockquote > :last-child  { margin-bottom: 0; }
+
+/* ── HR ───────────────────────────────────────────────────────────────────── */
+
+.markdown hr {
+  border: none;
+  border-top: 1px solid #d0d7de;
+  height: 0;
+  margin: 1.5rem 0;
+}
+
+/* ── Tables ───────────────────────────────────────────────────────────────── */
+
+.markdown table {
+  border-collapse: collapse;
+  display: block;
+  max-width: 100%;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid #d0d7de;
+  padding: 6px 13px;
+}
+
+.markdown th {
+  background-color: #f6f8fa;
+  font-weight: 600;
+}
+
+.markdown tr:nth-child(even) > td { background-color: #f6f8fa; }
+
+/* ── Images ───────────────────────────────────────────────────────────────── */
+
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ── Strong / Em ──────────────────────────────────────────────────────────── */
+
+.markdown strong { font-weight: 600; }
+.markdown em     { font-style: italic; }
+
+/* ── Dark mode ────────────────────────────────────────────────────────────── */
+
+html.dark .markdown { color: #e6edf3; }
+html.dark .markdown p { color: #d4d4d8; }
+
+html.dark .markdown h1,
+html.dark .markdown h2 { border-bottom-color: #30363d; }
+html.dark .markdown h6 { color: #848d97; }
+
+html.dark .markdown code { background-color: rgba(110, 118, 129, 0.4); }
+html.dark .markdown pre  { background-color: #161b22; }
+
+html.dark .markdown blockquote {
+  border-left-color: #3d444d;
+  color: #848d97;
+}
+
+html.dark .markdown hr { border-top-color: #30363d; }
+
+html.dark .markdown th                     { background-color: #161b22; }
+html.dark .markdown tr:nth-child(even) > td { background-color: #161b22; }
+html.dark .markdown th,
+html.dark .markdown td { border-color: #3d444d; }

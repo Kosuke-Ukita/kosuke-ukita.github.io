@@ -1,88 +1,63 @@
 <script setup lang="ts">
-import { profile, publications, awards, grants, others } from '~/assets/data'
+import { profile, publications, awards, awardsJp, grants, grantsJp, others } from '~/assets/data'
 
-const highlightAuthor = (authors: string) =>
-  authors
-    .replace(/Kosuke Ukita/g, `<strong>Kosuke Ukita</strong>`)
-    .replace(/浮田嵩祐/g, `<strong>浮田嵩祐</strong>`)
+useHead({ title: 'Home' })
 
-const linkIcon = (name: string, dataIcon?: string): string => {
-  const map: Record<string, string> = {
-    PDF:    'fa6-regular:file-pdf',
-    Code:   'fa6-solid:code',
-    Page:   'fa7-solid:arrow-up-right-from-square',
-    Arxiv:  'academicons:arxiv',
-    Cite:   'fa7-solid:quote-right',
-    Slides: 'fa7-solid:chalkboard',
-    Poster: 'fa6-regular:file-image',
-  }
-  return map[name] || dataIcon || 'heroicons:link'
-}
+const { isJp } = useLocale()
+const { highlightAuthor, linkIcon } = usePubUtils()
+const { handleWheel } = useHScroll()
+const { hoveredIndex, startHover, endHover } = usePubHover()
+
+const newsBase = computed(() => isJp.value ? '/jp/news' : '/news')
+const pubsBase = computed(() => isJp.value ? '/jp/publications' : '/publications')
+const grantsBase = computed(() => isJp.value ? '/jp/grants' : '/grants')
+const awardsBase = computed(() => isJp.value ? '/jp/awards' : '/awards')
 
 const researchInterests = others.find(o => o.category === 'Research Interests')?.items ?? []
-const { data: recentNews } = await useAsyncData('recent-news', () =>
-  queryContent('news')
+
+const { data: recentNews } = await useAsyncData(
+  () => `recent-news-${isJp.value ? 'jp' : 'en'}`,
+  () => queryContent('news')
     .only(['date', 'content', 'contentjp', '_path'])
     .sort({ date: -1 })
     .limit(5)
     .find()
 )
+
 const selectedPubs = publications.slice(0, 3)
-const recentGrants = grants.slice(0, 5)
-const recentAwards = awards.slice(0, 5)
+const recentGrants = computed(() => (isJp.value ? grantsJp : grants).slice(0, 5))
+const recentAwards = computed(() => (isJp.value ? awardsJp : awards).slice(0, 5))
 
 const newsSlug = (path: string) => path.split('/').pop() ?? ''
-
-const hoveredPubIndex = ref<number | null>(null)
-const hoverTimer = ref<ReturnType<typeof setTimeout> | null>(null)
-const startHover = (index: number) => {
-  if (hoverTimer.value) clearTimeout(hoverTimer.value)
-  hoverTimer.value = setTimeout(() => { hoveredPubIndex.value = index }, 1000)
-}
-const endHover = () => {
-  if (hoverTimer.value) { clearTimeout(hoverTimer.value); hoverTimer.value = null }
-  hoveredPubIndex.value = null
-}
-
-const handleCardWheel = (e: WheelEvent) => {
-  e.preventDefault()
-  const el = e.currentTarget as HTMLElement
-  el.scrollLeft += e.deltaY + e.deltaX
-}
-
-useHead({ title: 'Home' })
 </script>
 
 <template>
   <div class="space-y-11">
-  <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10">Home</h1>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10">Home</h1>
 
-    <!-- Brief bio -->
     <section>
-      <p class="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed whitespace-pre-line">{{ profile.bioen }}</p>
+      <p class="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed whitespace-pre-line">
+        {{ isJp ? profile.bio : profile.bioen }}
+      </p>
     </section>
 
-    <!-- News -->
     <section>
       <h2 class="section-title">News</h2>
       <div class="space-y-3.5">
         <div v-for="(item, i) in recentNews" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
           <span class="font-mono text-gray-400 dark:text-zinc-500 text-[0.72rem] sm:shrink-0 sm:w-[4.5rem] sm:pt-0.5">{{ item.date }}</span>
-          <div>
-            <p class="text-gray-700 dark:text-zinc-300">
-              <NuxtLink :to="`/jp/news/${newsSlug(item._path)}`" class="hover:underline underline-offset-2">{{ item.content }}</NuxtLink>
-            </p>
-          </div>
+          <p class="text-gray-700 dark:text-zinc-300">
+            <NuxtLink :to="`${newsBase}/${newsSlug(item._path)}`" class="hover:underline underline-offset-2">
+              {{ isJp ? item.contentjp : item.content }}
+            </NuxtLink>
+          </p>
         </div>
       </div>
       <div class="mt-5">
-        <NuxtLink to="/news" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-          All news →
-        </NuxtLink>
+        <NuxtLink :to="newsBase" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">All news →</NuxtLink>
       </div>
     </section>
 
-    <!-- Selected Publications -->
     <section>
       <h2 class="section-title">Selected Publications</h2>
       <ol class="space-y-7">
@@ -95,10 +70,7 @@ useHead({ title: 'Home' })
         >
           <span class="pub-number shrink-0">[{{ i + 1 }}]</span>
 
-          <div
-            class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            @wheel="handleCardWheel"
-          >
+          <div class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" @wheel="handleWheel">
             <div class="min-w-max pr-12">
               <p class="pub-title text-sm leading-snug whitespace-nowrap">
                 <a
@@ -112,7 +84,6 @@ useHead({ title: 'Home' })
               </p>
 
               <p class="pub-authors whitespace-nowrap" v-html="highlightAuthor(paper.authors)" />
-
               <p class="pub-venue whitespace-nowrap">{{ paper.venue }}</p>
 
               <div class="whitespace-nowrap">
@@ -155,7 +126,7 @@ useHead({ title: 'Home' })
 
           <Transition name="fade">
             <div
-              v-if="hoveredPubIndex === i"
+              v-if="hoveredIndex === i"
               class="absolute left-0 top-full z-20 mt-1 w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded shadow-xl p-3 space-y-1.5"
             >
               <p class="text-[0.78rem] font-semibold text-gray-900 dark:text-zinc-100 leading-snug">{{ paper.title }}</p>
@@ -166,25 +137,23 @@ useHead({ title: 'Home' })
         </li>
       </ol>
       <div class="mt-6">
-        <NuxtLink to="/publications" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-          All publications →
-        </NuxtLink>
+        <NuxtLink :to="pubsBase" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">All publications →</NuxtLink>
       </div>
     </section>
 
-    <!-- Grants -->
     <section v-if="recentGrants.length">
       <h2 class="section-title">Grants</h2>
       <ul class="space-y-4">
         <li v-for="(grant, i) in recentGrants" :key="i" class="relative flex gap-1 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
-          <div
-            class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            @wheel="handleCardWheel"
-          >
+          <div class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" @wheel="handleWheel">
             <div class="min-w-max pr-12">
-              <p class="whitespace-nowrap"><a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ grant.name }}</a></p>
-              <p class="whitespace-nowrap"><a :href="grant.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ grant.organization }}</a></p>
+              <p class="whitespace-nowrap">
+                <a :href="grant.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary dark:hover:text-primary transition-colors">{{ grant.name }}</a>
+              </p>
+              <p class="whitespace-nowrap">
+                <a :href="grant.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ grant.organization }}</a>
+              </p>
               <p class="text-[0.7rem] text-gray-400 dark:text-zinc-500 font-mono whitespace-nowrap">{{ grant.year }} · {{ grant.price }}</p>
             </div>
           </div>
@@ -192,25 +161,23 @@ useHead({ title: 'Home' })
         </li>
       </ul>
       <div class="mt-5">
-        <NuxtLink to="/grants" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-          All grants →
-        </NuxtLink>
+        <NuxtLink :to="grantsBase" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">All grants →</NuxtLink>
       </div>
     </section>
 
-    <!-- Awards -->
     <section v-if="recentAwards.length">
       <h2 class="section-title">Awards</h2>
       <ul class="space-y-4">
         <li v-for="(award, i) in recentAwards" :key="i" class="relative flex gap-1 text-sm">
           <span class="text-gray-300 dark:text-zinc-600 shrink-0 mt-0.5 select-none">–</span>
-          <div
-            class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            @wheel="handleCardWheel"
-          >
+          <div class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" @wheel="handleWheel">
             <div class="min-w-max pr-12">
-              <p class="whitespace-nowrap"><a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 dark:hover:text-primary hover:text-primary transition-colors">{{ award.title }}</a></p>
-              <p class="whitespace-nowrap"><a :href="award.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ award.organization }}</a></p>
+              <p class="whitespace-nowrap">
+                <a :href="award.url" target="_blank" rel="noopener" class="font-medium text-gray-800 dark:text-zinc-200 hover:text-primary dark:hover:text-primary transition-colors">{{ award.title }}</a>
+              </p>
+              <p class="whitespace-nowrap">
+                <a :href="award.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ award.organization }}</a>
+              </p>
               <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono whitespace-nowrap">{{ award.year }}</p>
             </div>
           </div>
@@ -218,13 +185,10 @@ useHead({ title: 'Home' })
         </li>
       </ul>
       <div class="mt-5">
-        <NuxtLink to="/awards" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">
-          All awards →
-        </NuxtLink>
+        <NuxtLink :to="awardsBase" class="font-mono text-[0.72rem] text-primary hover:underline underline-offset-2">All awards →</NuxtLink>
       </div>
     </section>
 
-    <!-- Research Interests -->
     <section v-if="researchInterests.length">
       <h2 class="section-title">Research Interests</h2>
       <ul class="space-y-1.5">
@@ -238,6 +202,5 @@ useHead({ title: 'Home' })
         </li>
       </ul>
     </section>
-
   </div>
 </template>

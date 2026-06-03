@@ -16,7 +16,7 @@ en:
     price: "USD $500"
 
   - name: "International Travel Grant"
-    url: "https://www.taf.or.jp/grant-b/02/"
+    url: "https://www.taf.or.jp/files/2270/85011411.pdf"
     year: "Apr. 2026"
     organization: "The Telecommunications Advancement Foundation"
     orgurl: "https://www.taf.or.jp/"
@@ -40,7 +40,7 @@ jp:
     price: "USD $500"
 
   - name: "海外渡航旅費援助"
-    url: "https://www.taf.or.jp/grant-b/02/"
+    url: "https://www.taf.or.jp/files/2270/85011411.pdf"
     year: "Apr. 2026"
     organization: "公益財団法人 電気通信普及財団"
     orgurl: "https://www.taf.or.jp/"
