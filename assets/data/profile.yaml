@@ -31,10 +31,18 @@ socials:
     color: "hover:text-yellow-500 transition"
 bio: |-
   浮田 嵩祐です．AIに関する研究をしているPhD学生です．
-  生成AIの効率化や基盤モデル構築などの深層学習領域や，機械学習の基礎理論やGrokkingなどの学習ダイナミクスに関心を持っています．
+
+  深層学習での応用や機械学習の理論的な基礎研究にも関心を持っています．
+  - 生成AIの効率化・基盤モデルの構築
+  - 機械学習理論やGrokking等の学習ダイナミクス
+
   最近はFlow Matchingを中心に研究しています．
 bioen: |-
-  I am Kosuke Ukita, PhD student researching AI.
-  My research interests include deep learning topics such as efficient generative AI and foundation model construction, as well as learning dynamics such as the fundamentals of machine learning and Grokking.
+  I am Kosuke Ukita, a PhD student researching AI.
+
+  I am interested in both practical applications of deep learning and theoretical research in machine learning:
+  - Efficient generative AI and foundation model construction
+  - Machine learning theory and learning dynamics (e.g., Grokking)
+
   Recently, I have been focusing on Flow Matching.
 
