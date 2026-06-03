@@ -19,12 +19,8 @@ useHead({ title: article.value.title })
 
 <template>
   <div>
-    <NuxtLink
-      :to="newsBase"
-      class="inline-flex items-center gap-1 font-mono text-[0.72rem] text-gray-400 dark:text-zinc-500 hover:underline mb-8"
-    >
-      <Icon name="heroicons:arrow-left" class="w-3 h-3" />
-      Back to News
+    <NuxtLink :to="newsBase" class="inline-flex items-center gap-1 font-mono text-[0.72rem] text-gray-400 dark:text-zinc-500 hover:underline mb-8">
+      ← Back to News
     </NuxtLink>
 
     <article :class="['markdown', isJp ? 'show-jp' : 'show-en']">

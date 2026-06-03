@@ -13,15 +13,11 @@ const groupedPublications = useGroupedPublications()
     <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10">Publications</h1>
 
     <div v-for="group in groupedPublications" :key="group.year" class="mb-12">
-      <h2 class="font-mono text-sm font-semibold text-primary pb-2 mb-7 border-b border-gray-100 dark:border-zinc-800">
-        {{ group.year }}
-      </h2>
+      <h2 class="font-mono text-sm font-semibold text-primary pb-2 mb-7 border-b border-gray-100 dark:border-zinc-800">{{ group.year }}</h2>
 
       <ol class="space-y-8">
         <li
-          v-for="paper in group.items"
-          :key="paper.globalIndex"
-          class="relative flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow"
+          v-for="paper in group.items" :key="paper.globalIndex" class="relative flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow"
           @mouseenter="startHover(paper.globalIndex)"
           @mouseleave="endHover"
         >
@@ -30,11 +26,8 @@ const groupedPublications = useGroupedPublications()
           <div class="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" @wheel="handleWheel">
             <div class="min-w-max pr-12">
               <p class="pub-title text-sm leading-snug whitespace-nowrap">
-                <a
-                  v-if="paper.links?.find(l => l.name === 'Page')"
-                  :href="paper.links.find(l => l.name === 'Page')!.url"
-                  target="_blank"
-                  rel="noopener"
+                <a v-if="paper.links?.find(l => l.name === 'Page')"
+                  :href="paper.links.find(l => l.name === 'Page')!.url" target="_blank" rel="noopener"
                   class="hover:text-primary transition-colors"
                 >{{ paper.title }}</a>
                 <span v-else>{{ paper.title }}</span>
@@ -49,12 +42,13 @@ const groupedPublications = useGroupedPublications()
               </div>
 
               <div class="flex flex-nowrap items-center gap-2 mt-2">
-                <span
-                  v-if="paper.type"
+                <span v-if="paper.type"
                   class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
                   :class="['Spotlight', 'Oral'].includes(paper.type)
                     ? 'text-primary border-primary/40'
-                    : 'text-gray-500 dark:text-zinc-400 border-gray-300 dark:border-zinc-600'"
+                    : paper.type.includes('Poster')
+                      ? 'text-gray-600 dark:text-zinc-400 border-gray-400 dark:border-zinc-500'
+                      : 'text-gray-400 dark:text-zinc-600 border-gray-200 dark:border-zinc-700'"
                 >{{ paper.type }}</span>
 
                 <span
@@ -64,20 +58,14 @@ const groupedPublications = useGroupedPublications()
                     : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
                 >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
 
-                <a
-                  v-for="link in paper.links"
-                  :key="link.name"
-                  :href="link.url"
-                  target="_blank"
-                  rel="noopener"
-                  :title="link.name"
+                <a v-for="link in paper.links"
+                  :key="link.name" :href="link.url" target="_blank" rel="noopener" :title="link.name"
                   class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded shrink-0"
                 >
                   <Icon :name="linkIcon(link.name, link.icon)" class="w-[0.72rem] h-[0.72rem]" />
                 </a>
 
-                <button
-                  v-if="paper.cite"
+                <button v-if="paper.cite"
                   title="BibTeX"
                   class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-0.5 rounded cursor-pointer shrink-0"
                   @click="openModal(paper.cite)"
@@ -91,10 +79,7 @@ const groupedPublications = useGroupedPublications()
           <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent" />
 
           <Transition name="fade">
-            <div
-              v-if="hoveredIndex === paper.globalIndex"
-              class="absolute left-0 top-full z-20 mt-1 w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded shadow-xl p-3 space-y-1.5"
-            >
+            <div v-if="hoveredIndex === paper.globalIndex" class="absolute left-0 top-full z-20 mt-1 w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded shadow-xl p-3 space-y-1.5">
               <p class="text-[0.78rem] font-semibold text-gray-900 dark:text-zinc-100 leading-snug">{{ paper.title }}</p>
               <p class="text-[0.72rem] text-gray-500 dark:text-zinc-400 leading-relaxed [&_strong]:underline [&_strong]:underline-offset-2" v-html="highlightAuthor(paper.authors)" />
               <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 italic leading-snug">{{ paper.venue }}</p>
@@ -107,8 +92,7 @@ const groupedPublications = useGroupedPublications()
 
   <Teleport to="body">
     <Transition name="fade">
-      <div
-        v-if="cite"
+      <div v-if="cite"
         class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-[2px] flex items-center justify-center p-6"
         @click.self="closeModal"
       >
@@ -116,16 +100,14 @@ const groupedPublications = useGroupedPublications()
           <div class="flex items-center justify-between px-4 py-2.5 border-b border-gray-100 dark:border-zinc-800">
             <span class="font-mono text-[0.7rem] text-gray-400 dark:text-zinc-500 select-none">BibTeX</span>
             <div class="flex items-center gap-1">
-              <button
-                :title="copied ? 'Copied!' : 'Copy'"
+              <button :title="copied ? 'Copied!' : 'Copy'"
                 class="transition-colors p-1 rounded"
                 :class="copied ? 'text-primary' : 'text-gray-400 dark:text-zinc-500 hover:text-primary'"
                 @click="copyCite"
               >
                 <Icon :name="copied ? 'fa7-solid:check' : 'fa6-regular:copy'" class="w-3.5 h-3.5" />
               </button>
-              <button
-                title="Close"
+              <button title="Close"
                 class="text-gray-400 dark:text-zinc-500 hover:text-gray-700 dark:hover:text-zinc-200 transition-colors p-1 rounded"
                 @click="closeModal"
               >
@@ -133,9 +115,7 @@ const groupedPublications = useGroupedPublications()
               </button>
             </div>
           </div>
-          <pre
-            class="bibtex-pre font-mono text-[0.7rem] text-gray-600 dark:text-zinc-400 p-4 overflow-auto max-h-72 whitespace-pre leading-relaxed [scrollbar-width:none]"
-            @wheel="handleWheel"
+          <pre class="bibtex-pre font-mono text-[0.7rem] text-gray-600 dark:text-zinc-400 p-4 overflow-auto max-h-72 whitespace-pre leading-relaxed [scrollbar-width:none]" @wheel="handleWheel"
           >{{ cite.trim() }}</pre>
         </div>
       </div>

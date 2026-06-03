@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { profile } from '~/assets/data'
-
 useHead({ title: 'Contact' })
+
+import { profile } from '~/assets/data'
 
 const { isJp } = useLocale()
 </script>
