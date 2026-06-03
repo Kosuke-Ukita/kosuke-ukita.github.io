@@ -16,7 +16,7 @@ const grantList = computed(() => isJp.value ? grantsJp : grants)
 const awardList = computed(() => isJp.value ? awardsJp : awards)
 const skillGroups = others.filter(o => o.category !== 'Research Interests')
 
-const cvPdf = computed(() => isJp.value ? '/assets/cv-jp.pdf' : '/assets/cv.pdf')
+const cvPdf = computed(() => isJp.value ? '/assets/cv/jp.pdf' : '/assets/cv/en.pdf')
 const profileName = computed(() => isJp.value ? profile.namejp : profile.name)
 const profileGrade = computed(() => isJp.value ? profile.gradejp : profile.grade)
 const profileAffiliation = computed(() => isJp.value ? profile.affiliationjp : profile.affiliation)
