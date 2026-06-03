@@ -85,21 +85,21 @@ const newsSlug = (path: string) => path.split('/').pop() ?? ''
               </div>
 
               <div class="flex flex-nowrap items-center gap-2 mt-2">
-                <span v-if="paper.type"
-                  class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
-                  :class="['Spotlight', 'Oral'].includes(paper.type)
-                    ? 'text-primary border-primary/40'
-                    : paper.type.includes('Poster')
-                      ? 'text-gray-600 dark:text-zinc-400 border-gray-400 dark:border-zinc-500'
-                      : 'text-gray-400 dark:text-zinc-600 border-gray-200 dark:border-zinc-700'"
-                >{{ paper.type }}</span>
-
                 <span
                   class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
                   :class="paper.note === 'Refereed'
                     ? 'text-primary border-primary/40'
                     : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
                 >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
+
+                <span v-if="paper.type"
+                  class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
+                  :class="paper.type.includes('Spotlight') || paper.type.includes('Oral')
+                    ? 'text-primary border-primary/40'
+                    : paper.type.includes('Poster')
+                      ? 'text-gray-600 dark:text-zinc-400 border-gray-400 dark:border-zinc-500'
+                      : 'text-gray-400 dark:text-zinc-600 border-gray-200 dark:border-zinc-700'"
+                >{{ paper.type }}</span>
 
                 <a v-for="link in paper.links"
                   :key="link.name" :href="link.url" target="_blank" rel="noopener" :title="link.name"
