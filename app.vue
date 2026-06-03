@@ -34,8 +34,6 @@ const navLinks = computed(() => {
     { to: `${p}/biography`,         label: 'Biography' },
     { to: `${p}/cv`,                label: 'CV' },
     { to: `${p}/publications`,      label: 'Publications' },
-    { to: `${p}/grants`,            label: 'Grants' },
-    { to: `${p}/awards`,            label: 'Awards' },
     { to: `${p}/contact`,           label: 'Contact' },
   ]
 })
@@ -85,7 +83,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-zinc-900 text-gray-800 dark:text-gray-200 font-sans">
+  <div class="min-h-screen flex flex-col bg-white dark:bg-zinc-900 text-gray-800 dark:text-gray-200 font-sans">
 
     <!-- ── Mobile overlay ─────────────────────────────────────────────────── -->
     <Transition name="fade">
@@ -278,7 +276,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     </header>
 
     <!-- ── Page content ───────────────────────────────────────────────────── -->
-    <main>
+    <main class="flex-1">
       <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 py-9 sm:py-11">
         <NuxtPage />
       </div>

@@ -4,7 +4,7 @@ en:
     year: "Apr. 2026 - Present"
     organization: "Japan Science and Technology Agency (JST)"
     orgurl: "https://www.jst.go.jp/jisedai/spring/"
-    price: "JPY ¥1,800,000 (+¥900,000) / year"
+    price: "JPY ¥1,800,000 (+ ¥900,000) / year"
     grantid: "JPMJSP2154"
     internal: "0073"
 
@@ -15,7 +15,7 @@ en:
     orgurl: "https://www.pakdd2026.org/"
     price: "USD $500"
 
-  - name: "International Travel Grant (海外渡航旅費援助)"
+  - name: "International Travel Grant"
     url: "https://www.taf.or.jp/grant-b/02/"
     year: "Apr. 2026"
     organization: "The Telecommunications Advancement Foundation"

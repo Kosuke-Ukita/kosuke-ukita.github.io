@@ -1,26 +1,26 @@
 en:
-  - name: "Research Assistant"
+  - name: "Research Assistant (RA)"
     year: "Dec. 2023 - Mar. 2026"
     descriptions:
       - "Superviser: Tsuyoshi Okita"
       - "Researched and Developed foundation models"
 
-  - name: "Teaching Assistant"
+  - name: "Teaching Assistant (TA)"
     year: "Apr. 2024 - Jun. 2026"
     descriptions:
       - "Lecturer: Tsuyoshi Okita"
-      - "- Deep Learning（深層学習）"
-      - "- Deep Learning Exercise（知能情報工学プロジェクト-深層学習演習）"
-      - "- Deep Learning Advanced（深層学習特論I-大学院科目）"
+      - "- Deep Learning"
+      - "- Deep Learning Exercise"
+      - "- Deep Learning Advanced I"
 
   - name: "OPTiM Corporation"
     year: "Oct. 2023 - Nov. 2023"
     descriptions:
       - "Research Intern / Part-time Research Assistant"
-      - "Engaged in research and developed AI technologies for agricultural DX"
+      - "Research and developed AI technologies for agricultural DX"
 
 jp:
-  - name: "Research Assistant (RA)"
+  - name: "技術補佐員・支援研究員 (RA)"
     year: "Dec. 2023 - Mar. 2026"
     descriptions:
       - "指導教員: 大北 剛"
@@ -38,4 +38,4 @@ jp:
     year: "Oct. 2023 - Nov. 2023"
     descriptions:
       - "研究インターン / アルバイト研究スタッフ"
-      - "農業DXのためのAI技術研究と開発に従事"
+      - "農業DX・AI技術の研究開発"

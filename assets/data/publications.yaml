@@ -9,7 +9,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/ukita2026efficient.pdf"
+      url: "/assets/papers/ukita2026efficient.pdf"
     - name: Page
       url: "https://www.pakdd2026.org/accepted-papers#:~:text=Efficient%20Inference%20for%20Flow%20Matching%20via%20Unified%20Path%20CFG"
   cite: |
@@ -84,7 +84,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/matsuishi2025multimodal.pdf"
+      url: "/assets/papers/matsuishi2025multimodal.pdf"
     - name: Page
       url: "https://www.jstage.jst.go.jp/article/ijabc/2025/3/2025_124/_article/-char/en"
     - name: Arxiv
@@ -111,7 +111,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/ukita2025energy.pdf"
+      url: "/assets/papers/ukita2025energy.pdf"
     - name: Page
       url: "https://www.dropbox.com/scl/fi/i3yjkrd9lqaybflfzmlss/Poster-Session.xlsx?rlkey=0bntd96bmxtje3f0r04w6yeat&e=1&st=rdyvop6k&dl=0"
   cite: |
@@ -134,7 +134,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/ukita2025image.pdf"
+      url: "/assets/papers/ukita2025image.pdf"
     - name: Page
       url: "https://arxiv.org/abs/2505.06890"
     - name: Arxiv
@@ -160,7 +160,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/matsuishi2025AURA.pdf"
+      url: "/assets/papers/matsuishi2025AURA.pdf"
     - name: Page
       url: "https://www.ipsj.or.jp/kenkyukai/event/mbl114ubi85.html#:~:text=8.%20%5BUBI%5D%20AURA,%E4%B9%9D%E5%B7%9E%E5%B7%A5%E6%A5%AD%E5%A4%A7%E5%AD%A6)"
   cite: |
@@ -184,7 +184,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/ukita2024improving.pdf"
+      url: "/assets/papers/ukita2024improving.pdf"
     - name: Page
       url: "https://conferenceservice.jp/www/saes2024/"
   cite: |
@@ -207,7 +207,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/miyazaki2024ensemble.pdf"
+      url: "/assets/papers/miyazaki2024ensemble.pdf"
     - name: Page
       url: "https://conferenceservice.jp/www/saes2024/"
   cite: |
@@ -256,7 +256,7 @@
     - ""
   links:
     - name: PDF
-      url: "/papers/ukita2024rep.pdf"
+      url: "/assets/papers/ukita2024rep.pdf"
     - name: Page
       url: "https://www.ipsj-kyushu.jp/page/ronbun/hinokuni/1013/Papers/A4-4.pdf"
   cite: |
