@@ -3,6 +3,7 @@
 
 - [x] Built with Nuxt 3
 - [x] Tailwind CSS
+- [x] TypeScript
 - [x] English/Japanese switching
 - [x] light/dark mode switching
 
