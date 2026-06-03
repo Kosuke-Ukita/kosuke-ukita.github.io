@@ -44,10 +44,10 @@ const groupedPublications = useGroupedPublications()
               <div class="flex flex-nowrap items-center gap-2 mt-2">
                 <span
                   class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
-                  :class="paper.note === 'Refereed'
+                  :class="paper.refereed
                     ? 'text-primary border-primary/40'
                     : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
-                >{{ paper.note === 'Refereed' ? 'refereed' : 'non-refereed' }}</span>
+                >{{ paper.refereed ? 'Refereed' : 'Non-refereed' }}</span>
 
                 <span v-if="paper.type"
                   class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"

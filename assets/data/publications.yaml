@@ -4,7 +4,7 @@
   date: "June 2026"
   location: "Hong Kong, China"
   type: "Oral"
-  note: "Refereed"
+  refereed: true
   tags:
     - ""
   links:
@@ -27,7 +27,7 @@
   date: "May 2026"
   location: "Tangier, Morocco"
   type: "Spotlight (top 3%)"
-  note: "Refereed"
+  refereed: true
   tags:
     - ""
   links:
@@ -56,7 +56,7 @@
   date: "October 2025"
   location: "Espoo, Finland"
   type: "Oral"
-  note: "Refereed"
+  refereed: true
   tags:
     - ""
   links:
@@ -79,7 +79,7 @@
   date: "November 2025"
   location: "Kitakyushu, Japan"
   type: "Oral"
-  note: "Refereed"
+  refereed: true
   tags:
     - ""
   links:
@@ -106,7 +106,7 @@
   date: "October 2025"
   location: "Kitakyushu, Japan"
   type: "Poster"
-  note: "Non-refereed"
+  refereed: false
   tags:
     - ""
   links:
@@ -129,7 +129,7 @@
   date: "May 2025"
   location: ""
   type: "Preprint"
-  note: "Non-refereed"
+  refereed: false
   tags:
     - ""
   links:
@@ -155,7 +155,7 @@
   date: "February 2025"
   location: "Osaka, Japan"
   type: "Oral"
-  note: "Non-refereed"
+  refereed: false
   tags:
     - ""
   links:
@@ -179,7 +179,7 @@
   date: "November 2024"
   location: "Kitakyushu, Japan"
   type: "Oral"
-  note: "Non-refereed"
+  refereed: false
   tags:
     - ""
   links:
@@ -202,7 +202,7 @@
   date: "November 2024"
   location: "Kitakyushu, Japan"
   type: "Oral"
-  note: "Non-refereed"
+  refereed: false
   tags:
     - ""
   links:
@@ -225,7 +225,7 @@
   date: "October 2024"
   location: "Melbourne, Australia"
   type: "Oral"
-  note: "Refereed"
+  refereed: true
   tags:
     - ""
   links:
@@ -251,7 +251,7 @@
   date: "March 2024"
   location: "Kagoshima, Japan"
   type: "Oral"
-  note: "Non-refereed"
+  refereed: false
   tags:
     - ""
   links:
@@ -275,7 +275,7 @@
   date: "October 2023"
   location: "Cancun, Mexico"
   type: "Oral"
-  note: "Refereed"
+  refereed: true
   tags:
     - ""
   links:
@@ -306,7 +306,7 @@
 #   date: "January 2023"
 #   location: "Tokyo, Japan"
 #   type: "Poster"
-#   note: "Non-refereed"
+#   refereed: false
 #   tags:
 #     - ""
 #   links:
@@ -322,7 +322,7 @@
 #   date: "August 2019"
 #   location: "Osaka, Japan"
 #   type: "Poster"
-#   note: "Non-refereed"
+#   refereed: false
 #   tags:
 #     - ""
 #   links:
@@ -338,7 +338,7 @@
 #   date: "July 2019"
 #   location: "Kagawa, Japan"
 #   type: "Poster"
-#   note: "Non-refereed"
+#   refereed: false
 #   tags:
 #     - ""
 #   links:
@@ -354,7 +354,7 @@
 #   date: "May 2019"
 #   location: "Tokyo, Japan"
 #   type: "Poster"
-#   note: "Non-refereed"
+#   refereed: false
 #   tags:
 #     - ""
 #   links:
