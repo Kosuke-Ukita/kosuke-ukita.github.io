@@ -30,7 +30,7 @@ const mainPages = computed(() => [
         <li v-for="link in mainPages" :key="link.to">
           <NuxtLink :to="link.to" class="group flex items-baseline gap-3 text-sm">
             - 
-            <span class="font-mono font-small text-gray-800 dark:text-zinc-200 group-hover:text-primary transition-colors w-28 shrink-0">{{ link.label }}</span>
+            <span class="font-mono font-small text-gray-700 dark:text-zinc-300 group-hover:text-primary transition-colors w-32 shrink-0">{{ link.label }}</span>
             <span class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ isJp ? link.descJp : link.desc }}</span>
           </NuxtLink>
         </li>
@@ -44,11 +44,10 @@ const mainPages = computed(() => [
         <li v-for="social in profile.socials" :key="social.name">
           <a :href="social.url" target="_blank" rel="noopener" class="group flex items-center gap-3 text-sm">
             · 
-            <span class="flex items-center gap-1.5 font-mono font-medium text-gray-800 dark:text-zinc-200 group-hover:text-primary transition-colors w-28 shrink-0">
+            <span class="flex items-center gap-1.5 font-mono font-medium text-gray-700 dark:text-zinc-300 group-hover:text-primary transition-colors shrink-0">
               <Icon :name="social.icon" class="w-3.5 h-3.5 shrink-0" />
-              <div class="font-mono text-[0.6rem] text-gray-400 dark:text-zinc-500 hover:underline">{{ social.name }}</div>
+              <div class="font-mono ml-2 text-[0.7rem] text-gray-500 dark:text-zinc-400 hover:underline">{{ social.name }}</div>
             </span>
-            <span class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono truncate hover:underline">{{ social.url }}</span>
           </a>
         </li>
       </ul>

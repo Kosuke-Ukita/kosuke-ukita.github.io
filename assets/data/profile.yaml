@@ -51,6 +51,26 @@ socials:
     url: "https://huggingface.co/sha-ce"
     icon: "simple-icons:huggingface"
 
+  - name: X (Twitter)
+    url: "https://x.com/"
+    icon: "simple-icons:x"
+  
+  - name: Instagram
+    url: "https://www.instagram.com/"
+    icon: "simple-icons:instagram"
+  
+  - name: YouTube
+    url: "https://www.youtube.com/"
+    icon: "simple-icons:youtube"
+  
+  - name: WhatsApp
+    url: "https://www.whatsapp.com/"
+    icon: "simple-icons:whatsapp"
+  
+  - name: note
+    url: "https://note.com/et_alia"
+    icon: "simple-icons:note"
+
   - name: Source Code
     url: "https://github.com/Kosuke-Ukita/kosuke-ukita.github.io"
     icon: "heroicons:code-bracket"

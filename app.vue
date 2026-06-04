@@ -111,7 +111,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
         <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">{{ profile.place }}</p>
       </div>
       <div class="flex flex-wrap gap-2.5 mb-2">
-        <a v-for="social in profile.socials"
+        <a v-for="social in profile.socials.filter(s => ['GitHub','Google Scholar','ORCID','LinkedIn'].includes(s.name))"
           :key="social.name" :href="social.url" target="_blank" rel="noopener" :title="social.name"
           class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors"
         ><Icon :name="social.icon" class="w-3.5 h-3.5" /></a>
@@ -197,7 +197,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
             <p class="text-xs text-gray-600 dark:text-zinc-400 mt-0.5">{{ profile.affiliation }}</p>
             <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">{{ profile.place }}</p>
             <div class="flex flex-wrap gap-2.5 mt-2">
-              <a v-for="social in profile.socials"
+              <a v-for="social in profile.socials.filter(s => ['GitHub','Google Scholar','ORCID','LinkedIn'].includes(s.name))"
                 :key="social.name" :href="social.url" target="_blank" rel="noopener" :title="social.name"
                 class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors"
               ><Icon :name="social.icon" class="w-3.5 h-3.5" /></a>
