@@ -1,7 +1,7 @@
 en:
-  - name: "Kyushu Institute of Technology SPRING Scholarship Awardee"
+  - name: "SPRING Scholarship Awardee"
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
-    year: "Apr. 2026 - Present"
+    year: "Apr. 2026 - Mar. 2029"
     organization: "Japan Science and Technology Agency (JST)"
     orgurl: "https://www.jst.go.jp/jisedai/spring/"
     price: "JPY ¥1,800,000 (+ ¥900,000) / year"
@@ -23,9 +23,9 @@ en:
     price: "JPY ¥290,000"
 
 jp:
-  - name: "九州工業大学SPRINGスカラシップ研究学生"
+  - name: "SPRINGスカラシップ研究学生"
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
-    year: "Apr. 2026 - Present"
+    year: "Apr. 2026 - Mar. 2029"
     organization: "国立研究開発法人 科学技術振興機構 (JST)"
     orgurl: "https://www.jst.go.jp/jisedai/spring/"
     price: "JPY ¥1,800,000 (+ ¥900,000) / 年"
