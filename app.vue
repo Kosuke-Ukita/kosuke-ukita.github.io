@@ -34,7 +34,6 @@ const navLinks = computed(() => {
     { to: `${p}/biography`,         label: 'Biography' },
     { to: `${p}/cv`,                label: 'CV' },
     { to: `${p}/publications`,      label: 'Publications' },
-    { to: `${p}/contact`,           label: 'Contact' },
     { to: `${p}/links`,             label: 'Links' },
   ]
 })
