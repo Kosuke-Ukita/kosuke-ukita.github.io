@@ -31,7 +31,7 @@ const mainPages = computed(() => [
           <NuxtLink :to="link.to" class="group flex items-baseline gap-3 text-sm">
             - 
             <span class="font-mono font-small text-gray-700 dark:text-zinc-300 group-hover:text-primary transition-colors w-32 shrink-0">{{ link.label }}</span>
-            <span class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono">{{ isJp ? link.descJp : link.desc }}</span>
+            <span class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono group-hover:underline">{{ isJp ? link.descJp : link.desc }}</span>
           </NuxtLink>
         </li>
       </ul>
@@ -46,7 +46,7 @@ const mainPages = computed(() => [
             · 
             <span class="flex items-center gap-1.5 font-mono font-medium text-gray-700 dark:text-zinc-300 group-hover:text-primary transition-colors shrink-0">
               <Icon :name="social.icon" class="w-3.5 h-3.5 shrink-0" />
-              <div class="font-mono ml-2 text-[0.7rem] text-gray-500 dark:text-zinc-400 hover:underline">{{ social.name }}</div>
+              <div class="font-mono ml-2 text-[0.7rem] text-gray-500 dark:text-zinc-400 group-hover:underline">{{ social.name }}</div>
             </span>
           </a>
         </li>
