@@ -11,7 +11,7 @@ affiliationjp: "九州工業大学大学院 情報工学府"
 place: "Fukuoka, Japan"
 
 email: "ukita.kosuke299@mail.kyutech.jp"
-email_: "ukita.kosuke00@gmail.com"
+gmail: "ukita.kosuke00@gmail.com"
 
 bio: |-
   浮田 嵩祐です．AIに関する研究をしているPhD学生です．
@@ -33,26 +33,25 @@ bioen: |-
 socials:
   - name: GitHub
     url: "https://github.com/Kosuke-Ukita"
-    icon: "uil:github"
-    color: "hover:text-gray-300 transition"
+    icon: "simple-icons:github"
 
   - name: Google Scholar
     url: "https://scholar.google.com/citations?user=rmfjRpEAAAAJ"
     icon: "simple-icons:googlescholar"
-    color: "hover:text-blue-600 transition"
 
   - name: ORCID
     url: "https://orcid.org/0009-0008-3325-1363"
     icon: "simple-icons:orcid"
-    color: "hover:text-green-600 transition"
 
   - name: LinkedIn
     url: "https://www.linkedin.com/in/ukita000"
-    icon: "uil:linkedin"
-    color: "hover:text-blue-700 transition"
+    icon: "simple-icons:linkedin"
 
   - name: Hugging Face
     url: "https://huggingface.co/sha-ce"
     icon: "simple-icons:huggingface"
-    color: "hover:text-yellow-500 transition"
+
+  - name: Source Code
+    url: "https://github.com/Kosuke-Ukita/kosuke-ukita.github.io"
+    icon: "heroicons:code-bracket"
 
