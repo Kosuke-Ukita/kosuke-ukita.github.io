@@ -14,7 +14,7 @@ const edu = computed(() => isJp.value ? educationJp : education)
 
 <template>
     <section>
-      <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Education</h1>
+      <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-12 tracking-tight">Education</h1>
       <h2 class="section-title"></h2>
       <div class="space-y-5">
         <div v-for="(item, i) in edu" :key="i" class="relative flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">

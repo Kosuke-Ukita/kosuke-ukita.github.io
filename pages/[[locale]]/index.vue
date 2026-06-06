@@ -33,7 +33,7 @@ const newsSlug = (path: string) => path.split('/').pop() ?? ''
 
 <template>
   <div class="space-y-11">
-    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10">Home</h1>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-12 tracking-tight">Home</h1>
 
     <!-- Bio -->
     <section>

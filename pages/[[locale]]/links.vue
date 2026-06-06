@@ -16,7 +16,7 @@ const linkPages = computed(() => {
 
 <template>
   <div>
-    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Links</h1>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-12 tracking-tight">Links</h1>
 
     <!-- Main pages -->
     <section class="mb-10">

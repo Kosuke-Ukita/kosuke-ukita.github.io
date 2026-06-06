@@ -10,7 +10,7 @@ const groupedPublications = useGroupedPublications()
 
 <template>
   <div>
-    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl tracking-tight mb-10">Publications</h1>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-12 tracking-tight">Publications</h1>
 
     <div v-for="group in groupedPublications" :key="group.year" class="mb-12">
       <h2 class="font-mono text-sm font-semibold text-primary pb-2 mb-7 border-b border-gray-100 dark:border-zinc-800">{{ group.year }}</h2>

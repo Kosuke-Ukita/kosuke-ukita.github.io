@@ -7,7 +7,7 @@ const groupedGrants = useGroupedGrants()
 
 <template>
   <div>
-    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl my-8 tracking-tight">Grants</h1>
+    <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-xl mb-12 tracking-tight">Grants</h1>
 
     <div v-for="group in groupedGrants" :key="group.year" class="mb-10">
       <h2 class="font-mono text-sm font-semibold text-primary mb-4 pb-1.5 border-b border-gray-100 dark:border-zinc-800">{{ group.year }}</h2>
