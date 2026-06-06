@@ -52,19 +52,19 @@ socials:
     icon: "simple-icons:huggingface"
 
   - name: X (Twitter)
-    url: "https://x.com/"
+    url: ""
     icon: "simple-icons:x"
   
   - name: Instagram
-    url: "https://www.instagram.com/"
+    url: ""
     icon: "simple-icons:instagram"
   
   - name: YouTube
-    url: "https://www.youtube.com/"
+    url: ""
     icon: "simple-icons:youtube"
   
   - name: WhatsApp
-    url: "https://www.whatsapp.com/"
+    url: ""
     icon: "simple-icons:whatsapp"
   
   - name: Note
