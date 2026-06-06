@@ -1,0 +1,51 @@
+pages:
+  - to: ''
+    label: Home
+    desc: Overview & recent activity
+    descJp: ホーム・概要・最近の活動
+
+  - to: news
+    label: News
+    desc: Latest updates and announcements
+    descJp: 最新情報・お知らせ
+  
+  - to: biography
+    label: Biography
+    desc: Academic and professional background
+    descJp: 略歴・自己紹介
+
+  - to: cv
+    label: CV
+    desc: Curriculum vitae
+    descJp: 履歴書
+  
+  - to: education
+    label: Education
+    desc: Academic background and degrees
+    descJp: 学歴
+  
+  - to: experience
+    label: Experience
+    desc: Professional experience
+    descJp: 職務経験
+  
+  - to: publications
+    label: Publications
+    desc: Full list of publications
+    descJp: 論文・発表一覧
+  
+  - to: awards
+    label: Awards
+    desc: Awards and honors received
+    descJp: 受賞・表彰
+  
+  - to: grants
+    label: Grants
+    desc: Research grants and funding
+    descJp: 研究費・資金獲得
+  
+  - to: contact
+    label: Contact
+    desc: Get in touch
+    descJp: お問い合わせ
+

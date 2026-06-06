@@ -7,7 +7,7 @@ export const useGroupedAwards = () => {
   return computed(() =>
     groupByYear(
       isJp.value ? awardsJp : awards,
-      item => item.year.slice(5, 9)
+      item => item.year.match(/\d{4}/)?.[0] ?? ''
     )
   )
 }

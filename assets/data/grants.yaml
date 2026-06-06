@@ -1,47 +1,47 @@
 en:
-  - name: "SPRING Scholarship Awardee"
+  - name: SPRING Scholarship Awardee
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
-    year: "Apr. 2026 - Mar. 2029"
-    organization: "Japan Science and Technology Agency (JST)"
+    year: April 2026 - March 2029
+    organization: Japan Science and Technology Agency (JST)
     orgurl: "https://www.jst.go.jp/jisedai/spring/"
-    price: "JPY ¥1,800,000 (+ ¥900,000) / year"
-    grantid: "JPMJSP2154"
-    internal: "0073"
+    price: JPY ¥1,800,000 (+ ¥900,000) / year
+    grantid: JPMJSP2154
+    internal: 0073
 
-  - name: "Student Travel Award"
+  - name: Student Travel Award
     url: "https://www.pakdd2026.org/awardees#:~:text=Kosuke%20Ukita%20(Kyushu%20Institue%20of%20Technology)"
-    year: "Jun. 2026"
-    organization: "The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)"
+    year: June 2026
+    organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)
     orgurl: "https://www.pakdd2026.org/"
-    price: "USD $500"
+    price: USD $500
 
-  - name: "International Travel Grant"
+  - name: International Travel Grant
     url: "https://www.taf.or.jp/files/2270/85011411.pdf"
-    year: "Apr. 2026"
-    organization: "The Telecommunications Advancement Foundation"
+    year: April 2026
+    organization: The Telecommunications Advancement Foundation
     orgurl: "https://www.taf.or.jp/"
-    price: "JPY ¥290,000"
+    price: JPY ¥290,000
 
 jp:
-  - name: "SPRINGスカラシップ研究学生"
+  - name: SPRINGスカラシップ研究学生
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
-    year: "Apr. 2026 - Mar. 2029"
-    organization: "国立研究開発法人 科学技術振興機構 (JST)"
+    year: April 2026 - March 2029
+    organization: 国立研究開発法人 科学技術振興機構 (JST)
     orgurl: "https://www.jst.go.jp/jisedai/spring/"
-    price: "JPY ¥1,800,000 (+ ¥900,000) / 年"
-    grantid: "JPMJSP2154"
-    internal: "0073"
+    price: JPY ¥1,800,000 (+ ¥900,000) / 年
+    grantid: JPMJSP2154
+    internal: 0073
     
-  - name: "Student Travel Award"
+  - name: Student Travel Award
     url: "https://www.pakdd2026.org/awardees#:~:text=Kosuke%20Ukita%20(Kyushu%20Institue%20of%20Technology)"
-    year: "Jun. 2026"
-    organization: "The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)"
+    year: June 2026
+    organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)
     orgurl: "https://www.pakdd2026.org/"
-    price: "USD $500"
+    price: USD $500
 
-  - name: "海外渡航旅費援助"
+  - name: 海外渡航旅費援助
     url: "https://www.taf.or.jp/files/2270/85011411.pdf"
-    year: "Apr. 2026"
-    organization: "公益財団法人 電気通信普及財団"
+    year: April 2026
+    organization: 公益財団法人 電気通信普及財団
     orgurl: "https://www.taf.or.jp/"
-    price: "JPY ¥290,000"
+    price: JPY ¥290,000

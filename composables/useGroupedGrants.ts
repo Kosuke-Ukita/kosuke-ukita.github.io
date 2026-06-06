@@ -7,7 +7,7 @@ export const useGroupedGrants = () => {
   return computed(() =>
     groupByYear(
       isJp.value ? grantsJp : grants,
-      item => item.year.slice(5, 9)
+      item => item.year.match(/\d{4}/)?.[0] ?? ''
     )
   )
 }

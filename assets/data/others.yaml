@@ -1,4 +1,4 @@
-- category: "Research Interests"
+- category: Research Interests
   items:
     - Generative AI
     - Flow Matching
@@ -7,7 +7,7 @@
     - Diffusion Models
     - Machine Learning
 
-- category: "Languages"
+- category: Languages
   items:
     - Python
     - C++
@@ -19,7 +19,7 @@
     - SQL
     - R
 
-- category: "Frameworks & Tools"
+- category: Frameworks & Tools
   items:
     - PyTorch
     - TensorFlow
@@ -29,7 +29,7 @@
     - Docker
     - Git
 
-- category: "Other Skills"
+- category: Other Skills
   items:
     - Deep Learning
     - Neural Networks

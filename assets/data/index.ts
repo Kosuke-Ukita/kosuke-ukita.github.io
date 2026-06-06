@@ -1,5 +1,6 @@
 import profile from './profile.yaml'
 import publications from './publications.yaml'
+import pages from './pages.yaml'
 import others from './others.yaml'
 
 import awardsData from './awards.yaml'
@@ -21,6 +22,7 @@ const experienceJp = experienceData.jp
 export {
   profile,
   publications,
+  pages,
   others,
   awards, awardsJp,
   grants, grantsJp,
