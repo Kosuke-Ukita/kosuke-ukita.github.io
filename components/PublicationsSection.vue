@@ -168,13 +168,6 @@ const groupedPubs = useGroupedPublications()
           </div>
         </div>
         <div v-if="nowrap" class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent" />
-        <Transition name="fade">
-          <div v-if="showHover && hoveredIndex === i" class="absolute left-0 top-full z-20 mt-1 w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded shadow-xl p-3 space-y-1.5">
-            <p class="text-[0.78rem] font-semibold text-gray-900 dark:text-zinc-100 leading-snug">{{ paper.title }}</p>
-            <p class="text-[0.72rem] text-gray-500 dark:text-zinc-400 leading-relaxed [&_strong]:underline [&_strong]:underline-offset-2" v-html="highlightAuthor(paper.authors)" />
-            <p class="text-[0.72rem] text-gray-400 dark:text-zinc-500 italic leading-snug">{{ paper.venue }}</p>
-          </div>
-        </Transition>
       </li>
     </ol>
     <div v-if="hasMore" class="mt-6">
