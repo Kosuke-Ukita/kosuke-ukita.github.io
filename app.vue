@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { profile } from '~/assets/data'
 
-const isMenuOpen = ref(true)
+const isMenuOpen = ref(false)
 const toggleMenu = () => { isMenuOpen.value = !isMenuOpen.value }
 const closeMenu = () => { isMenuOpen.value = false }
 
