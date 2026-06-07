@@ -28,12 +28,12 @@ const researchInterests = others.find(o => o.category === 'Research Interests')?
 
     <section>
       <h2 class="section-title">Grants</h2>
-      <GrantsSection :previewCount="5" />
+      <GrantsSection :previewCount="3" />
     </section>
 
     <section>
       <h2 class="section-title">Awards</h2>
-      <AwardsSection :previewCount="5" />
+      <AwardsSection :previewCount="3" />
     </section>
 
     <section v-if="researchInterests.length">
