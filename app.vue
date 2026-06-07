@@ -38,6 +38,8 @@ const navLinks = computed(() => {
   ]
 })
 
+const profile_photo = "/assets/photo.png"
+
 const toggleLocale = () => {
   const path = route.path
   if (isJa.value) {
@@ -51,7 +53,7 @@ useSeoMeta({
   ogTitle: 'Kosuke Ukita',
   description: 'Personal website of Kosuke Ukita, PhD student at Kyushu Institute of Technology.',
   ogDescription: 'Personal website of Kosuke Ukita, PhD student at Kyushu Institute of Technology.',
-  ogImage: '/assets/photo.jpg',
+  ogImage: profile_photo,
   twitterCard: 'summary_large_image',
 })
 useHead({
@@ -100,7 +102,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
       ]"
     >
       <div class="mb-4 shrink-0">
-        <img src="/assets/photo.jpg" alt="Kosuke Ukita" class="w-20 h-20 object-cover rounded" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
+        <img :src="profile_photo" alt="Kosuke Ukita" class="w-20 h-20 object-cover rounded" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
       </div>
       <div class="mb-3 space-y-0.5">
         <h2 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-sm">{{ profile.name }}</h2>
@@ -188,7 +190,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
         <!-- Profile block -->
         <div class="flex gap-5 items-start mb-6">
-          <img src="/assets/photo.jpg" alt="Kosuke Ukita" class="w-[4.5rem] h-[4.5rem] object-cover rounded shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
+          <img :src="profile_photo" alt="Kosuke Ukita" class="w-[4.5rem] h-[4.5rem] object-cover rounded shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
           <div class="space-y-0.5">
             <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-[1rem] leading-tight tracking-tight">{{ profile.name }}</h1>
             <p class="text-xs text-gray-500 dark:text-zinc-400">{{ profile.namejp }}</p>
