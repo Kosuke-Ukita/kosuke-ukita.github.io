@@ -17,7 +17,5 @@ const { data: bio } = await useAsyncData(
     <article class="markdown">
       <ContentRenderer v-if="bio" :value="bio" />
     </article>
-
-    <p class="mt-10 text-[0.7rem] text-gray-300 dark:text-zinc-600 font-mono italic">* bio</p>
   </div>
 </template>
