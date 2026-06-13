@@ -1,43 +1,69 @@
-en:
-  - name: Research Assistant (RA)
-    year: Dec. 2023 - Mar. 2026
-    descriptions:
-      - "Superviser: Tsuyoshi Okita"
-      - Researched and Developed foundation models
+work:
+  en:
+    - name: Research Assistant (RA)
+      year: Dec. 2023 - Mar. 2026
+      descriptions:
+        - "Superviser: Tsuyoshi Okita"
+        - Researched and Developed foundation models
 
-  - name: Teaching Assistant (TA)
-    year: Apr. 2024 - Jun. 2026
-    descriptions:
-      - "Lecturer: Tsuyoshi Okita"
-      - "- Deep Learning"
-      - "- Deep Learning Exercise"
-      - "- Deep Learning Advanced I"
+    - name: Teaching Assistant (TA)
+      year: Apr. 2024 - Jun. 2026
+      descriptions:
+        - "Lecturer: Tsuyoshi Okita"
+        - "- Deep Learning"
+        - "- Deep Learning Exercise"
+        - "- Deep Learning Advanced I"
 
-  - name: OPTiM Corporation
-    year: Oct. 2023 - Nov. 2023
-    descriptions:
-      - Research Intern / Part-time Research Assistant
-      - Research and developed AI technologies for agricultural DX
+    - name: OPTiM Corporation
+      year: Oct. 2023 - Nov. 2023
+      descriptions:
+        - Research Intern / Part-time Research Assistant
+        - Research and developed AI technologies for agricultural DX
 
-jp:
-  - name: Research Assistant (RA)
-    year: Dec. 2023 - Mar. 2026
-    descriptions:
-      - "指導教員: 大北 剛"
-      - 大規模基盤モデルに関する研究開発
-      - "- 技術補佐員"
-      - "- 支援研究員"
+  jp:
+    - name: Research Assistant (RA)
+      year: Dec. 2023 - Mar. 2026
+      descriptions:
+        - "指導教員: 大北 剛"
+        - 大規模基盤モデルに関する研究開発
+        - "- 技術補佐員"
+        - "- 支援研究員"
 
-  - name: Teaching Assistant (TA)
-    year: Apr. 2024 - Jun. 2026
-    descriptions:
-      - "講師: 大北 剛"
-      - "- 深層学習"
-      - "- 知能情報工学プロジェクト-深層学習演習"
-      - "- 深層学習特論I-大学院科目"
+    - name: Teaching Assistant (TA)
+      year: Apr. 2024 - Jun. 2026
+      descriptions:
+        - "講師: 大北 剛"
+        - "- 深層学習"
+        - "- 知能情報工学プロジェクト-深層学習演習"
+        - "- 深層学習特論I-大学院科目"
 
-  - name: 株式会社 オプティム
-    year: Oct. 2023 - Nov. 2023
-    descriptions:
-      - 研究インターン / アルバイト研究スタッフ
-      - 農業DX・AI技術の研究開発
+    - name: 株式会社 オプティム
+      year: Oct. 2023 - Nov. 2023
+      descriptions:
+        - 研究インターン / アルバイト研究スタッフ
+        - 農業DX・AI技術の研究開発
+
+social:
+  en:
+    - name: Student Volunteer (SV)
+      year: Jun. 2026
+      organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)
+      orgurl: "https://www.pakdd2026.org/"
+      descriptions:
+        - "- Session support (audio/visual equipment, mic, laptop, presenter support, etc.)"
+        - "- Registration desk (check-in, badges, enquiries, wayfinding. etc.)"
+        - "- Excursion support (coach head-count, museum guidance, keep group together, etc.)"
+        - "- On-site support (photography, troubleshooting, etc.)"
+
+  jp:
+    - name: 国際会議 · 学生運営スタッフ (SV)
+      year: Jun. 2026
+      organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)
+      orgurl: "https://www.pakdd2026.org/"
+      descriptions:
+        - "- Session support (audio/visual equipment, mic, laptop, presenter support, etc.)"
+        - "- Registration desk (check-in, badges, enquiries, wayfinding. etc.)"
+        - "- Excursion support (coach head-count, museum guidance, keep group together, etc.)"
+        - "- On-site support (photography, troubleshooting, etc.)"
+
+

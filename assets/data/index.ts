@@ -16,8 +16,10 @@ const education = educationData.en
 const educationJp = educationData.jp
 
 import experienceData from './experience.yaml'
-const experience = experienceData.en
-const experienceJp = experienceData.jp
+const experience = experienceData.work.en
+const experienceJp = experienceData.work.jp
+const socialExp = experienceData.social.en
+const socialExpJp = experienceData.social.jp
 
 export {
   profile,
@@ -27,5 +29,5 @@ export {
   awards, awardsJp,
   grants, grantsJp,
   education, educationJp,
-  experience, experienceJp,
+  experience, experienceJp, socialExp, socialExpJp
 }

@@ -54,6 +54,11 @@ const skillGroups = others.filter(o => o.category !== 'Research Interests')
     </section>
 
     <section>
+      <h2 class="section-title">Social Experience</h2>
+      <SocialExpSection :wrap="wrap" />
+    </section>
+
+    <section>
       <h2 class="section-title">Publications</h2>
       <PublicationsSection :wrap="wrap" />
     </section>
