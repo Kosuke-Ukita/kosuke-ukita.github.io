@@ -45,25 +45,25 @@ work:
 
 social:
   en:
-    - name: Student Volunteer (SV)
+    - name: Conference - Student Volunteer (SV)
       year: Jun. 2026
       organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)
       orgurl: "https://www.pakdd2026.org/"
       descriptions:
-        - "- Session support (audio/visual equipment, mic, laptop, presenter support, etc.)"
-        - "- Registration desk (check-in, badges, enquiries, wayfinding. etc.)"
-        - "- Excursion support (coach head-count, museum guidance, keep group together, etc.)"
-        - "- On-site support (photography, troubleshooting, etc.)"
+        - "- Registration desk"
+        - "- Session support"
+        - "- Excursion support"
+        - "- On-site support"
 
   jp:
-    - name: 国際会議 · 学生運営スタッフ (SV)
+    - name: 国際会議 - 学生運営スタッフ (SV)
       year: Jun. 2026
-      organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)
+      organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026) · Hong Kong, China
       orgurl: "https://www.pakdd2026.org/"
       descriptions:
-        - "- セッションサポート (audio/visual equipment, mic, laptop, presenter support, etc.)"
-        - "- レジストレーションデスク (check-in, badges, enquiries, wayfinding. etc.)"
-        - "- エクスカーションサポート (coach head-count, museum guidance, keep group together, etc.)"
-        - "- その他サポート (photography, troubleshooting, etc.)"
+        - "- レジストレーションデスク"
+        - "- セッションサポート"
+        - "- エクスカーションサポート"
+        - "- その他サポート"
 
 

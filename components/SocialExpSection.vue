@@ -26,7 +26,7 @@ const exp = computed(() => isJp.value ? socialExpJp : socialExp)
       >
         <div :class="nowrap ? 'min-w-max pr-12' : ''">
           <p class="font-semibold text-gray-900 dark:text-zinc-100" :class="{ 'whitespace-nowrap': nowrap }">{{ item.name }}</p>
-          <p :class="{ 'whitespace-nowrap': nowrap }"><a :href="item.orgurl" target="_blank" rel="noopener" class="text-[0.72rem] text-gray-400 dark:text-zinc-500 font-mono hover:underline">{{ item.organization }}</a></p>
+          <p :class="{ 'whitespace-nowrap': nowrap }"><a :href="item.orgurl" target="_blank" rel="noopener" class="text-[0.76rem] text-gray-500 dark:text-zinc-400 font-mono hover:underline">{{ item.organization }}</a></p>
           <p v-for="(d, j) in item.descriptions" :key="j" class="text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-0.5" :class="{ 'whitespace-nowrap': nowrap }">{{ d }}</p>
         </div>
       </div>
