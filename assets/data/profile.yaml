@@ -34,44 +34,55 @@ socials:
   - name: GitHub
     url: "https://github.com/Kosuke-Ukita"
     icon: "simple-icons:github"
+    active: true
 
   - name: Google Scholar
     url: "https://scholar.google.com/citations?user=rmfjRpEAAAAJ"
     icon: "simple-icons:googlescholar"
+    active: true
 
   - name: ORCID
     url: "https://orcid.org/0009-0008-3325-1363"
     icon: "simple-icons:orcid"
+    active: true
 
   - name: LinkedIn
     url: "https://www.linkedin.com/in/ukita000"
     icon: "simple-icons:linkedin"
+    active: true
 
   - name: Hugging Face
     url: "https://huggingface.co/sha-ce"
     icon: "simple-icons:huggingface"
+    active: true
 
   - name: X (Twitter)
-    url: ""
+    url: "https://x.com"
     icon: "simple-icons:x"
-  
+    active: false
+
   - name: Instagram
-    url: ""
+    url: "https://www.instagram.com"
     icon: "simple-icons:instagram"
-  
+    active: false
+
   - name: YouTube
-    url: ""
+    url: "https://www.youtube.com"
     icon: "simple-icons:youtube"
+    active: false
   
   - name: WhatsApp
-    url: ""
+    url: "https://www.whatsapp.com"
     icon: "simple-icons:whatsapp"
-  
+    active: false
+
   - name: Note
     url: "https://note.com/et_alia"
     icon: "simple-icons:note"
+    active: true
 
   - name: Source Code
     url: "https://github.com/Kosuke-Ukita/kosuke-ukita.github.io"
     icon: "heroicons:code-bracket"
+    active: true
 

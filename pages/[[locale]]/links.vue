@@ -39,7 +39,7 @@ const linkPages = computed(() => {
         <li v-for="social in profile.socials" :key="social.name">
           <a :href="social.url" target="_blank" rel="noopener" class="group flex items-center gap-3 text-sm">
             · 
-            <span class="flex items-center gap-1.5 font-mono font-medium text-gray-700 dark:text-zinc-300 group-hover:text-primary transition-colors shrink-0">
+            <span class="flex items-center gap-1.5 font-mono font-medium text-gray-700 dark:text-zinc-300 group-hover:text-primary transition-colors shrink-0" :class="{ 'line-through': !social.active }">
               <Icon :name="social.icon" class="w-3.5 h-3.5 shrink-0" />
               <div class="font-mono ml-2 text-[0.7rem] text-gray-500 dark:text-zinc-400 group-hover:underline">{{ social.name }}</div>
             </span>

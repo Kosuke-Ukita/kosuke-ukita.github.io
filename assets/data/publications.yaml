@@ -11,6 +11,8 @@
     - name: PDF
       url: "/assets/papers/ukita2026efficient.pdf"
     - name: Page
+      url: "https://link.springer.com/chapter/10.1007/978-981-92-1465-5_14"
+    - name: Page
       url: "https://www.pakdd2026.org/accepted-papers#:~:text=Efficient%20Inference%20for%20Flow%20Matching%20via%20Unified%20Path%20CFG"
     - name: Slides
       url: "/assets/slides/PAKDD2026.pdf"
