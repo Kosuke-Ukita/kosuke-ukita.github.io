@@ -160,14 +160,30 @@ const previewItem = computed(() =>
   previewIndex.value >= 0 ? (mediaItems.value[previewIndex.value] ?? null) : null
 )
 
-const openPreview = (item: MediaItem) => {
+// Default iframe dimensions per media type (overridable via openPreview second arg)
+const DEFAULT_PREVIEW_SIZES: Partial<Record<MediaType, { width: string; height: string }>> = {
+  pdf:    { width: 'min(680px, calc(100% - 7rem))',  height: 'calc(90vh - 8rem)' },
+  slides: { width: 'min(680px, calc(100% - 7rem))', height: 'calc(90vh - 8rem)' },
+}
+
+const previewSizeOverride = ref<{ width: string; height: string } | null>(null)
+
+const previewSize = computed(() =>
+  previewSizeOverride.value
+  ?? (previewItem.value ? (DEFAULT_PREVIEW_SIZES[previewItem.value.type] ?? null) : null)
+)
+
+const openPreview = (item: MediaItem, size?: { width: string; height: string }) => {
   // pageItems are slices of mediaItems — same object references, so indexOf works
   previewIndex.value = mediaItems.value.indexOf(item)
+  previewSizeOverride.value = size ?? null
 }
-const closePreview = () => { previewIndex.value = -1 }
-const prevPreview = () => { if (previewIndex.value > 0) previewIndex.value-- }
+const closePreview = () => { previewIndex.value = -1; previewSizeOverride.value = null }
+const prevPreview = () => {
+  if (previewIndex.value > 0) { previewIndex.value--; previewSizeOverride.value = null }
+}
 const nextPreview = () => {
-  if (previewIndex.value < mediaItems.value.length - 1) previewIndex.value++
+  if (previewIndex.value < mediaItems.value.length - 1) { previewIndex.value++; previewSizeOverride.value = null }
 }
 
 // Screenshot loading state for link-type preview
@@ -208,6 +224,7 @@ onMounted(() => {
             @click="openPreview(item)"
           >
             <img
+              :ref="(el: any) => { if (el?.complete) loaded[item.src] = true }"
               :src="item.src"
               :alt="item.alt"
               class="w-full h-full object-cover transition-[opacity,transform] duration-300 group-hover:scale-105"
@@ -222,49 +239,35 @@ onMounted(() => {
                 {{ item.alt }}
               </p>
             </div>
-            <span v-if="item.type === 'poster'" class="absolute top-1.5 left-1.5 font-mono text-[0.48rem] bg-black/55 text-white/90 px-1 py-0.5 rounded-sm tracking-wide">Poster</span>
+            <span v-if="item.type === 'image'" class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] bg-black/55 text-white/90 px-1 py-0.5 rounded-sm tracking-wide">Photo</span>
+            <span v-else-if="item.type === 'poster'" class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] bg-black/55 text-white/90 px-1 py-0.5 rounded-sm tracking-wide">Poster</span>
           </button>
 
           <!-- ── PDF card ───────────────────────────────────── -->
-          <button
-            v-else-if="item.type === 'pdf'"
-            class="relative aspect-square bg-gradient-to-br from-rose-50 to-red-100/60 dark:from-rose-950/40 dark:to-red-900/20 group flex flex-col items-center justify-center gap-2 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-rose-200 dark:hover:border-rose-800/50"
-            @click="openPreview(item)"
-          >
-            <Icon name="fa6-regular:file-pdf" class="w-7 h-7 text-rose-400 dark:text-rose-500 shrink-0" />
-            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-4 text-center leading-snug w-full">{{ item.title }}</p>
-            <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-rose-300 dark:border-rose-700/70 text-rose-500 dark:text-rose-400 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
+          <button v-else-if="item.type === 'pdf'" class="relative aspect-square bg-rose-100/20 dark:bg-red-900/10 group flex flex-col items-center justify-center gap-2 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-rose-100 dark:hover:border-rose-500/10" @click="openPreview(item)">
+            <Icon name="heroicons:document-text" class="w-5 h-5 text-rose-300 dark:text-rose-300/50" />
+            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-4 text-center leading-snug w-full group-hover:scale-105 transition-transform duration-300">{{ item.title }}</p>
+            <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-rose-100 dark:border-rose-300/20 text-rose-400 dark:text-rose-300 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
           </button>
 
           <!-- ── Slides card ────────────────────────────────── -->
-          <button
-            v-else-if="item.type === 'slides'"
-            class="relative aspect-square bg-gradient-to-br from-amber-50 to-orange-100/60 dark:from-amber-950/40 dark:to-orange-900/20 group flex flex-col items-center justify-center gap-2 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-amber-200 dark:hover:border-amber-800/50"
-            @click="openPreview(item)"
-          >
-            <Icon name="fa7-solid:chalkboard" class="w-7 h-7 text-amber-400 dark:text-amber-500 shrink-0" />
-            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-4 text-center leading-snug w-full">{{ item.title }}</p>
-            <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-amber-300 dark:border-amber-700/70 text-amber-500 dark:text-amber-400 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
+          <button v-else-if="item.type === 'slides'" class="relative aspect-square bg-amber-100/20 dark:bg-amber-900/10 group flex flex-col items-center justify-center gap-2 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-amber-100 dark:hover:border-amber-500/10" @click="openPreview(item)">
+            <Icon name="heroicons:computer-desktop" class="w-5 h-5 text-amber-300 dark:text-amber-300/50" />
+            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-4 text-center leading-snug w-full group-hover:scale-105 transition-transform duration-300">{{ item.title }}</p>
+            <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-amber-100 dark:border-amber-300/20 text-amber-400 dark:text-amber-300 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
           </button>
 
           <!-- ── Link card ──────────────────────────────────── -->
-          <button
-            v-else-if="item.type === 'link'"
-            class="relative aspect-square bg-gradient-to-br from-slate-50 to-sky-50/60 dark:from-zinc-800/70 dark:to-zinc-800/30 group flex flex-col items-center justify-center gap-1.5 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-slate-200 dark:hover:border-zinc-600"
-            @click="openPreview(item)"
-          >
+          <button v-else-if="item.type === 'link'" class="relative aspect-square bg-sky-100/20 dark:bg-sky-900/10 group flex flex-col items-center justify-center gap-2 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-sky-100 dark:hover:border-sky-500/10" @click="openPreview(item)">
             <div class="flex flex-col items-center gap-0.5 mb-0.5">
               <img
                 v-if="item.domain"
                 :src="`https://www.google.com/s2/favicons?domain=${item.domain}&sz=32`"
-                :alt="item.domain"
-                class="w-5 h-5 rounded"
-                data-no-fade
-                loading="lazy"
+                :alt="item.domain" class="w-4 h-4 rounded" data-no-fade loading="lazy"
               />
               <p v-if="item.domain" class="text-[0.5rem] font-mono text-gray-400 dark:text-zinc-500 truncate max-w-full">{{ item.domain }}</p>
             </div>
-            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-3 text-center leading-snug w-full">{{ item.title }}</p>
+            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-3 text-center leading-snug w-full group-hover:scale-105 transition-transform duration-300">{{ item.title }}</p>
             <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-slate-300 dark:border-zinc-600 text-slate-500 dark:text-zinc-400 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
           </button>
 
@@ -333,7 +336,10 @@ onMounted(() => {
               :key="previewIndex"
               :src="previewItem.src"
               :title="previewItem.title ?? 'Preview'"
-              class="w-[calc(100%-7rem)] h-[calc(100vh-8rem)] rounded-xl border-0 shadow-2xl bg-white"
+              class="rounded-xl border-0 shadow-2xl bg-white"
+              :style="previewSize
+                ? { width: previewSize.width, height: previewSize.height }
+                : { width: 'calc(100% - 7rem)', height: 'calc(100vh - 8rem)' }"
             />
 
             <!-- link: screenshot card -->
@@ -433,18 +439,18 @@ onMounted(() => {
 
 <style scoped>
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* Fast, high-contrast shimmer replacing Tailwind's slow animate-pulse */
 .skeleton {
   background: linear-gradient(90deg, #d1d5db 25%, #f9fafb 50%, #d1d5db 75%);
   background-size: 200% 100%;
-  animation: shimmer 0.9s ease-in-out infinite;
+  animation: shimmer 2.0s ease-in-out infinite;
 }
 
-:global(.dark) .skeleton {
+:global(.dark .skeleton) {
   background: linear-gradient(90deg, #27272a 25%, #52525b 50%, #27272a 75%);
   background-size: 200% 100%;
 }
