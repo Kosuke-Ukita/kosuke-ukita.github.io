@@ -40,7 +40,7 @@
     - name: Page
       url: "https://virtual.aistats.org/virtual/2026/spotlight/13338"
     - name: Slides
-      url: "https://virtual.aistats.org/media/aistats-2026/Slides/13338_MqFdXTC.pdf"
+      url: "/assets/slides/AISTATS2026.pdf"
     - name: Poster
       url: "https://virtual.aistats.org/media/PosterPDFs/AISTATS%202026/14086.png?t=1777970499.4564126"
     - name: Arxiv

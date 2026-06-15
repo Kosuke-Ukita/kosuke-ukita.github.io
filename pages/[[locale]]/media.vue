@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { publications } from '~/assets/data'
+
 useHead({ title: 'Media' })
 
 const { isJp } = useLocale()
@@ -8,53 +10,138 @@ const { data: articles } = await useAsyncData('media-images', () =>
   queryContent('news').sort({ date: -1 }).find()
 )
 
-function extractImages(node: any): { src: string; alt: string }[] {
-  if (!node) return []
-  const images: { src: string; alt: string }[] = []
+// ── Types ──────────────────────────────────────────────────────────────
 
-  if (node.tag === 'img' && typeof node.props?.src === 'string' && node.props.src.startsWith('/assets/')) {
-    images.push({ src: node.props.src, alt: node.props.alt ?? '' })
-  }
-
-  if ((node.type === 'raw' || node.type === 'html') && typeof node.value === 'string') {
-    const re = /<img[^>]+src="([^"]+)"(?:[^>]*alt="([^"]*)")?[^>]*\/?>/g
-    let m
-    while ((m = re.exec(node.value)) !== null) {
-      if (m[1].startsWith('/assets/')) images.push({ src: m[1], alt: m[2] ?? '' })
-    }
-  }
-
-  if (Array.isArray(node.children)) {
-    for (const child of node.children) images.push(...extractImages(child))
-  }
-  return images
-}
+type MediaType = 'image' | 'pdf' | 'slides' | 'poster' | 'link'
 
 interface MediaItem {
+  type: MediaType
   src: string
   alt: string
-  articlePath: string
   date: string
+  label?: string
+  title?: string
+  articlePath?: string
+  domain?: string
 }
 
-const mediaItems = computed<MediaItem[]>(() => {
+// ── Helpers ────────────────────────────────────────────────────────────
+
+function extractImages(node: any): { src: string; alt: string }[] {
+  if (!node) return []
+  const imgs: { src: string; alt: string }[] = []
+  if (node.tag === 'img' && typeof node.props?.src === 'string' && node.props.src.startsWith('/assets/')) {
+    imgs.push({ src: node.props.src, alt: node.props.alt ?? '' })
+  }
+  if ((node.type === 'raw' || node.type === 'html') && typeof node.value === 'string') {
+    const re = /<img[^>]+>/g
+    let m: RegExpExecArray | null
+    while ((m = re.exec(node.value)) !== null) {
+      const src = /src="([^"]+)"/.exec(m[0])?.[1]
+      const alt = /alt="([^"]*)"/.exec(m[0])?.[1] ?? ''
+      if (src && src.startsWith('/assets/')) imgs.push({ src, alt })
+    }
+  }
+  if (Array.isArray(node.children)) {
+    for (const child of node.children) imgs.push(...extractImages(child))
+  }
+  return imgs
+}
+
+const MONTH_MAP: Record<string, string> = {
+  January: '01', February: '02', March: '03', April: '04',
+  May: '05', June: '06', July: '07', August: '08',
+  September: '09', October: '10', November: '11', December: '12',
+}
+
+function parsePubDate(d: string): string {
+  const parts = (d ?? '').trim().match(/^(\w+)\s+(\d{4})$/)
+  if (!parts) return d ?? ''
+  const [, month, year] = parts
+  return `${year}-${MONTH_MAP[month ?? ''] ?? '01'}-01`
+}
+
+function getDomain(url: string): string {
+  try { return new URL(url).hostname.replace(/^www\./, '') }
+  catch { return url }
+}
+
+function isImageUrl(url: string): boolean {
+  return /\.(png|jpe?g|gif|webp|svg)(\?|$)/i.test(url)
+}
+
+// ── Data ───────────────────────────────────────────────────────────────
+
+const newsItems = computed<MediaItem[]>(() => {
   if (!articles.value) return []
   const items: MediaItem[] = []
+  const seen = new Set<string>()
   for (const article of articles.value) {
     const slug = (article._path as string)?.split('/').pop() ?? ''
     for (const img of extractImages(article.body)) {
-      items.push({ ...img, articlePath: `${newsBase.value}/${slug}`, date: article.date as string })
+      if (seen.has(img.src)) continue
+      seen.add(img.src)
+      items.push({
+        type: 'image',
+        src: img.src,
+        alt: img.alt,
+        date: (article.date as string) ?? '',
+        articlePath: `${newsBase.value}/${slug}`,
+      })
     }
   }
   return items
 })
 
-// Pagination
+const pubItems = computed<MediaItem[]>(() => {
+  const items: MediaItem[] = []
+  for (const pub of publications) {
+    const p = pub as any
+    const date = parsePubDate(p.date ?? '')
+    const title = p.title as string
+    const links = (p.links ?? []) as Array<{ name: string; url: string }>
+    let hasPage = false
+
+    for (const link of links) {
+      const { name, url } = link
+      if (name === 'PDF' && url.startsWith('/assets/')) {
+        items.push({ type: 'pdf', src: url, alt: title, date, label: 'PDF', title })
+      } else if (name === 'Slides') {
+        items.push({ type: 'slides', src: url, alt: title, date, label: 'Slides', title })
+      } else if (name === 'Poster') {
+        const type: MediaType = isImageUrl(url) ? 'poster' : 'pdf'
+        items.push({ type, src: url, alt: title, date, label: 'Poster', title })
+      } else if (name === 'Page' && !hasPage) {
+        hasPage = true
+        items.push({ type: 'link', src: url, alt: title, date, label: 'Page', title, domain: getDomain(url) })
+      } else if (name === 'Arxiv' && !hasPage) {
+        items.push({ type: 'link', src: url, alt: title, date, label: 'arXiv', title, domain: 'arxiv.org' })
+      }
+    }
+  }
+  return items
+})
+
+const mediaItems = computed<MediaItem[]>(() => {
+  const all = [...newsItems.value, ...pubItems.value]
+  all.sort((a, b) => (b.date || '0000').localeCompare(a.date || '0000'))
+  return all
+})
+
+// ── Pagination ─────────────────────────────────────────────────────────
+
 const PAGE_SIZE = 12
 const route = useRoute()
 const router = useRouter()
 
-const currentPage = computed(() => Math.max(1, Number(route.query.page) || 1))
+const currentPage = ref(1)
+onMounted(() => {
+  currentPage.value = Math.max(1, Number(route.query.page) || 1)
+})
+watch(() => route.query.page, p => {
+  currentPage.value = Math.max(1, Number(p) || 1)
+})
+
 const totalPages = computed(() => Math.ceil(mediaItems.value.length / PAGE_SIZE))
 const pageItems = computed(() => {
   const start = (currentPage.value - 1) * PAGE_SIZE
@@ -66,23 +153,37 @@ const goTo = (page: number) => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-// Lightbox
-const selectedIndex = ref(-1)
-const selected = computed(() => selectedIndex.value >= 0 ? mediaItems.value[selectedIndex.value] : null)
+// ── Unified preview (all types) ────────────────────────────────────────
 
-const openLightbox = (item: MediaItem) => {
-  selectedIndex.value = mediaItems.value.findIndex(m => m.src === item.src)
+const previewIndex = ref(-1)
+const previewItem = computed(() =>
+  previewIndex.value >= 0 ? (mediaItems.value[previewIndex.value] ?? null) : null
+)
+
+const openPreview = (item: MediaItem) => {
+  // pageItems are slices of mediaItems — same object references, so indexOf works
+  previewIndex.value = mediaItems.value.indexOf(item)
 }
-const closeLightbox = () => { selectedIndex.value = -1 }
-const prevItem = () => { if (selectedIndex.value > 0) selectedIndex.value-- }
-const nextItem = () => { if (selectedIndex.value < mediaItems.value.length - 1) selectedIndex.value++ }
+const closePreview = () => { previewIndex.value = -1 }
+const prevPreview = () => { if (previewIndex.value > 0) previewIndex.value-- }
+const nextPreview = () => {
+  if (previewIndex.value < mediaItems.value.length - 1) previewIndex.value++
+}
+
+// Screenshot loading state for link-type preview
+const screenshotState = ref<'loading' | 'loaded' | 'error'>('loading')
+watch(() => previewItem.value?.src, () => { screenshotState.value = 'loading' })
+
+// ── Image skeleton ─────────────────────────────────────────────────────
+
+const loaded = reactive<Record<string, boolean>>({})
 
 onMounted(() => {
   const onKey = (e: KeyboardEvent) => {
-    if (!selected.value) return
-    if (e.key === 'Escape') closeLightbox()
-    if (e.key === 'ArrowLeft') prevItem()
-    if (e.key === 'ArrowRight') nextItem()
+    if (!previewItem.value) return
+    if (e.key === 'Escape') closePreview()
+    if (e.key === 'ArrowLeft') prevPreview()
+    if (e.key === 'ArrowRight') nextPreview()
   }
   window.addEventListener('keydown', onKey)
   onUnmounted(() => window.removeEventListener('keydown', onKey))
@@ -97,24 +198,77 @@ onMounted(() => {
 
     <template v-else>
       <div class="grid grid-cols-3 gap-1">
-        <button
-          v-for="(item, i) in pageItems"
-          :key="i"
-          class="relative aspect-square overflow-hidden bg-gray-100 dark:bg-zinc-800 group block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          @click="openLightbox(item)"
-        >
-          <img
-            :src="item.src"
-            :alt="item.alt"
-            class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-200 flex items-end">
-            <p v-if="item.alt" class="text-white text-[0.6rem] font-mono px-2 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 line-clamp-2 leading-snug text-left">
-              {{ item.alt }}
-            </p>
-          </div>
-        </button>
+        <template v-for="item in pageItems" :key="`${item.src}|${item.date}|${item.label ?? ''}`">
+
+          <!-- ── Photo / Poster image ───────────────────────── -->
+          <button
+            v-if="item.type === 'image' || item.type === 'poster'"
+            class="relative aspect-square overflow-hidden group block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            :class="loaded[item.src] ? 'bg-gray-100 dark:bg-zinc-800' : 'skeleton'"
+            @click="openPreview(item)"
+          >
+            <img
+              :src="item.src"
+              :alt="item.alt"
+              class="w-full h-full object-cover transition-[opacity,transform] duration-300 group-hover:scale-105"
+              :class="loaded[item.src] ? 'opacity-100' : 'opacity-0'"
+              loading="lazy"
+              data-no-fade
+              @load="loaded[item.src] = true"
+              @error="loaded[item.src] = true"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-200 flex items-end">
+              <p v-if="item.alt" class="text-white text-[0.6rem] font-mono px-2 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 line-clamp-2 leading-snug text-left">
+                {{ item.alt }}
+              </p>
+            </div>
+            <span v-if="item.type === 'poster'" class="absolute top-1.5 left-1.5 font-mono text-[0.48rem] bg-black/55 text-white/90 px-1 py-0.5 rounded-sm tracking-wide">Poster</span>
+          </button>
+
+          <!-- ── PDF card ───────────────────────────────────── -->
+          <button
+            v-else-if="item.type === 'pdf'"
+            class="relative aspect-square bg-gradient-to-br from-rose-50 to-red-100/60 dark:from-rose-950/40 dark:to-red-900/20 group flex flex-col items-center justify-center gap-2 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-rose-200 dark:hover:border-rose-800/50"
+            @click="openPreview(item)"
+          >
+            <Icon name="fa6-regular:file-pdf" class="w-7 h-7 text-rose-400 dark:text-rose-500 shrink-0" />
+            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-4 text-center leading-snug w-full">{{ item.title }}</p>
+            <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-rose-300 dark:border-rose-700/70 text-rose-500 dark:text-rose-400 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
+          </button>
+
+          <!-- ── Slides card ────────────────────────────────── -->
+          <button
+            v-else-if="item.type === 'slides'"
+            class="relative aspect-square bg-gradient-to-br from-amber-50 to-orange-100/60 dark:from-amber-950/40 dark:to-orange-900/20 group flex flex-col items-center justify-center gap-2 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-amber-200 dark:hover:border-amber-800/50"
+            @click="openPreview(item)"
+          >
+            <Icon name="fa7-solid:chalkboard" class="w-7 h-7 text-amber-400 dark:text-amber-500 shrink-0" />
+            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-4 text-center leading-snug w-full">{{ item.title }}</p>
+            <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-amber-300 dark:border-amber-700/70 text-amber-500 dark:text-amber-400 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
+          </button>
+
+          <!-- ── Link card ──────────────────────────────────── -->
+          <button
+            v-else-if="item.type === 'link'"
+            class="relative aspect-square bg-gradient-to-br from-slate-50 to-sky-50/60 dark:from-zinc-800/70 dark:to-zinc-800/30 group flex flex-col items-center justify-center gap-1.5 p-3 focus:outline-none hover:shadow-md transition-shadow border border-transparent hover:border-slate-200 dark:hover:border-zinc-600"
+            @click="openPreview(item)"
+          >
+            <div class="flex flex-col items-center gap-0.5 mb-0.5">
+              <img
+                v-if="item.domain"
+                :src="`https://www.google.com/s2/favicons?domain=${item.domain}&sz=32`"
+                :alt="item.domain"
+                class="w-5 h-5 rounded"
+                data-no-fade
+                loading="lazy"
+              />
+              <p v-if="item.domain" class="text-[0.5rem] font-mono text-gray-400 dark:text-zinc-500 truncate max-w-full">{{ item.domain }}</p>
+            </div>
+            <p class="text-[0.57rem] font-mono text-gray-600 dark:text-zinc-400 line-clamp-3 text-center leading-snug w-full">{{ item.title }}</p>
+            <span class="absolute top-1.5 right-1.5 font-mono text-[0.48rem] border border-slate-300 dark:border-zinc-600 text-slate-500 dark:text-zinc-400 px-1 py-0.5 rounded-sm bg-white/60 dark:bg-zinc-900/60">{{ item.label }}</span>
+          </button>
+
+        </template>
       </div>
 
       <!-- Pagination -->
@@ -124,11 +278,7 @@ onMounted(() => {
           class="font-mono text-[0.75rem] text-gray-500 dark:text-zinc-400 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           @click="goTo(currentPage - 1)"
         >← Prev</button>
-
-        <span class="font-mono text-[0.7rem] text-gray-400 dark:text-zinc-500">
-          {{ currentPage }} / {{ totalPages }}
-        </span>
-
+        <span class="font-mono text-[0.7rem] text-gray-400 dark:text-zinc-500">{{ currentPage }} / {{ totalPages }}</span>
         <button
           :disabled="currentPage >= totalPages"
           class="font-mono text-[0.75rem] text-gray-500 dark:text-zinc-400 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
@@ -137,65 +287,142 @@ onMounted(() => {
       </div>
     </template>
 
-    <!-- Lightbox -->
+    <!-- ── Unified preview overlay ─────────────────────────────────────── -->
     <Teleport to="body">
       <Transition name="fade">
         <div
-          v-if="selected"
-          class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/85 backdrop-blur-sm p-4"
-          @click.self="closeLightbox"
+          v-if="previewItem"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm"
+          @click.self="closePreview"
         >
           <!-- Close -->
           <button
-            class="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10"
+            class="absolute top-4 right-4 z-20 text-white/70 hover:text-white transition-colors"
             aria-label="Close"
-            @click="closeLightbox"
+            @click="closePreview"
           >
             <Icon name="heroicons:x-mark" class="w-6 h-6" />
           </button>
 
-          <!-- Prev arrow -->
+          <!-- Prev -->
           <button
-            :disabled="selectedIndex <= 0"
-            class="absolute left-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-colors p-2"
-            aria-label="Previous photo"
-            @click="prevItem"
+            :disabled="previewIndex <= 0"
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-20 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-colors p-2"
+            aria-label="Previous"
+            @click="prevPreview"
           >
             <Icon name="heroicons:chevron-left" class="w-8 h-8" />
           </button>
 
-          <!-- Image -->
+          <!-- Content — fades on navigation -->
           <Transition name="lb-slide" mode="out-in">
+
+            <!-- image / poster: full bleed on dark bg -->
             <img
-              :key="selected.src"
-              :src="selected.src"
-              :alt="selected.alt"
-              class="max-h-[80vh] max-w-[calc(100%-6rem)] object-contain rounded"
+              v-if="previewItem.type === 'image' || previewItem.type === 'poster'"
+              :key="previewIndex"
+              :src="previewItem.src"
+              :alt="previewItem.alt"
+              class="max-h-[calc(100vh-9rem)] max-w-[calc(100%-7rem)] object-contain rounded shadow-2xl"
+              data-no-fade
             />
+
+            <!-- pdf / slides: floating iframe, no surrounding panel -->
+            <iframe
+              v-else-if="previewItem.type === 'pdf' || previewItem.type === 'slides'"
+              :key="previewIndex"
+              :src="previewItem.src"
+              :title="previewItem.title ?? 'Preview'"
+              class="w-[calc(100%-7rem)] h-[calc(100vh-8rem)] rounded-xl border-0 shadow-2xl bg-white"
+            />
+
+            <!-- link: screenshot card -->
+            <div
+              v-else
+              :key="previewIndex"
+              class="bg-white dark:bg-zinc-900 rounded-xl shadow-2xl overflow-hidden w-full max-w-md"
+            >
+              <!-- Screenshot area -->
+              <div class="relative aspect-video bg-gray-100 dark:bg-zinc-800 overflow-hidden">
+                <!-- Shimmer skeleton while loading -->
+                <div
+                  class="absolute inset-0 skeleton transition-opacity duration-300"
+                  :class="screenshotState === 'loading' ? 'opacity-100' : 'opacity-0 pointer-events-none'"
+                />
+                <!-- Screenshot image -->
+                <img
+                  v-if="screenshotState !== 'error'"
+                  :src="`https://image.thum.io/get/width/800/${previewItem.src}`"
+                  class="w-full h-full object-cover transition-opacity duration-500"
+                  :class="screenshotState === 'loaded' ? 'opacity-100' : 'opacity-0'"
+                  data-no-fade
+                  @load="screenshotState = 'loaded'"
+                  @error="screenshotState = 'error'"
+                />
+                <!-- Fallback when screenshot unavailable -->
+                <div v-if="screenshotState === 'error'" class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                  <img
+                    v-if="previewItem.domain"
+                    :src="`https://www.google.com/s2/favicons?domain=${previewItem.domain}&sz=64`"
+                    class="w-10 h-10 rounded-lg opacity-50"
+                    data-no-fade
+                  />
+                  <span class="font-mono text-[0.6rem] text-gray-400 dark:text-zinc-500">Preview unavailable</span>
+                </div>
+              </div>
+              <!-- Card info -->
+              <div class="px-5 py-4 flex flex-col gap-2.5">
+                <div v-if="previewItem.domain" class="flex items-center gap-1.5">
+                  <img
+                    :src="`https://www.google.com/s2/favicons?domain=${previewItem.domain}&sz=32`"
+                    class="w-4 h-4 rounded shrink-0"
+                    data-no-fade
+                  />
+                  <span class="font-mono text-[0.65rem] text-gray-400 dark:text-zinc-500">{{ previewItem.domain }}</span>
+                </div>
+                <p class="font-mono text-[0.8rem] text-gray-700 dark:text-zinc-200 leading-snug">{{ previewItem.title }}</p>
+                <a
+                  :href="previewItem.src"
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-1 font-mono text-xs text-primary hover:underline self-start mt-0.5"
+                >Open in new tab <Icon name="heroicons:arrow-top-right-on-square" class="w-3 h-3" /></a>
+              </div>
+            </div>
+
           </Transition>
 
-          <!-- Next arrow -->
+          <!-- Next -->
           <button
-            :disabled="selectedIndex >= mediaItems.length - 1"
-            class="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-colors p-2"
-            aria-label="Next photo"
-            @click="nextItem"
+            :disabled="previewIndex >= mediaItems.length - 1"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-20 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-colors p-2"
+            aria-label="Next"
+            @click="nextPreview"
           >
             <Icon name="heroicons:chevron-right" class="w-8 h-8" />
           </button>
 
-          <!-- Caption -->
-          <div class="mt-3 flex flex-col items-center gap-1.5">
-            <p v-if="selected.alt" class="text-white/80 text-sm font-mono text-center">{{ selected.alt }}</p>
-            <div class="flex items-center gap-3">
+          <!-- Bottom info bar -->
+          <div class="absolute bottom-4 left-0 right-0 flex flex-col items-center gap-1 pointer-events-none z-10">
+            <p
+              v-if="(previewItem.type === 'image' || previewItem.type === 'poster') && previewItem.alt"
+              class="text-white/80 text-sm font-mono text-center px-20 line-clamp-2"
+            >{{ previewItem.alt }}</p>
+            <div class="flex items-center gap-3 pointer-events-auto">
               <NuxtLink
-                :to="selected.articlePath"
+                v-if="previewItem.articlePath"
+                :to="previewItem.articlePath"
                 class="text-white/50 hover:text-white text-[0.7rem] font-mono underline underline-offset-2 transition-colors"
-                @click="closeLightbox"
-              >
-                {{ selected.date }} →
-              </NuxtLink>
-              <span class="text-white/30 text-[0.65rem] font-mono">{{ selectedIndex + 1 }} / {{ mediaItems.length }}</span>
+                @click="closePreview"
+              >{{ previewItem.date }} →</NuxtLink>
+              <a
+                v-else-if="previewItem.type === 'pdf' || previewItem.type === 'slides'"
+                :href="previewItem.src"
+                target="_blank"
+                rel="noopener"
+                class="text-white/40 hover:text-white/80 text-[0.65rem] font-mono underline underline-offset-2 transition-colors"
+              >Open →</a>
+              <span class="text-white/30 text-[0.65rem] font-mono">{{ previewIndex + 1 }} / {{ mediaItems.length }}</span>
             </div>
           </div>
         </div>
@@ -205,8 +432,25 @@ onMounted(() => {
 </template>
 
 <style scoped>
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Fast, high-contrast shimmer replacing Tailwind's slow animate-pulse */
+.skeleton {
+  background: linear-gradient(90deg, #d1d5db 25%, #f9fafb 50%, #d1d5db 75%);
+  background-size: 200% 100%;
+  animation: shimmer 0.9s ease-in-out infinite;
+}
+
+:global(.dark) .skeleton {
+  background: linear-gradient(90deg, #27272a 25%, #52525b 50%, #27272a 75%);
+  background-size: 200% 100%;
+}
+
 .lb-slide-enter-active,
-.lb-slide-leave-active { transition: opacity 0.15s ease; }
+.lb-slide-leave-active { transition: opacity 0.12s ease; }
 .lb-slide-enter-from,
-.lb-slide-leave-to { opacity: 0; }
+.lb-slide-leave-to    { opacity: 0; }
 </style>
