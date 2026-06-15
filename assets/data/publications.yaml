@@ -12,6 +12,8 @@
       url: "/assets/papers/ukita2026efficient.pdf"
     - name: Page
       url: "https://www.pakdd2026.org/accepted-papers#:~:text=Efficient%20Inference%20for%20Flow%20Matching%20via%20Unified%20Path%20CFG"
+    - name: Slides
+      url: "/assets/slides/PAKDD2026.pdf"
   cite: |
     @inproceedings{ukita2026efficient,
       title     = {Efficient Inference for Flow Matching via Unified Path CFG},
