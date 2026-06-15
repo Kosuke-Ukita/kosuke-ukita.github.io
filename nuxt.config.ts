@@ -50,6 +50,7 @@ export default defineNuxtConfig({
       routes: [
         '/jp', '/jp/biography', '/jp/cv', '/jp/publications',
         '/jp/awards', '/jp/grants', '/jp/contact', '/jp/news',
+        '/media', '/jp/media',
       ],
     },
   },

@@ -44,6 +44,11 @@ pages:
     desc: Research grants and funding
     descJp: 研究費・資金獲得
   
+  - to: media
+    label: Media
+    desc: Media appearances and coverage
+    descJp: 当サイト内のメディア情報
+  
   - to: contact
     label: Contact
     desc: Get in touch
