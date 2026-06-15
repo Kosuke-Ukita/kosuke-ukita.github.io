@@ -10,6 +10,12 @@ const { handleWheel: baseHandleWheel } = useHScroll()
 
 const nowrap = computed(() => props.wrap !== true)
 const handleWheel = (e: WheelEvent) => { if (!props.wrap) baseHandleWheel(e) }
+const openRandomThesisLink = (thesislink: { pdf: string; slide?: string }, e: MouseEvent) => {
+  e.preventDefault()
+  const links = [thesislink.pdf, thesislink.slide].filter(Boolean) as string[]
+  const url = links[Math.floor(Math.random() * links.length)]
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
 
 const edu = computed(() => isJp.value ? educationJp : education)
 </script>
@@ -25,9 +31,9 @@ const edu = computed(() => isJp.value ? educationJp : education)
       >
         <div :class="nowrap ? 'min-w-max pr-12' : ''">
           <p class="font-semibold text-gray-900 dark:text-zinc-100" :class="{ 'whitespace-nowrap': nowrap }">{{ item.degree }}</p>
-          <p class="text-gray-700 dark:text-zinc-300 text-xs mt-0.5" :class="{ 'whitespace-nowrap': nowrap }">{{ item.school }}</p>
+          <a :href="item.schoolurl" target="_blank" class="text-gray-700 dark:text-zinc-300 text-xs mt-0.5 hover:underline" :class="{ 'whitespace-nowrap': nowrap }">{{ item.school }}</a>
           <p v-if="item.depart" class="text-[0.7rem] text-gray-500 dark:text-zinc-400 mt-0.5 pl-0.5 leading-snug" :class="nowrap ? 'whitespace-nowrap' : 'whitespace-pre-line'">{{ item.depart }}</p>
-          <p v-if="item.thesis" class="font-mono text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-1 leading-snug underline" :class="{ 'whitespace-nowrap': nowrap }">{{ item.thesis }}</p>
+          <NuxtLink v-if="item.thesislink" :to="item.thesislink.pdf" target="_blank" class="font-mono text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-1 leading-snug underline" :class="{ 'whitespace-nowrap': nowrap }">{{ item.thesis }}</NuxtLink>
           <p v-if="item.description" class="text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-0.5 font-mono" :class="{ 'whitespace-nowrap': nowrap }">{{ item.description }}</p>
         </div>
       </div>

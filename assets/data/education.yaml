@@ -1,39 +1,50 @@
 en:
   - degree: PhD
     school: Kyushu Institute of Technology
+    schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
       Department of Computer Science and Systems Engineering,
       Graduate School of Computer Science and Systems Engineering
     thesis: |-
       Thesis: ""
+    thesislink: false
     year: Apr. 2026 - Present
     description: |-
       GPA: - / 4.0
 
   - degree: MSc
     school: Kyushu Institute of Technology
+    schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
       Department of Creative Informatics,
       Graduate School of Computer Science and Systems Engineering
     thesis: |-
       Thesis: "A Study on Sensor Foundation Models via Joint Training using Flow Matching"
+    thesislink:
+      pdf: "/assets/papers/thesis_MSc.pdf"
+      slide: "/assets/slides/thesis_MSc.pdf"
     year: Apr. 2024 - Mar. 2026
     description: |-
       GPA: 3.6 / 4.0
 
   - degree: BSc
     school: Kyushu Institute of Technology
+    schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
       Department of Artificial Intelligence,
       Computer Science and Systems Engineering
     thesis: |-
       Thesis: "Proposal of Representation-Conditional Latent Diffusion Models: Hematoma Classification in Brain CT Images"
+    thesislink:
+      pdf: "/assets/papers/thesis_BSc.pdf"
+      slide: "/assets/slides/thesis_BSc.pdf"
     year: Apr. 2020 - Mar. 2024
     description: |-
       GPA: 3.7 / 4.0
 
   - degree: High School Diploma
     school: Kanonji Daiichi High School (Designated as a Super Science High School)
+    schoolurl: https://www.kagawa-edu.jp/kanich02/
     depart: Science and Mathematics Course
     year: Apr. 2017 - Mar. 2020
     description: |-
@@ -42,33 +53,44 @@ en:
 jp:
   - degree: 博士（情報工学）
     school: 九州工業大学大学院
+    schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: 情報工学府 情報創生工学専攻
     thesis: |-
       学位論文: ""
+    thesislink: false
     year: Apr. 2026 - Present
     description: |-
       GPA: - / 4.0
 
   - degree: 修士（情報工学）
     school: 九州工業大学大学院
+    schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: 情報工学府 情報創成工学専攻
     thesis: |-
       学位論文: "フローマッチングを用いた共同学習によるセンサ基盤モデルに関する研究"
+    thesislink:
+      pdf: "/assets/papers/thesis_MSc.pdf"
+      slide: "/assets/slides/thesis_MSc.pdf"
     year: Apr. 2024 - Mar. 2026
     description: |-
       GPA: 3.6 / 4.0
 
   - degree: 学士（情報工学）
     school: 九州工業大学
+    schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: 情報工学部 知能情報工学科
     thesis: |-
-      学位論文: "表現条件付き潜在拡散モデルの提案: 脳CT画像の⾎腫分類"
+      学位論文: "表現条件付き潜在拡散モデルの提案 -脳CT画像の⾎腫分類-"
+    thesislink:
+      pdf: "/assets/papers/thesis_BSc.pdf"
+      slide: "/assets/slides/thesis_BSc.pdf"
     year: Apr. 2020 - Mar. 2024
     description: |-
       GPA: 3.7 / 4.0
 
   - degree: 高等学校卒業
     school: 香川県立観音寺第一高等学校 (SSH重点枠 指定校)
+    schoolurl: https://www.kagawa-edu.jp/kanich02/
     depart: 理数科
     year: Apr. 2017 - Mar. 2020
     description: |-
