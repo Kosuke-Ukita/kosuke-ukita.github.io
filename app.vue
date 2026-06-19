@@ -139,7 +139,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
           @click="toggleLocale"
           class="font-mono text-xs text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors px-1.5 py-1"
           :aria-label="isJa ? 'Switch to English' : 'Switch to Japanese'"
-        >{{ isJa ? 'EN' : 'JP' }}</button>
+        ><Icon name="heroicons:globe-alt" class="w-4 h-4" />{{ isJa ? 'EN' : 'JP' }}</button>
         <button
           @click="toggleDark"
           class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-1"
@@ -171,7 +171,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
               @click="toggleLocale"
               class="font-mono text-xs text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors"
               :aria-label="isJa ? 'Switch to English' : 'Switch to Japanese'"
-            >{{ isJa ? 'EN' : 'JP' }}</button>
+            ><Icon name="heroicons:globe-alt" class="w-4 h-4" />{{ isJa ? 'EN' : 'JP' }}</button>
             <button
               @click="toggleDark"
               class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-1"
@@ -222,7 +222,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
               @click="toggleLocale"
               class="font-mono text-xs text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors"
               :aria-label="isJa ? 'Switch to English' : 'Switch to Japanese'"
-            >{{ isJa ? 'EN' : 'JP' }}</button>
+            ><Icon name="heroicons:globe-alt" class="w-4 h-4" />{{ isJa ? 'EN' : 'JP' }}</button>
             <button
               @click="toggleDark"
               class="text-gray-500 dark:text-zinc-400 hover:text-primary transition-colors p-1"
