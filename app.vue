@@ -94,14 +94,14 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     <!-- ── Mobile drawer (slides from left) ───────────────────────────────── -->
     <aside
       :class="[
-        'fixed inset-y-0 left-0 z-30 w-72 bg-white dark:bg-zinc-900 border-r border-gray-100 dark:border-zinc-800',
+        'fixed inset-y-0 left-0 z-30 w-72 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl backdrop-saturate-150 border-r border-gray-100 dark:border-zinc-800',
         'flex flex-col px-5 py-7 overflow-y-auto',
         'transition-transform duration-200 ease-in-out md:hidden',
         isMenuOpen ? 'translate-x-0' : '-translate-x-full',
       ]"
     >
       <div class="mb-4 shrink-0">
-        <img :src="profile.photo" alt="Kosuke Ukita" class="w-20 h-20 object-cover rounded" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
+        <img :src="profile.photo" alt="Kosuke Ukita" class="w-20 h-20 object-cover rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.12)] dark:shadow-[0_2px_12px_rgba(255,255,255,0.10)]" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
       </div>
       <div class="mb-3 space-y-0.5">
         <h2 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-sm">{{ profile.name }}</h2>
@@ -128,7 +128,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     </aside>
 
     <!-- ── Mobile top bar ─────────────────────────────────────────────────── -->
-    <header class="md:hidden sticky top-0 z-10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur border-b border-gray-100 dark:border-zinc-800 h-11 flex items-center justify-between px-4">
+    <header class="md:hidden sticky top-0 z-10 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-xl backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-11 flex items-center justify-between px-4">
       <button @click="toggleMenu">
         <span class="font-mono font-semibold text-sm text-gray-900 dark:text-zinc-100 tracking-tight">Kosuke Ukita</span>
       </button>
@@ -155,7 +155,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
     <!-- ── Desktop sticky slim nav (appears after main header scrolls away) ── -->
     <Transition name="slide-down">
-      <header v-if="showStickyNav" class="hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/95 dark:bg-zinc-900/95 backdrop-blur border-b border-gray-100 dark:border-zinc-800 h-10 items-center">
+      <header v-if="showStickyNav" class="hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-xl backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-10 items-center">
         <div class="max-w-2xl mx-auto px-6 lg:px-8 w-full flex items-center gap-6">
           <NuxtLink v-for="link in navLinks"
             :key="link.to" :to="link.to"
@@ -189,7 +189,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
         <!-- Profile block -->
         <div class="flex gap-5 items-start mb-6">
-          <img :src="profile.photo" alt="Kosuke Ukita" class="w-[4.5rem] h-[4.5rem] object-cover rounded shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
+          <img :src="profile.photo" alt="Kosuke Ukita" class="w-[4.5rem] h-[4.5rem] object-cover rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.12)] dark:shadow-[0_2px_12px_rgba(255,255,255,0.10)] shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
           <div class="space-y-0.5">
             <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-[1rem] leading-tight tracking-tight">{{ profile.name }}</h1>
             <p class="text-xs text-gray-500 dark:text-zinc-400">{{ profile.namejp }}</p>
@@ -237,7 +237,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     <!-- ── Page content ───────────────────────────────────────────────────── -->
     <main class="flex-1">
       <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 py-9 sm:py-11">
-        <NuxtPage />
+        <NuxtPage :transition="{ name: 'page' }" />
       </div>
     </main>
 
@@ -273,4 +273,9 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 .slide-down-leave-active { transition: transform 0.2s ease, opacity 0.2s ease; }
 .slide-down-enter-from,
 .slide-down-leave-to    { transform: translateY(-100%); opacity: 0; }
+
+.page-enter-active,
+.page-leave-active { transition: opacity 0.12s ease; }
+.page-enter-from,
+.page-leave-to     { opacity: 0; }
 </style>

@@ -11,7 +11,7 @@ const researchInterests = others.find(o => o.category === 'Research Interests')?
 <template>
   <!-- mobile profile block -->
   <div class="md:hidden flex gap-5 items-start mb-12 pb-8 border-b border-gray-100 dark:border-zinc-800">
-    <img :src="profile.photo" alt="Kosuke Ukita" class="w-[4.5rem] h-[4.5rem] object-cover rounded shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
+    <img :src="profile.photo" alt="Kosuke Ukita" class="w-[4.5rem] h-[4.5rem] object-cover rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.12)] dark:shadow-[0_2px_12px_rgba(255,255,255,0.10)] shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=KU'"/>
     <div class="space-y-0.5">
       <h1 class="font-mono font-semibold text-gray-900 dark:text-zinc-100 text-[1rem] leading-tight tracking-tight">{{ profile.name }}</h1>
       <p class="text-xs text-gray-500 dark:text-zinc-400">{{ profile.namejp }}</p>

@@ -37,7 +37,7 @@ const groupedPubs = useGroupedPublications()
       <h2 class="font-mono text-sm font-semibold text-primary pb-2 mb-7 border-b border-gray-100 dark:border-zinc-800">{{ group.year }}</h2>
       <ol class="space-y-8">
         <li v-for="paper in group.items" :key="paper.globalIndex"
-          class="relative flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow"
+          class="relative flex gap-1 p-2 border-l-2 border-transparent hover:border-primary/50 hover:bg-primary/[0.02] dark:hover:bg-primary/[0.04] transition-colors duration-150"
           @mouseenter="startHover(paper.globalIndex)"
           @mouseleave="endHover"
         >
@@ -58,10 +58,10 @@ const groupedPubs = useGroupedPublications()
                 <span v-if="paper.location" class="text-xs text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
               </div>
               <div class="flex flex-nowrap items-center gap-2 mt-2">
-                <span class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
+                <span class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                   :class="paper.refereed ? 'text-primary border-primary/40' : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
                 >{{ paper.refereed ? 'Refereed' : 'Non-refereed' }}</span>
-                <span v-if="paper.type" class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
+                <span v-if="paper.type" class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                   :class="paper.type.includes('Spotlight') || paper.type.includes('Oral') ? 'text-primary border-primary/40' : paper.type.includes('Poster') ? 'text-gray-600 dark:text-zinc-400 border-gray-400 dark:border-zinc-500' : 'text-gray-400 dark:text-zinc-600 border-gray-200 dark:border-zinc-700'"
                 >{{ paper.type }}</span>
                 <a v-for="link in paper.links" :key="link.name"
@@ -127,7 +127,7 @@ const groupedPubs = useGroupedPublications()
   <template v-else>
     <ol class="space-y-7">
       <li v-for="(paper, i) in displayPubs" :key="i"
-        class="relative flex gap-1 p-2 hover:shadow-md dark:shadow-white/10 transition-shadow"
+        class="relative flex gap-1 p-2 border-l-2 border-transparent hover:border-primary/50 hover:bg-primary/[0.02] dark:hover:bg-primary/[0.04] transition-colors duration-150"
         @mouseenter="showHover ? startHover(i) : undefined"
         @mouseleave="showHover ? endHover() : undefined"
       >
@@ -152,10 +152,10 @@ const groupedPubs = useGroupedPublications()
               <span v-if="paper.location" class="text-xs text-gray-400 dark:text-zinc-500"> &middot; {{ paper.location }}</span>
             </div>
             <div class="flex items-center gap-2 mt-1.5" :class="nowrap ? 'flex-nowrap' : 'flex-wrap'">
-              <span class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
+              <span class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                 :class="paper.refereed ? 'text-primary border-primary/40' : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
               >{{ paper.refereed ? 'Refereed' : 'Non-refereed' }}</span>
-              <span v-if="paper.type" class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-sm shrink-0"
+              <span v-if="paper.type" class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                 :class="paper.type.includes('Spotlight') || paper.type.includes('Oral') ? 'text-primary border-primary/40' : paper.type.includes('Poster') ? 'text-gray-600 dark:text-zinc-400 border-gray-400 dark:border-zinc-500' : 'text-gray-400 dark:text-zinc-600 border-gray-200 dark:border-zinc-700'"
               >{{ paper.type }}</span>
               <a v-for="link in paper.links" :key="link.name"

@@ -12,6 +12,10 @@
   /* --color-primary: 124 58  237; */
 }
 
+html.dark {
+  --color-primary: 110 130 215;
+}
+
 /* ─── Base ────────────────────────────────────────────────────────────────── */
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -21,15 +25,25 @@ body {
 
 /* ─── Section headings (uppercase label style) ────────────────────────────── */
 .section-title {
+  position: relative;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #777;          /* was #b0b0b0 — darkened for readability */
+  color: #777;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e5e5e5;
+  padding-left: 0.6rem;
+  padding-bottom: 0.55rem;
+  border-left: 2px solid rgb(var(--color-primary) / 0.4);
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid #ececec;
 }
 
 /* ─── Sidebar / drawer navigation links ──────────────────────────────────── */
@@ -93,7 +107,10 @@ body {
 /* ─── Dark mode overrides for custom classes ─────────────────────────────── */
 html.dark .section-title {
   color: #a1a1aa;
-  border-bottom-color: #3f3f46;
+  border-left-color: rgb(var(--color-primary) / 0.4);
+}
+html.dark .section-title::after {
+  border-bottom-color: #2e2e32;
 }
 
 html.dark .nav-link {
