@@ -1,3 +1,19 @@
+- title: 拡散モデルを用いた人間行動モーションデータからの写実的な映像生成
+  authors: 松石康希, 浮田嵩祐, 大北剛
+  venue: 情報処理学会論文誌, 67-10, 2026. (to appear)
+  date: August 2026
+  location: Japan
+  type: Journal
+  refereed: true
+  tags:
+    - ""
+  links:
+    - name: Page
+      url: ""
+  cite: |
+    @article{
+    }
+
 - title: Efficient Inference for Flow Matching via Unified Path CFG
   authors: Kosuke Ukita, Tsuyoshi Okita
   venue: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026)
