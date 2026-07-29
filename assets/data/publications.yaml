@@ -1,7 +1,7 @@
 - title: 拡散モデルを用いた人間行動モーションデータからの写実的な映像生成
   authors: 松石康希, 浮田嵩祐, 大北剛
-  venue: 情報処理学会論文誌, 67-10, 2026. (to appear)
-  date: August 2026
+  venue: 情報処理学会論文誌 (IPSJ Journal), 67-10, 2026.
+  date: July 2026
   location: Japan
   type: Journal
   refereed: true
@@ -9,7 +9,7 @@
     - ""
   links:
     - name: Page
-      url: ""
+      url: "https://www.ipsj.or.jp/journal/info/accept/july.html"
   cite: |
     @article{
     }
