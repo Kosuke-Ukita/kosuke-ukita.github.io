@@ -195,9 +195,9 @@
 
 - title: "Improving Human Activity Recognition through Diffusion Models"
   authors: "Kosuke Ukita, Tsuyoshi Okita"
-  venue: "The International Symposium on Applied Engineering and Sciences (SAES 2024), No. p0052"
+  venue: "The 12nd International Symposium on Applied Engineering and Sciences (SAES 2024), No. p0052"
   date: November 2024
-  location: Kitakyushu, Japan
+  location: Fukuoka, Japan
   type: Oral
   refereed: false
   tags:
@@ -211,16 +211,16 @@
     @inproceedings{ukita2024improving,
       title     = {Improving Human Activity Recognition through Diffusion Models},
       author    = {Ukita, Kosuke and Okita, Tsuyoshi},
-      booktitle = {The International Symposium on Applied Engineering and Sciences (SAES 2024)},
+      booktitle = {The 12nd International Symposium on Applied Engineering and Sciences (SAES 2024)},
       year      = {2024},
-      address   = {Kitakyushu, Japan}
+      address   = {Fukuoka, Japan}
     }
 
 - title: "Ensemble Learning of Models for Human Activity Recognition"
   authors: "Asahi Miyazaki, Kosuke Ukita, Tsuyoshi Okita"
-  venue: "The International Symposium on Applied Engineering and Sciences (SAES 2024), No. p0053"
+  venue: "The 12nd International Symposium on Applied Engineering and Sciences (SAES 2024), No. p0053"
   date: November 2024
-  location: Kitakyushu, Japan
+  location: Fukuoka, Japan
   type: Oral
   refereed: false
   tags:
@@ -234,9 +234,9 @@
     @inproceedings{miyazaki2024ensemble,
       title     = {Ensemble Learning of Models for Human Activity Recognition},
       author    = {Miyazaki, Asahi and Ukita, Kosuke and Okita, Tsuyoshi},
-      booktitle = {The International Symposium on Applied Engineering and Sciences (SAES 2024)},
+      booktitle = {The 12nd International Symposium on Applied Engineering and Sciences (SAES 2024)},
       year      = {2024},
-      address   = {Kitakyushu, Japan}
+      address   = {Fukuoka, Japan}
     }
 
 - title: "Analysis of Human Activity Recognition by Diffusion Models"
@@ -321,7 +321,7 @@
 
 # Below are some of my non-refereed publications, which are not included in the main list above.
 #
-# - title: ""
+# - title: "柔道における選手の定性的評価とロジスティック回帰による勝敗分類"
 #   authors: 大塚功太郎，長谷川弘貴，関くるみ，丹野康世，浮田嵩祐，矢田和善
 #   venue: 2022年度スポーツデータサイエンスコンペティション, P1-02
 #   date: January 2023
@@ -358,7 +358,7 @@
 #   venue: 第1回 全国統計探究発表会 · FESTAT
 #   date: July 2019
 #   location: Kagawa, Japan
-#   type: Poster
+#   type: Oral
 #   refereed: false
 #   tags:
 #     - ""
@@ -381,6 +381,22 @@
 #   links:
 #     - name: Page
 #       url: "https://statedu.jp/cse/sports08.htm"
+#   cite: |
+#     @misc{
+#     }
+
+# - title: 高齢者×ファッション＝「観コレ」高齢者の活躍の場を求めて
+#   authors: 浮田嵩祐，大塚功太郎，荻原志音，佐薙喬太，関くるみ，三宅純矢，石井裕基 (銭形レボリューション８ 香川県立観音寺第一高等学校 理数科 数学班)
+#   venue: 第2回和歌山県データ利活用コンペティション (データ利活用賞 · 楽天株式会社「楽天賞」 受賞)
+#   date: Jan. 2019
+#   location: Wakayama, Japan
+#   type: Slide
+#   refereed: false
+#   tags:
+#     - ""
+#   links:
+#     - name: Page
+#       url: "https://www.pref.wakayama.lg.jp/prefg/020300/data/competition/2018_2.html"
 #   cite: |
 #     @misc{
 #     }
