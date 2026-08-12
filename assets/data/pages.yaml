@@ -1,5 +1,5 @@
 pages:
-  - to: ''
+  - to: ""
     label: Home
     desc: Overview & recent activity
     descJp: ホーム・概要・最近の活動

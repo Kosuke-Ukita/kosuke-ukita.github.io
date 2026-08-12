@@ -94,7 +94,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     <!-- ── Mobile drawer (slides from left) ───────────────────────────────── -->
     <aside
       :class="[
-        'fixed inset-y-0 left-0 z-30 w-72 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl backdrop-saturate-150 border-r border-gray-100 dark:border-zinc-800',
+        'fixed inset-y-0 left-0 z-30 w-72 bg-white/40 dark:bg-zinc-900/80 backdrop-blur-md backdrop-saturate-150 border-r border-gray-100 dark:border-zinc-800',
         'flex flex-col px-5 py-7 overflow-y-auto',
         'transition-transform duration-200 ease-in-out md:hidden',
         isMenuOpen ? 'translate-x-0' : '-translate-x-full',
@@ -128,7 +128,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     </aside>
 
     <!-- ── Mobile top bar ─────────────────────────────────────────────────── -->
-    <header class="md:hidden sticky top-0 z-10 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-xl backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-11 flex items-center justify-between px-4">
+    <header class="md:hidden sticky top-0 z-10 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-sm backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-11 flex items-center justify-between px-4">
       <button @click="toggleMenu">
         <span class="font-mono font-semibold text-sm text-gray-900 dark:text-zinc-100 tracking-tight">Kosuke Ukita</span>
       </button>
@@ -155,7 +155,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
     <!-- ── Desktop sticky slim nav (appears after main header scrolls away) ── -->
     <Transition name="slide-down">
-      <header v-if="showStickyNav" class="hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-xl backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-10 items-center">
+      <header v-if="showStickyNav" class="hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-sm backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-10 items-center">
         <div class="max-w-2xl mx-auto px-6 lg:px-8 w-full flex items-center gap-6">
           <NuxtLink v-for="link in navLinks"
             :key="link.to" :to="link.to"
