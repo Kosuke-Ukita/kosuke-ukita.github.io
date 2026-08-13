@@ -15,8 +15,8 @@ const { isJp } = useLocale()
       <div>
         <h2 class="section-title">Email</h2>
         <div class="space-y-0.5 leading-relaxed">
-          <p>- <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email }}</a></p>
-          <p>- <a :href="`mailto:${profile.gmail}`" class="font-mono hover:underline underline-offset-2 break-all text-gray-400 dark:text-zinc-600">{{ profile.gmail }}</a></p>
+          <p>· <a :href="`mailto:${profile.email}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.email }}</a></p>
+          <p class=" text-gray-400 dark:text-zinc-600">· <a :href="`mailto:${profile.gmail}`" class="font-mono hover:underline underline-offset-2 break-all">{{ profile.gmail }}</a></p>
         </div>
       </div>
 

@@ -94,7 +94,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     <!-- ── Mobile drawer (slides from left) ───────────────────────────────── -->
     <aside
       :class="[
-        'fixed inset-y-0 left-0 z-30 w-72 bg-white/40 dark:bg-zinc-900/80 backdrop-blur-md backdrop-saturate-150 border-r border-gray-100 dark:border-zinc-800',
+        'fixed inset-y-0 left-0 z-30 w-72 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md backdrop-saturate-150 border-r border-gray-100 dark:border-zinc-800',
         'flex flex-col px-5 py-7 overflow-y-auto',
         'transition-transform duration-200 ease-in-out md:hidden',
         isMenuOpen ? 'translate-x-0' : '-translate-x-full',

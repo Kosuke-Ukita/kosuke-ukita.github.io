@@ -70,6 +70,32 @@
       address   = {Tangier, Morocco}
     }
 
+- title: "From Sensor Data to Sequence of Scenes: Diffusion Model-Based Visualization of Human Activity"
+  authors: Koki Matsuishi, Kosuke Ukita, Tsuyoshi Okita
+  venue: "IEEE Xplore, International Conference on Activity and Behavior Computing (ABC 2026), pp. 1-10, DOI: 10.1109/ABC68169.2026.11567210"
+  date: March 2026
+  location: Hakodate, Japan
+  type: Oral
+  refereed: true
+  tags:
+    - ""
+  links:
+    - name: Page
+      url: "https://ieeexplore.ieee.org/document/11567210"
+  cite: |
+    @inproceedings{11567210,
+      author={Matsuishi, Koki and Ukita, Kosuke and Okita, Tsuyoshi},
+      booktitle={2026 International Conference on Activity and Behavior Computing (ABC)}, 
+      title={From Sensor Data to Sequence of Scenes: Diffusion Model-Based Visualization of Human Activity}, 
+      year={2026},
+      volume={},
+      number={},
+      pages={1-10},
+      keywords={},
+      doi={10.1109/ABC68169.2026.11567210}
+    }
+
+
 - title: "Foundation Models to Tackle Activity Recognition in Unknown Domain: Sussex-Huawei Locomotion Challenge 2025 Task 2"
   authors: "Tsuyoshi Okita, Kosuke Ukita, Asahi Miyazaki, Daichi Kubota, Jukichi Ota, Naoki Kagiyama, Asahi Nishikawa, Daichi Nagayasu, Syunya Tomitaka, Daisuke Nozaki, Yuki Odo, Raku Yamashita, Xiaolong Ye, Huayu Gao, Kazuki Okahashi, Koki Matsuishi, Masaharu Kagiyama, Kodai Hirata, Haruki Kai, Lin Wang, Hristijan Gjoreski, Mathias Ciliberto, Paula Lago, Kazuya Murao, Daniel Roggen"
   venue: "Companion of the 2025 ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp '25), pp. 983–991"
