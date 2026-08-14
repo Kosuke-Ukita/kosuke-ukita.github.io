@@ -1,41 +1,47 @@
 work:
   en:
-    - name: Research Assistant (RA)
-      year: Dec. 2023 - Mar. 2026
-      descriptions:
-        - "Superviser: Tsuyoshi Okita"
-        - Researched and Developed foundation models
-
     - name: Teaching Assistant (TA)
       year: Apr. 2024 - Mar. 2027
       descriptions:
         - "Lecturer: Tsuyoshi Okita"
-        - "- Deep Learning"
-        - "- Deep Learning Exercise x2"
-        - "- Deep Learning Advanced I"
+        - "- Deep Learning Practicum (2026)"
+        - "- Advanced Topics in Deep Learning I (2026)"
+        - "- Deep Learning Practicum (2025)"
+        - "- Deep Learning (2024)"
+    
+    - name: Research Assistant (RA)
+      year: Dec. 2023 - Mar. 2026
+      descriptions:
+        - "Supervisor: Tsuyoshi Okita"
+        - Conducted research and development on foundation models
 
     - name: OPTiM Corporation
       year: Oct. 2023 - Nov. 2023
       descriptions:
         - Research Intern / Part-time Research Assistant
-        - Research and developed AI technologies for agricultural DX
+        - Conducted research and development on AI technologies for DX in agriculture
 
   jp:
-    - name: Research Assistant (RA)
-      year: Dec. 2023 - Mar. 2026
-      descriptions:
-        - "指導教員: 大北 剛"
-        - 大規模基盤モデルに関する研究開発
-        - "- 技術補佐員"
-        - "- 支援研究員"
-
     - name: Teaching Assistant (TA)
       year: Apr. 2024 - Mar. 2027
       descriptions:
         - "講師: 大北 剛"
-        - "- 深層学習"
-        - "- 知能情報工学プロジェクト-深層学習演習 x2"
-        - "- 深層学習特論I-大学院科目"
+        - "- 知能情報工学プロジェクト-深層学習演習 (2026)"
+        - "- 深層学習特論I-大学院科目 (2026)"
+        - "- 知能情報工学プロジェクト-深層学習演習 (2025)"
+        - "- 深層学習 (2024)"
+
+    - name: 支援研究員 - Research Assistant (RA)
+      year: Apr. 2024 - Mar. 2026
+      descriptions:
+        - "指導教員: 大北 剛"
+        - 大規模基盤モデルに関する研究開発
+    
+    - name: 技術補佐員 - Undergraduate Research Assistant
+      year: Dec. 2023 - Mar. 2024
+      descriptions:
+        - "指導教員: 大北 剛"
+        - 大規模基盤モデルに関する研究開発
 
     - name: 株式会社 オプティム
       year: Oct. 2023 - Nov. 2023
