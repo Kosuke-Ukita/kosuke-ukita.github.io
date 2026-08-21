@@ -1,3 +1,21 @@
+# - title: "Weight Tying Causes Grokking in Conditional Flow Matching"
+#   authors: "Kosuke Ukita, Tsuyoshi Okita"
+#   venue: "The 14th International Symposium on Applied Engineering and Sciences (SAES 2026), No. p00**"
+#   date: November 2026
+#   location: Fukuoka, Japan
+#   type: Oral
+#   refereed: false
+#   tags:
+#     - ""
+#   links:
+#     - name: PDF
+#       url: "/assets/papers/ukita2026weight.pdf"
+#     - name: Page
+#       url: "https://conferenceservice.jp/www/saes2026/"
+#   cite: |
+#     @inproceedings{
+#     }
+
 - title: 拡散モデルを用いた人間行動モーションデータからの写実的な映像生成
   authors: 松石康希, 浮田嵩祐, 大北剛
   venue: 情報処理学会論文誌 (IPSJ Journal), 67-10, 2026.
@@ -74,7 +92,7 @@
   authors: Koki Matsuishi, Kosuke Ukita, Tsuyoshi Okita
   venue: "IEEE Xplore, International Conference on Activity and Behavior Computing (ABC 2026), pp. 1-10, DOI: 10.1109/ABC68169.2026.11567210"
   date: March 2026
-  location: Hakodate, Japan
+  location: Hokaido, Japan
   type: Oral
   refereed: true
   tags:
