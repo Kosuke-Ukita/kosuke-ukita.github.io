@@ -46,7 +46,6 @@ const { isJp } = useLocale()
           </div>
         </template>
       </div>
-
     </div>
   </div>
 </template>
