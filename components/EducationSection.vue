@@ -33,7 +33,7 @@ const edu = computed(() => isJp.value ? educationJp : education)
           <p class="font-semibold text-gray-900 dark:text-zinc-100" :class="{ 'whitespace-nowrap': nowrap }">{{ item.degree }}</p>
           <a :href="item.schoolurl" target="_blank" class="text-gray-700 dark:text-zinc-300 text-xs mt-0.5 hover:underline" :class="{ 'whitespace-nowrap': nowrap }">{{ item.school }}</a>
           <p v-if="item.depart" class="text-[0.7rem] text-gray-500 dark:text-zinc-400 mt-0.5 pl-0.5 leading-snug" :class="nowrap ? 'whitespace-nowrap' : 'whitespace-pre-line'">{{ item.depart }}</p>
-          <NuxtLink v-if="item.thesislink" :to="item.thesislink.pdf" target="_blank" class="font-mono text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-1 leading-snug underline" :class="{ 'whitespace-nowrap': nowrap }">{{ item.thesis }}</NuxtLink>
+          <NuxtLink v-if="item.thesislink" :to="item.thesislink.pdf" target="_blank" class="font-mono text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-1 leading-snug underline italics" :class="{ 'whitespace-nowrap': nowrap }">{{ item.thesis }}</NuxtLink>
           <p v-if="item.description" class="text-[0.72rem] text-gray-500 dark:text-zinc-400 mt-0.5 font-mono" :class="{ 'whitespace-nowrap': nowrap }">{{ item.description }}</p>
         </div>
       </div>

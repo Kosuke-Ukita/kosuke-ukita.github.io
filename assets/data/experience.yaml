@@ -51,7 +51,7 @@ work:
 
 social:
   en:
-    - name: Conference - Student Volunteer (SV)
+    - name: Student Volunteer (SV)
       year: Nov. 2026
       organization: The 14th International Symposium on Applied Engineering and Sciences (SAES 2026) · Fukuoka, Japan
       orgurl: "https://conferenceservice.jp/www/saes2026/"
@@ -59,7 +59,7 @@ social:
         - "- Oral Session Chairperson"
         - "- Other support"
     
-    - name: Conference - Student Volunteer (SV)
+    - name: Student Volunteer (SV)
       year: Jun. 2026
       organization: The 30th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD 2026) · Hong Kong, China
       orgurl: "https://www.pakdd2026.org/"
