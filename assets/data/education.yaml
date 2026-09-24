@@ -1,5 +1,5 @@
 en:
-  - degree: PhD
+  - degree: PhD in CSE
     school: Kyushu Institute of Technology
     schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
@@ -12,7 +12,7 @@ en:
     description: |-
       GPA: - / 4.0
 
-  - degree: MSc
+  - degree: MSc in CSE
     school: Kyushu Institute of Technology
     schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
@@ -27,7 +27,7 @@ en:
     description: |-
       GPA: 3.6 / 4.0
 
-  - degree: BSc
+  - degree: BSc in CSE
     school: Kyushu Institute of Technology
     schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
