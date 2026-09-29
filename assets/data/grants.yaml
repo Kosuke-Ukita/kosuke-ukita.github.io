@@ -1,4 +1,11 @@
 en:
+  # - name: Research Fellowship for Young Scientists DC2
+  #   url: ""
+  #   year: April 2027 - March 2029
+  #   organization: Japan Society for the Promotion of Science (JSPS)
+  #   orgurl: "https://www.jsps.go.jp/"
+  #   price: JPY ¥2,400,000 (+ ¥800,000) / 年
+  
   - name: SPRING Scholarship Awardee
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
     year: April 2026 - March 2029
@@ -23,6 +30,13 @@ en:
     price: JPY ¥290,000
 
 jp:
+  # - name: 日本学術振興会 特別研究員 DC2
+  #   url: ""
+  #   year: April 2027 - March 2029
+  #   organization: 日本学術振興会 (JSPS)
+  #   orgurl: "https://www.jsps.go.jp/"
+  #   price: JPY ¥2,400,000 (+ ¥800,000) / 年
+  
   - name: SPRINGスカラシップ研究学生
     url: "https://www.ccr.kyutech.ac.jp/dc_support/spring"
     year: April 2026 - March 2029
