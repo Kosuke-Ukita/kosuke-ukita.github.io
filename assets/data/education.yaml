@@ -3,16 +3,13 @@ en:
     school: Kyushu Institute of Technology
     schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
-      Department of Computer Science and Systems Engineering,
+      Department of Creative Informatics,
       Graduate School of Computer Science and Systems Engineering
     thesis: |-
-      Thesis: ""
     thesislink: false
     year: Apr. 2026 - Present
-    description: |-
-      GPA: - / 4.0
 
-  - degree: MSc in CSE
+  - degree: MEng in CSE
     school: Kyushu Institute of Technology
     schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
@@ -21,23 +18,23 @@ en:
     thesis: |-
       Thesis: "A Study on Sensor Foundation Models via Joint Training using Flow Matching"
     thesislink:
-      pdf: "/assets/papers/thesis_MSc.pdf"
-      slide: "/assets/slides/thesis_MSc.pdf"
+      pdf: "/assets/papers/thesis_MEng.pdf"
+      slide: "/assets/slides/thesis_MEng.pdf"
     year: Apr. 2024 - Mar. 2026
     description: |-
       GPA: 3.6 / 4.0
 
-  - degree: BSc in CSE
+  - degree: BEng in CSE
     school: Kyushu Institute of Technology
     schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: |-
       Department of Artificial Intelligence,
-      Computer Science and Systems Engineering
+      School of Computer Science and Systems Engineering
     thesis: |-
       Thesis: "Proposal of Representation-Conditional Latent Diffusion Models: Hematoma Classification in Brain CT Images"
     thesislink:
-      pdf: "/assets/papers/thesis_BSc.pdf"
-      slide: "/assets/slides/thesis_BSc.pdf"
+      pdf: "/assets/papers/thesis_BEng.pdf"
+      slide: "/assets/slides/thesis_BEng.pdf"
     year: Apr. 2020 - Mar. 2024
     description: |-
       GPA: 3.7 / 4.0
@@ -56,11 +53,8 @@ jp:
     schoolurl: https://www.iizuka.kyutech.ac.jp/
     depart: 情報工学府 情報創生工学専攻
     thesis: |-
-      学位論文: ""
     thesislink: false
     year: Apr. 2026 - Present
-    description: |-
-      GPA: - / 4.0
 
   - degree: 修士（情報工学）
     school: 九州工業大学大学院
