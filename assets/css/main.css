@@ -18,7 +18,7 @@ html.dark {
 
 /* ─── Base ────────────────────────────────────────────────────────────────── */
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,7 +26,7 @@ body {
 /* ─── Section headings (uppercase label style) ────────────────────────────── */
 .section-title {
   position: relative;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', monospace;
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -49,7 +49,7 @@ body {
 /* ─── Sidebar / drawer navigation links ──────────────────────────────────── */
 .nav-link {
   display: block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', monospace;
   font-size: 0.78rem;
   color: #6b7280;       /* was #9ca3af — gray-500 */
   padding: 0.3rem 0;
@@ -66,7 +66,7 @@ body {
 
 /* ─── Publication entry components ───────────────────────────────────────── */
 .pub-number {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', monospace;
   color: #9ca3af;       /* was #d1d5db — gray-400, still subtle */
   font-size: 0.7rem;
   flex-shrink: 0;
@@ -143,7 +143,7 @@ html.dark .pub-venue {
 
 /* ─── Article date ────────────────────────────────────────────────────────── */
 .article-date {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', monospace;
   font-size: 0.72rem;
   color: #9ca3af;
   text-align: right;

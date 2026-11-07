@@ -35,9 +35,10 @@ Thumbs.db
 # Build artifacts
 *.tsbuildinfo
 
-# Package manager lock files (optional)
+# Lock files: package-lock.json is committed on purpose (npm ci in CI needs it).
+# Only ignore lock files of package managers this project does not use.
 yarn.lock
-package-lock.json
+pnpm-lock.yaml
 
 # AI agents / coding assistants
 .claude/

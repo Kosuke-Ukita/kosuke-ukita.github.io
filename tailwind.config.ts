@@ -18,8 +18,9 @@ export default <Config>{
         primary: 'rgb(var(--color-primary) / <alpha-value>)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace', 'monospace'],
+        // Japanese fallbacks keep Japanese glyph shapes (e.g. in the CI-generated CV PDF on Linux).
+        sans: ['Inter', 'system-ui', '-apple-system', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', 'monospace'],
       },
     },
   },
