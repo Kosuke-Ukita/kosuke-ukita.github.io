@@ -16,7 +16,7 @@ const exp = computed(() => isJp.value ? experienceJp : experience)
 
 <template>
   <div class="space-y-5">
-    <div v-for="(item, i) in exp" :key="i" class="relative flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
+    <div v-for="(item, i) in exp" :key="i" class="relative flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm print:break-inside-avoid">
       <span class="font-mono text-gray-500 dark:text-zinc-400 text-[0.72rem] sm:shrink-0 sm:w-40 sm:pt-0.5">{{ item.year }}</span>
       <div
         class="min-w-0 flex-1"

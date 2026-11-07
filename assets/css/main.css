@@ -176,3 +176,10 @@ html.dark .scroll-field-wrap::after {
   padding-right: 3rem;
 }
 .scroll-field::-webkit-scrollbar { display: none; }
+
+/* ── Print (browser print and the CI-generated CV PDF) ───────────────────── */
+@media print {
+  html { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  li { break-inside: avoid; }
+  .section-title { break-after: avoid; }
+}

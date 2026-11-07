@@ -7,6 +7,19 @@ const { isJp } = useLocale()
 
 const wrap = ref(false)
 
+// When printing (browser print or the CI PDF build), always wrap long lines instead of scrolling.
+let wrapBeforePrint = false
+const onBeforePrint = () => { wrapBeforePrint = wrap.value; wrap.value = true }
+const onAfterPrint = () => { wrap.value = wrapBeforePrint }
+onMounted(() => {
+  window.addEventListener('beforeprint', onBeforePrint)
+  window.addEventListener('afterprint', onAfterPrint)
+})
+onUnmounted(() => {
+  window.removeEventListener('beforeprint', onBeforePrint)
+  window.removeEventListener('afterprint', onAfterPrint)
+})
+
 const cvPdf = computed(() => isJp.value ? '/assets/cv/jp.pdf' : '/assets/cv/en.pdf')
 const profileName = computed(() => isJp.value ? profile.namejp : profile.name)
 const profileGrade = computed(() => isJp.value ? profile.gradejp : profile.grade)
@@ -29,7 +42,7 @@ const skillGroups = others.filter(o => o.category !== 'Research Interests')
           <a :href="profile.socials.find(s => s.name === 'ORCID')?.url"          target="_blank" rel="noopener" class="hover:text-primary shrink-0">ORCID</a>
         </div>
       </div>
-      <div class="flex items-center gap-3 shrink-0">
+      <div class="flex items-center gap-3 shrink-0 print:hidden">
         <button title="Toggle line wrap"
           class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
           :class="wrap ? 'bg-primary' : 'bg-gray-200 dark:bg-zinc-600'"
@@ -76,7 +89,7 @@ const skillGroups = others.filter(o => o.category !== 'Research Interests')
     <section>
       <h2 class="section-title">Skills</h2>
       <div class="space-y-4">
-        <div v-for="(group, i) in skillGroups" :key="i">
+        <div v-for="(group, i) in skillGroups" :key="i" class="print:break-inside-avoid">
           <p class="font-mono text-[0.65rem] font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-widest mb-1.5">{{ group.category }}</p>
           <p class="text-xs text-gray-600 dark:text-zinc-400 leading-relaxed">{{ group.items.join(' · ') }}</p>
         </div>

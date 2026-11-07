@@ -56,6 +56,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 useHead({
+  htmlAttrs: { lang: () => isJa.value ? 'ja' : 'en' },
   meta: [{ name: 'google-site-verification', content: 'Vueua9w0ImvYpxqfLC-2PPndYTAHZ6YKxhlPQ-p2F30' }],
   titleTemplate: (chunk) => chunk ? `${chunk} — Kosuke Ukita` : 'Kosuke Ukita',
   script: [{
@@ -94,7 +95,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     <!-- ── Mobile drawer (slides from left) ───────────────────────────────── -->  
     <aside
       :class="[
-        'fixed inset-y-0 left-0 z-30 w-72 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm backdrop-saturate-150 border-r border-gray-100 dark:border-zinc-800',
+        'print:hidden fixed inset-y-0 left-0 z-30 w-72 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm backdrop-saturate-150 border-r border-gray-100 dark:border-zinc-800',
         'flex flex-col px-5 py-7 overflow-y-auto',
         'transition-transform duration-200 ease-in-out md:hidden',
         isMenuOpen ? 'translate-x-0' : '-translate-x-full',
@@ -128,7 +129,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     </aside>
 
     <!-- ── Mobile top bar ─────────────────────────────────────────────────── -->
-    <header class="md:hidden sticky top-0 z-10 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-sm backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-11 flex items-center justify-between px-4">
+    <header class="print:hidden md:hidden sticky top-0 z-10 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-sm backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-11 flex items-center justify-between px-4">
       <button @click="toggleMenu">
         <span class="font-mono font-semibold text-sm text-gray-900 dark:text-zinc-100 tracking-tight">Kosuke Ukita</span>
       </button>
@@ -155,7 +156,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
     <!-- ── Desktop sticky slim nav (appears after main header scrolls away) ── -->
     <Transition name="slide-down">
-      <header v-if="showStickyNav" class="hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-sm backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-10 items-center">
+      <header v-if="showStickyNav" class="print:hidden hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-sm backdrop-saturate-150 border-b border-gray-100 dark:border-zinc-800 h-10 items-center">
         <div class="max-w-2xl mx-auto px-6 lg:px-8 w-full flex items-center gap-6">
           <NuxtLink v-for="link in navLinks"
             :key="link.to" :to="link.to"
@@ -184,7 +185,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     </Transition>
 
     <!-- ── Desktop profile header (hidden on mobile) ──────────────────────── -->
-    <header ref="desktopHeader" class="hidden md:block border-b border-gray-100 dark:border-zinc-800">
+    <header ref="desktopHeader" class="print:hidden hidden md:block border-b border-gray-100 dark:border-zinc-800">
       <div class="max-w-2xl mx-auto px-6 lg:px-8 pt-9 pb-0">
 
         <!-- Profile block -->
@@ -236,13 +237,13 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
     <!-- ── Page content ───────────────────────────────────────────────────── -->
     <main class="flex-1">
-      <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 py-9 sm:py-11">
+      <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 py-9 sm:py-11 print:p-0 print:max-w-none">
         <NuxtPage :transition="{ name: 'page' }" />
       </div>
     </main>
 
     <!-- ── Footer ─────────────────────────────────────────────────────────── -->
-    <footer class="border-t border-gray-100 dark:border-zinc-800 py-5 mt-4">
+    <footer class="print:hidden border-t border-gray-100 dark:border-zinc-800 py-5 mt-4">
       <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 text-[0.7rem] text-gray-400 dark:text-zinc-500 font-mono">
         &copy; {{ new Date().getFullYear() }} Kosuke Ukita · All Rights Reserved.
       </div>
@@ -251,7 +252,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
     <!-- ── Back to top ──────────────────────────────────────────────────────── -->
     <Transition name="fade">
       <button v-if="showBackToTop" @click="scrollToTop"
-        class="fixed bottom-6 right-6 z-50 w-9 h-9 flex items-center justify-center bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-500 dark:text-zinc-400 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-colors rounded-full shadow-md"
+        class="print:hidden fixed bottom-6 right-6 z-50 w-9 h-9 flex items-center justify-center bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-500 dark:text-zinc-400 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-colors rounded-full shadow-md"
         aria-label="Back to top"
       >
         <Icon name="heroicons:arrow-up" class="w-4 h-4" />
