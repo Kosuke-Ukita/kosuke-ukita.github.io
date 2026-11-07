@@ -237,7 +237,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
     <!-- ── Page content ───────────────────────────────────────────────────── -->
     <main class="flex-1">
-      <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 py-9 sm:py-11 print:p-0 print:max-w-none">
+      <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 py-9 sm:py-11 print:py-0">
         <NuxtPage :transition="{ name: 'page' }" />
       </div>
     </main>

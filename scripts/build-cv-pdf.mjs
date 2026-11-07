@@ -6,6 +6,7 @@ import { readFile, mkdir, stat } from 'node:fs/promises'
 import { join, extname, normalize } from 'node:path'
 import { chromium } from 'playwright'
 
+const SITE_URL = 'https://kosuke-ukita.github.io'
 const ROOT = join(process.cwd(), '.output/public')
 const OUT_DIR = join(ROOT, 'assets/cv')
 const TARGETS = [
@@ -46,11 +47,18 @@ try {
     // page.pdf() does not fire `beforeprint`; dispatch it so the CV switches to wrapped lines.
     await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')))
     await page.waitForTimeout(300)
+    // Links to the site itself would otherwise point at this temporary local server; use the public URL.
+    await page.evaluate(([local, site]) => {
+      for (const a of document.querySelectorAll('a[href]')) {
+        if (a.href.startsWith(local)) a.setAttribute('href', site + a.href.slice(local.length))
+      }
+    }, [base, SITE_URL])
     await page.pdf({
       path: join(OUT_DIR, file),
-      format: 'A4',
+      format: 'A3',
       printBackground: true,
-      margin: { top: '15mm', bottom: '15mm', left: '15mm', right: '15mm' },
+      // The CV column keeps the site's max width (max-w-2xl) and is centred, which leaves wide side margins on A3.
+      margin: { top: '25mm', bottom: '25mm', left: '20mm', right: '20mm' },
     })
     console.log(`✔ ${route} -> ${join('.output/public/assets/cv', file)}`)
     await page.close()
