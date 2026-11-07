@@ -5,6 +5,7 @@ const props = defineProps<{
   previewCount?: number
   wrap?: boolean
   grouped?: boolean
+  refereedOnly?: boolean
 }>()
 
 const { isJp } = useLocale()
@@ -27,7 +28,7 @@ const hasMore = computed(() =>
   props.previewCount !== undefined && props.previewCount > 0 && publications.length > props.previewCount
 )
 const showHover = computed(() => props.previewCount !== undefined)
-const groupedPubs = useGroupedPublications()
+const groupedPubs = useGroupedPublications(() => props.refereedOnly === true)
 </script>
 
 <template>
@@ -60,7 +61,7 @@ const groupedPubs = useGroupedPublications()
               <div class="flex flex-nowrap items-center gap-2 mt-2">
                 <span class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                   :class="paper.refereed ? 'text-primary border-primary/40' : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
-                >{{ paper.refereed ? 'Refereed' : 'Non-refereed' }}</span>
+                >{{ paper.refereed ? 'Peer-reviewed' : 'Not peer-reviewed' }}</span>
                 <span v-if="paper.type" class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                   :class="paper.type.includes('Spotlight') || paper.type.includes('Oral') || paper.type.includes('Journal') ? 'text-primary border-primary/40' : paper.type.includes('Poster') ? 'text-gray-600 dark:text-zinc-400 border-gray-400 dark:border-zinc-500' : 'text-gray-400 dark:text-zinc-600 border-gray-200 dark:border-zinc-700'"
                 >{{ paper.type }}</span>
@@ -154,7 +155,7 @@ const groupedPubs = useGroupedPublications()
             <div class="flex items-center gap-2 mt-1.5" :class="nowrap ? 'flex-nowrap' : 'flex-wrap'">
               <span class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                 :class="paper.refereed ? 'text-primary border-primary/40' : 'text-gray-400 dark:text-zinc-500 border-gray-200 dark:border-zinc-700'"
-              >{{ paper.refereed ? 'Refereed' : 'Non-refereed' }}</span>
+              >{{ paper.refereed ? 'Peer-reviewed' : 'Not peer-reviewed' }}</span>
               <span v-if="paper.type" class="font-mono text-[0.65rem] border px-1.5 py-0.5 rounded-full shrink-0"
                 :class="paper.type.includes('Spotlight') || paper.type.includes('Oral') || paper.type.includes('Journal') ? 'text-primary border-primary/40' : paper.type.includes('Poster') ? 'text-gray-600 dark:text-zinc-400 border-gray-400 dark:border-zinc-500' : 'text-gray-400 dark:text-zinc-600 border-gray-200 dark:border-zinc-700'"
               >{{ paper.type }}</span>
