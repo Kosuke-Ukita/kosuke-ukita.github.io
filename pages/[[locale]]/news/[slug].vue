@@ -7,7 +7,7 @@ const slug = route.params.slug as string
 const newsBase = computed(() => isJp.value ? '/jp/news' : '/news')
 
 const { data: article } = await useAsyncData(`news-${slug}`, () =>
-  queryContent('news', slug).findOne()
+  queryCollection('news').path(`/news/${slug}`).first()
 )
 
 if (!article.value) {

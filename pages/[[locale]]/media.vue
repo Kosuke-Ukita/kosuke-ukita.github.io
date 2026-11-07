@@ -7,7 +7,7 @@ const { isJp } = useLocale()
 const newsBase = computed(() => isJp.value ? '/jp/news' : '/news')
 
 const { data: articles } = await useAsyncData('media-images', () =>
-  queryContent('news').sort({ date: -1 }).find()
+  queryCollection('news').order('date', 'DESC').all()
 )
 
 // ── Types ──────────────────────────────────────────────────────────────
@@ -30,6 +30,19 @@ interface MediaItem {
 function extractImages(node: any): { src: string; alt: string }[] {
   if (!node) return []
   const imgs: { src: string; alt: string }[] = []
+  // Nuxt Content v3 body: { type: 'minimark', value: [...] }, element = [tag, props, ...children]
+  if (node.type === 'minimark' && Array.isArray(node.value)) {
+    for (const child of node.value) imgs.push(...extractImages(child))
+    return imgs
+  }
+  if (Array.isArray(node)) {
+    const [tag, props, ...children] = node
+    if (tag === 'img' && typeof props?.src === 'string' && props.src.startsWith('/assets/')) {
+      imgs.push({ src: props.src, alt: props.alt ?? '' })
+    }
+    for (const child of children) imgs.push(...extractImages(child))
+    return imgs
+  }
   if (node.tag === 'img' && typeof node.props?.src === 'string' && node.props.src.startsWith('/assets/')) {
     imgs.push({ src: node.props.src, alt: node.props.alt ?? '' })
   }
@@ -77,7 +90,7 @@ const newsItems = computed<MediaItem[]>(() => {
   const items: MediaItem[] = []
   const seen = new Set<string>()
   for (const article of articles.value) {
-    const slug = (article._path as string)?.split('/').pop() ?? ''
+    const slug = (article.path as string)?.split('/').pop() ?? ''
     for (const img of extractImages(article.body)) {
       if (seen.has(img.src)) continue
       seen.add(img.src)

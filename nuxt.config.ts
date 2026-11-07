@@ -13,10 +13,14 @@ export default defineNuxtConfig({
     '@nuxt/content'
   ],
   content: {
-    markdown: {
+    renderer: {
       anchorLinks: false,
-      remarkPlugins: ['remark-math'],
-      rehypePlugins: ['rehype-katex'],
+    },
+    build: {
+      markdown: {
+        remarkPlugins: { 'remark-math': {} },
+        rehypePlugins: { 'rehype-katex': {} },
+      },
     },
   },
 

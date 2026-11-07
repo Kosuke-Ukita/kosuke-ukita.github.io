@@ -6,7 +6,7 @@ const lang = computed(() => isJp.value ? 'jp' : 'en')
 
 const { data: bio } = await useAsyncData(
   () => `bio-${lang.value}`,
-  () => queryContent('biography', lang.value).findOne()
+  () => queryCollection('biography').path(`/biography/${lang.value}`).first()
 )
 </script>
 

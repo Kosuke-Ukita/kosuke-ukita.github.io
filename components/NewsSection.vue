@@ -10,10 +10,10 @@ const newsBase = computed(() => isJp.value ? '/jp/news' : '/news')
 const { data: newsData } = await useAsyncData(
   () => `news-${props.grouped ? 'all' : `flat-${props.previewCount}`}-${isJp.value ? 'jp' : 'en'}`,
   async () => {
-    const q = queryContent('news')
-      .only(['date', 'content', 'contentjp', '_path'])
-      .sort({ date: -1 })
-    return (props.previewCount && props.previewCount > 0) ? q.limit(props.previewCount).find() : q.find()
+    const q = queryCollection('news')
+      .select('date', 'content', 'contentjp', 'path')
+      .order('date', 'DESC')
+    return (props.previewCount && props.previewCount > 0) ? q.limit(props.previewCount).all() : q.all()
   }
 )
 
@@ -33,7 +33,7 @@ const hasMore = computed(() =>
         <div v-for="(item, i) in group.items" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
           <span class="font-mono text-gray-400 dark:text-zinc-500 text-[0.72rem] sm:shrink-0 sm:w-[4.5rem] sm:pt-0.5">{{ item.date }}</span>
           <p class="text-gray-700 dark:text-zinc-300">
-            <NuxtLink :to="`${newsBase}/${slug(item._path)}`" class="hover:underline underline-offset-2">{{ isJp ? item.contentjp : item.content }}</NuxtLink>
+            <NuxtLink :to="`${newsBase}/${slug(item.path)}`" class="hover:underline underline-offset-2">{{ isJp ? item.contentjp : item.content }}</NuxtLink>
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@ const hasMore = computed(() =>
       <div v-for="(item, i) in newsData" :key="i" class="flex flex-col sm:flex-row gap-0.5 sm:gap-4 text-sm">
         <span class="font-mono text-gray-400 dark:text-zinc-500 text-[0.72rem] sm:shrink-0 sm:w-[4.5rem] sm:pt-0.5">{{ item.date }}</span>
         <p class="text-gray-700 dark:text-zinc-300">
-          <NuxtLink :to="`${newsBase}/${slug(item._path)}`" class="hover:underline underline-offset-2">{{ isJp ? item.contentjp : item.content }}</NuxtLink>
+          <NuxtLink :to="`${newsBase}/${slug(item.path)}`" class="hover:underline underline-offset-2">{{ isJp ? item.contentjp : item.content }}</NuxtLink>
         </p>
       </div>
     </div>
