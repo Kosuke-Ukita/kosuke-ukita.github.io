@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@nuxt/icon": "^2.2.1",
-    "better-sqlite3": "^12.6.2",
+    "better-sqlite3": "^13.0.3",
     "nuxt": "^4.6.4",
     "vue": "^3.5.28",
     "vue-router": "^4.6.4"
