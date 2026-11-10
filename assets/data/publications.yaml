@@ -12,6 +12,8 @@
       url: "/assets/papers/ukita2026weight.pdf"
     - name: Page
       url: "https://conferenceservice.jp/www/saes2026/"
+    - name: Slides
+      url: "/assets/slides/SAES2026.pdf"
   cite: |
     @inproceedings{
     }
